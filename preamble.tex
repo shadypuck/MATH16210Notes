@@ -1,0 +1,25 @@
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{xr}
+\usepackage{marginnote}
+\usepackage[hidelinks]{hyperref}
+
+\fancypagestyle{main}{
+    \fancyhf{}
+    \fancyfoot[R]{Labalme\ \thepage}
+    \fancyhead[R]{MATH\ 16210}
+    \fancyhead[L]{\leftmark}
+}
+\fancypagestyle{plain}{
+    \fancyhead{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\externaldocument{main}
+\externaldocument{../../../1 Autumn Quarter/Honors Calculus I IBL (Cartee)/MATH16110Notes/main}
+
+\reversemarginpar
+
+\renewcommand{\chaptername}{Script}
+
+\usepackage{subfiles}
