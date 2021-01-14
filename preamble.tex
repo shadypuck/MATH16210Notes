@@ -2,6 +2,9 @@
 \usepackage{fancyhdr}
 \usepackage{xr}
 \usepackage{marginnote}
+\usepackage{enumitem}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
 \usepackage[hidelinks]{hyperref}
 
 \fancypagestyle{main}{
@@ -20,6 +23,18 @@
 
 \reversemarginpar
 
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{remark}[theorem]{Remark}
+
 \renewcommand{\chaptername}{Script}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
 
 \usepackage{subfiles}

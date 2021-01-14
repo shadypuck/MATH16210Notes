@@ -9,9 +9,50 @@
 
 
 
-\chapter{Script Name}\label{sct:6}
+\chapter{Construction of the Real Numbers}\label{sct:6}
 \section{Journal}
-\marginnote{1/12:}hi
+\begin{definition}\label{dfn:6.1}\marginnote{1/12:}
+    A subset $A$ of $\Q$ is said to be a \textbf{cut} (or \textbf{Dedekind cut}) if it satisfies the following:
+    \begin{enumerate}[label={(\alph*)},ref={\thedefinition\alph*}]
+        \item \label{dfn:6.1a}$A\neq\emptyset$ and $A\neq\Q$.
+        \item \label{dfn:6.1b}If $r\in A$ and $s\in\Q$ satisfy $s<r$, then $s\in A$.
+        \item \label{dfn:6.1c}$A$ does not have a last point; i.e., if $r\in A$, then there is some $s\in A$ with $s>r$.
+    \end{enumerate}
+    We denote the collection of all cuts by $\R$.
+\end{definition}
+
+\begin{lemma}\label{lem:6.2}
+    Let $A$ be a Dedekind cut and $x\in\Q$. Then $x\notin A$ if and only if $x$ is an upper bound for $A$.
+    \begin{proof}
+        Suppose first that $x\notin A$. To prove that $x$ is an upper bound for $A$, Definition \ref{dfn:5.6} tells us that it will suffice to show that for all $r\in A$, $r\leq x$. Let $r$ be an arbitrary element of $A$. Then by the contrapositive of Definition \ref{dfn:6.1b} and the hypothesis that $x\notin A$, we know that $r\notin A$, $x\notin\Q$, or $x\not<r$. But since $r\in A$ and $x\in\Q$, it must be that $x\not<r$. Therefore, $r\leq x$, as desired.\par
+        Now suppose that $x$ is an upper bound for $A$. By Definition \ref{dfn:5.6}, this implies that for all $r\in A$, $r\leq x$. Therefore, since there is no $r\in A$ with $r>x$, by the contrapositive of Definition \ref{dfn:6.1c}, $x\notin A$, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:6.3}\leavevmode
+    \begin{enumerate}[label={(\alph*)},ref={\thetheorem\alph*}]
+        \item \label{exr:6.3a}Prove that for any $q\in\Q$, $\{x\in\Q\mid x<q\}$ is a Dedekind cut. We then define $\bm{0}=\{x\in\Q\mid x<0\}$.
+        \item \label{exr:6.3b}Prove that $\{x\in\Q\mid x\leq 0\}$ is not a Dedekind cut.
+        \item \label{exr:6.3c}Prove that $\{x\in\Q\mid x<0\}\cup\{x\in\Q\mid x^2<2\}$ is a Dedekind cut.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        Let $q$ be an arbitrary element of $\Q$. To prove that $A=\{x\in\Q\mid x<q\}$ is a Dedekind cut, Definition \ref{dfn:6.1} tells us that it will suffice to show that $A\neq\emptyset$; $A\neq\Q$; if $r\in A$ and $s\in\Q$ satisfy $s<r$, then $s\in A$; and if $r\in A$, then there is some $s\in A$ with $s>r$. We will take this one claim at a time.\par
+        To show that $A\neq\emptyset$, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of $A$. By Exercise \ref{exr:3.9d}, $q$ is not the first point of $\Q$. Thus, by Definition \ref{dfn:3.3}, there exists an object $x\in\Q$ such that $x<q$. By the definition of $A$, this implies that $x\in A$, as desired.\par
+        To show that $A\neq\Q$, Definition \ref{dfn:1.2} tells us that it will suffice to find an element of $\Q$ that is not an element of $A$. By hypothesis, $q\in\Q$. By Exercise \ref{exr:3.9d}, $q\not<q$. Therefore, $q\in\Q$ but $q\notin A$, as desired.\par
+        To show that if $r\in A$ and $s\in\Q$ satisfy $s<r$, then $s\in A$, we let $r\in A$ and $s\in\Q$ be arbitrary elements of their respective sets that satisfy $s<r$ and seek to verify that $s\in A$. Since $r\in A$, $r<q$. This combined with the fact that $s<r$ implies by transitivity that $s<q$. Therefore, since $s\in\Q$ and $s<q$, $s\in A$, as desired.\par
+        To show that if $r\in A$, then there is some $s\in A$ with $s>r$, we let $r\in A$ and seek to find such an $s$. By the definition of $A$, $r<q$. Thus, by Additional Exercise \ref{axr:3.1}, there exists a point $s\in\Q$ such that $r<s<q$. Since $s\in\Q$ and $s<q$, $s\in A$. It follows that $s$ is the desired element of $A$ satisfying $s>r$.
+    \end{proof}
+    \begin{proof}[Proof of b]
+        To prove that $A=\{x\in\Q\mid x\leq 0\}$ is not a Dedekind cut, Definition \ref{dfn:6.1} tells us that it will suffice to show that $A$ does have a last point. To show this, we will demonstrate that 0 is the last point of $A$. To demonstrate this, Definition \ref{dfn:3.1} tells us that it will suffice to confirm that $0\in A$ and for all $x\in A$, $x\leq 0$. Since $0\leq 0$ and $0\in\Q$, $0\in A$. Additionally, by the definition of $A$, it is true that for all $x\in A$, $x\leq 0$.
+    \end{proof}
+    \begin{proof}[Proof of c]
+        Let $B=\{x\in\Q\mid x<0\}$ and let $C=\{x\in\Q\mid x^2<2\}$. To prove that $A=B\cup C$ is a Dedekind cut, Definition \ref{dfn:6.1} tells us that it will suffice to show that $A\neq\emptyset$; $A\neq\Q$; if $r\in A$ and $s\in\Q$ satisfy $s<r$, then $s\in A$; and if $r\in A$, then there is some $s\in A$ with $s>r$. We will take this one claim at a time.\par
+        To show that $A\neq\emptyset$, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of $A$. Since $-1\in\Q$ and $-1<0$, $-1\in B$. Therefore, by Definition \ref{dfn:1.5}, $-1\in A$, as desired.\par
+        To show that $A\neq\Q$, Definition \ref{dfn:1.2} tells us that it will suffice to find an element of $\Q$ that is not an element of $A$. Since $2\in\Q$ and $2\geq 0$, $2\notin B$. Additionally, since $2^2\geq 2$, $2\notin C$. Therefore, by Definition \ref{dfn:1.5}, $2\notin A$, as desired.\par
+        To show that if $r\in A$ and $s\in\Q$ satisfy $s<r$, then $s\in A$, we let $r\in A$ and $s\in\Q$ be arbitrary elements of their respective sets that satisfy $s<r$ and seek to verify that $s\in A$. Since $r\in A$, Definition \ref{dfn:1.5} tells us that $r\in B$ or $r\in C$. We now divide into two cases. Suppose first that $r\in B$. Then $s<r<0$, which implies that $s\in B$, meaning that $s\in A$. Now suppose that $r\in C$. We divide into two cases again ($r\leq 0$ and $r>0$). If $r\leq 0$, then $s<r\leq 0$ implies that $s<0$. Thus, by the definition of $B$, $s\in B$, implying that $s\in A$. On the other hand, if $r>0$, then $0<s^2<r^2<2$. Thus, by the definition of $C$, $s\in C$, implying that $s\in A$.\par
+        To show that $A$ does not have a last point, suppose for the sake of contradiction that $A$ has a last point $p$. We now divide into two cases ($p\leq 0$ and $p>0$). Suppose first that $p\leq 0$. Since $p$ is the last point of $A$, Definition \ref{dfn:3.3} tells us that $x\leq p$ for all $x\in A$. But $1\in A$ (since $1\in\Q$ and $1^2=1<2$ implies $1\in B$, implies $1\in A$) and $1>0\geq p$, a contradiction. Now suppose that $p>0$. Definition \ref{dfn:3.3} tells us that $p\in A$, but the condition that $p>0$ means $p\notin B$, so we must have $p\in C$. However, by the proof of Exercise \ref{exr:4.24}, $\frac{2(p+1)}{p+2}$ will be an element of $B$ (and therefore $A$) that is greater than $p$ no matter how large $p$ is, a contradiction.
+    \end{proof}
+\end{exercise}
 
 
 
