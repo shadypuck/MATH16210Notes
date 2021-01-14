@@ -2,6 +2,8 @@
 \usepackage{fancyhdr}
 \usepackage{xr}
 \usepackage{marginnote}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{bm}
@@ -22,6 +24,9 @@
 \externaldocument{../../../1 Autumn Quarter/Honors Calculus I IBL (Cartee)/MATH16110Notes/main}
 
 \reversemarginpar
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{proposition}[theorem]{Proposition}
