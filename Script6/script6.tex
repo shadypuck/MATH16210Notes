@@ -75,9 +75,48 @@
 \begin{lemma}\label{lem:6.6}\marginnote{\emph{1/14:}}
     A nonempty subset of $\R$ that is bounded above has a supremum.
     \begin{proof}
-        Let $X$ be an arbitrary nonempty subset of $\R$ that is bounded above. To prove that $\sup X$ exists, we will show that $\sup X=\bigcup\{Y\mid Y\in X\}$. To show this, Definition \ref{dfn:5.7} tells us that it will suffice to demonstrate that $U=\bigcup\{Y\mid Y\in X\}$ is an upper bound of $X$ and if $U'$ is an upper bound of $X$, then $U\leq U'$. Let's begin.\par
-        To demonstrate that $U$ is an upper bound of $X$, Definition \ref{dfn:5.6} tells us that it will suffice to confirm that $Y\leq U$ for all $Y\in X$. To confirm this, Definition \ref{dfn:6.4} tells us that it will suffice to verify that $Y\subset U$ for all $Y\in X$. But by Theorem \ref{trm:1.7b}, this is true.\par
+        Let $X$ be an arbitrary nonempty subset of $\R$ that is bounded above. To prove that $\sup X$ exists, we will show that $\sup X=U=\bigcup\{Y\mid Y\in X\}$. To show this, Definition \ref{dfn:5.7} tells us that it will suffice to demonstrate that $U\in\R$, $U$ is an upper bound of $X$, and if $U'$ is an upper bound of $X$, then $U\leq U'$. Let's begin.\par\smallskip
+        To demonstrate that $U\in\R$, Definition \ref{dfn:6.1} tells us that it will suffice to confirm that $U\neq\emptyset$; $U\neq\Q$; if $r\in U$ and $s\in\Q$ satisfy $s<r$, then $s\in U$; and if $r\in U$, then there is some $s\in U$ with $s>r$.\par
+        As the union of a nonempty subset of nonempty sets, Script \ref{sct:1} implies that $U\neq\emptyset$.\par
+        To demonstrate that $U\neq\Q$, Definition \ref{dfn:1.2} tells us that it will suffice to find a point $p\in\Q$ such that $p\notin U$. Since $X$ is bounded above, we have by Definition \ref{dfn:5.6} that there exists a Dedekind cut $V\in\R$ such that $Y\leq V$ for all $Y\in X$. It follows by Definition \ref{dfn:6.4} that $Y\subset V$ for all $Y\in X$. Thus, by Script \ref{sct:1}, $U\subset V$. Now since $V$ is a Dedekind cut, we know by Definition \ref{dfn:6.1} that $V\subset\Q$ and $V\neq\Q$, meaning that there exists a point $p\in\Q$ such that $p\notin V$. Consequently, since $U\subset V$, $p\notin U$, as desired.\par
+        To demonstrate that if $r\in U$ and $s\in\Q$ satisfy $s<r$, then $s\in U$, we let $r\in U$ and $s\in\Q$ be arbitrary elements of their respective sets that satisfy $s<r$ and seek to verify that $s\in U$. Since $r\in U$, Definition \ref{dfn:1.13} tells us that $r\in Y$ for some $Y\in X$. Thus, since $Y$ is a Dedekind cut, $s\in\Q$ and $s<r$ implies that $s\in Y$. Therefore, $s\in U$.\par
+        To demonstrate that if $r\in U$, then there is some $s\in U$ with $s>r$, we let $r\in U$ and seek to find such an $s$. Since $r\in U$, Definition \ref{dfn:1.13} tells us that $r\in Y$ for some $Y\in X$. Thus, since $Y$ is a Dedekind cut, there exists a point $s\in Y$ with $s>r$. Therefore, $s\in U$.\par\smallskip
+        To demonstrate that $U$ is an upper bound of $X$, Definition \ref{dfn:5.6} tells us that it will suffice to confirm that $Y\leq U$ for all $Y\in X$. To confirm this, Definition \ref{dfn:6.4} tells us that it will suffice to verify that $Y\subset U$ for all $Y\in X$. But by an extension of Theorem \ref{trm:1.7b}, this is true.\par\smallskip
         Now suppose for the sake of contradiction that there exists an upper bound $U'$ of $X$ such that $U'<U$. It follows by Definitions \ref{dfn:6.4} and \ref{dfn:1.3} that there exists a point $p\in U$ such that $p\notin U'$. Thus, by the former statement and Definition \ref{dfn:1.13}, $p\in Y$ for some $Y\in X$. Additionally, since $U'$ is an upper bound of $X$, we have by Definitions \ref{dfn:5.6} and \ref{dfn:6.4} that $Y\subset U'$ for all $Y\in X$. But this implies by Definition \ref{dfn:1.3} that $p\in U'$, a contradiction.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:6.7}
+    Show that $\R$ satisfies Axiom \ref{axm:5.4}.
+    \begin{proof}
+        
+    \end{proof}
+\end{exercise}
+
+\begin{definition}\label{dfn:6.8}
+    Let $C$ be a continuum satisfying Axioms 1-4. Consider a subset $X\subset C$. We say that $X$ is \textbf{dense} in $C$ if every $p\in C$ is a limit point of $X$.
+\end{definition}
+
+\begin{lemma}\label{lem:6.9}
+    A subset $X\subset C$ is dense in $C$ if and only if $\overline{X}=C$.
+    \begin{proof}
+        Suppose first that $X\subset C$ is dense in $C$. To prove that $\overline{X}=C$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every point $p\in\overline{X}$ is an element of $C$ and vice versa. Clearly, every element of $\overline{X}$ is an element of $C$. On the other hand, let $p$ be an arbitrary element of $C$. Since $X$ is dense in $C$, Definition \ref{dfn:6.8} tells us that $p\in LP(X)$. Therefore, by Definitions \ref{dfn:1.5} and \ref{dfn:4.4}, $p\in\overline{X}$.\par
+        Now suppose that $\overline{X}=C$. To prove that $X$ is dense in $C$, Definition \ref{dfn:6.8} tells us that it will suffice to show that every $p\in C$ is a limit point of $X$. Let $p$ be an arbitrary element of $C$. By Corollary \ref{cly:5.4}, this implies that $p\in LP(C)$. It follows that $p\in LP(\overline{X})$. Thus, by Definition \ref{dfn:4.4}, $p\in LP(X\cup LP(X))$. Consequently, by Theorem \ref{trm:3.20}, $p\in LP(X)$ or $p\in LP(LP(X))$. We now divide into two cases. If $p\in LP(X)$, then we are done. On the other hand, if $p\in LP(LP(X))$, the lemma from Theorem \ref{trm:4.6} asserts that $p\in LP(X)$, and we are done again.
+    \end{proof}
+\end{lemma}
+
+Our next goal is to prove that $\Q$ is dense in $\R$. Just to make sense of that statement, we need to decide how to think of $\Q$ as a subset of $\R$. For every rational number $q\in\Q$, define the corresponding real number as the Dedekind cut
+\begin{equation*}
+    i(q) = \{x\in\Q\mid x<q\}
+\end{equation*}
+For example, $\bm{0}=i(0)$. It can be verified that this gives a well-defined injective function $i:\Q\to\R$. We identify $\Q$ with its image $i(\Q)\subset\R$ so that the rational numbers $\Q$ are a subset of the real numbers $\R$. (Similarly, $\N$ and $\Z$ can be understood as subsets of $\R$.)
+
+\begin{lemma}\label{lem:6.10}
+    Given $A,B\in\R$ with $A<B$, there exists $p\in\Q$ such that $A<i(p)<B$.
+    \begin{proof}
+        Since $A<B$, Definition \ref{dfn:6.4} tells us that $A\subsetneq B$. Thus, by Definition \ref{dfn:1.3}, there exists a point $q$ such that $q\in B$ and $q\notin A$. Since $q\in B$ where $B$ is a Dedekind cut, we have by Definition \ref{dfn:6.1} that there exists a point $p\in B$ with $p>q$. Additionally, since $q\notin A$ implies that $q$ is an upper bound of $A$ by Lemma \ref{lem:6.2}, we know by Definition \ref{dfn:5.6} that $x\leq q$ for all $x\in A$. It follows since $q<p$ that $x\leq p$ for all $x\in A$, meaning by Definition \ref{dfn:5.6} and Lemma \ref{lem:6.2} that $p\notin A$. Having established that $p,q\in B$, $p,q\notin A$, and $q<p$, we are now ready to prove that $A<i(p)<B$. Definition \ref{dfn:6.4} tells us that we may do so by showing that $A\subsetneq i(p)$ and $i(p)\subsetneq B$. We will take this one argument at a time.\par
+        To show that $A\subsetneq i(p)$, Definition \ref{dfn:1.3} tells us that it will suffice to verify that every element of $A$ is an element of $i(p)$ and that there exists an element of $i(p)$ that is not an element of $A$. We treat the former statement first. As previously mentioned, $x\leq p$ for all $x\in A$. This combined with the fact that $p\notin A$ implies that $x<p$ for all $x\in A$. Thus, by the definition of $i(p)$, $x\in i(p)$ for all $x\in A$, as desired. As to the latter statement, since $q<p$, we have by the definition of $i(p)$ that $q\in i(p)$. However, we also know that $q\notin A$, as desired.\par
+        To show that $i(p)\subsetneq B$, we must verify symmetric arguments to before. For the former statement, let $r$ be an arbitrary element of $i(p)$. Then by the definition of $i(p)$, $r<p$. Since $p\in B$ and $r\in\Q$ satisfy $r<p$, we have by Definition \ref{dfn:6.1} that $r\in B$, as desired. As to the latter statement, $p$ is clearly an element of $B$ that is not an element of $i(p)$, as desired.
     \end{proof}
 \end{lemma}
 
