@@ -86,14 +86,16 @@
     \end{proof}
 \end{lemma}
 
-\begin{exercise}\label{exr:6.7}
+\begin{exercise}\label{exr:6.7}\marginnote{1/19:}
     Show that $\R$ satisfies Axiom \ref{axm:5.4}.
     \begin{proof}
-        
+        Suppose for the sake of contradiction that $\R$ does not satisfy Axiom \ref{axm:5.4}. It follows that $\R$ is not connected, implying by Definition \ref{dfn:4.22} that $\R=A\cup B$ where $A,B$ are disjoint, nonempty, open sets. Since $A,B$ are disjoint and nonempty, we know that there exist distinct objects $a\in A$ and $b\in B$. WLOG, let $a<b$.\par
+        We now seek to prove that the set $A\cap\underline{ab}$ is nonempty and bounded above. To prove that $A\cap\underline{ab}$ is nonempty, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of $A\cap\underline{ab}$. Since $a\in A$ and $A$ is open, we have by Theorem \ref{trm:4.10} that there exists a region $\underline{cd}$ such that $a\in\underline{cd}$ and $\underline{cd}\subset A$. It follows by Definitions \ref{dfn:3.10} and \ref{dfn:3.6} that $a<d$, implying by Lemma \ref{lem:6.10}\footnote{We may use this lemma since it does not depend on this result, Definition \ref{dfn:6.8}, or Lemma \ref{lem:6.9}.} that there exists some point $x\in\R$ such that $c<a<x<d<b$ (note that $d<b$ since if $b<d$, then $b\in\underline{cd}$ would contradict the fact that $\underline{cd}\subset A$). Consequently, $x\in\underline{cd}$, meaning that $x\in A$, and $x\in\underline{ab}$. Therefore, $x\in A\cap\underline{ab}$, as desired. To prove that $A\cap\underline{ab}$ is bounded above, Definition \ref{dfn:5.6} tells us that it will suffice to show that $b$ is an upper bound of $A\cap\underline{ab}$. To show this, Definition \ref{dfn:5.6} tells us that it will suffice to confirm that $y\leq b$ for all $y\in A\cap\underline{ab}$. Let $y$ be an arbitrary element of $A\cap\underline{ab}$. Then by Definition \ref{dfn:1.6}, $y\in A$ and $y\in\underline{ab}$. It follows from the latter statement by Definitions \ref{dfn:3.10} and \ref{dfn:3.6} that $y<b$, i.e., $y\leq b$, as desired.\par
+        Having established that $A\cap\underline{ab}\subset\R$ is nonempty and bounded above, we can invoke Lemma \ref{lem:6.6} to learn that $A\cap\underline{ab}$ has a supremum $\sup(A\cap\underline{ab})$. We now divide into two cases ($\sup(A\cap\underline{ab})\in A$ and $\sup(A\cap\underline{ab})\in B$; it follows from the definitions of $A$ and $B$ that exactly one of these cases is true). Suppose first that $\sup(A\cap\underline{ab})\in A$. Then since $A$ is open, we have by Theorem \ref{trm:4.10} that there exists a region $\underline{ef}$ such that $\sup(A\cap\underline{ab})\in\underline{ef}$ and $\underline{ef}\subset A$. It follows from the former condition that $\sup(A\cap\underline{ab})<f$. Thus, by Lemma \ref{lem:6.10}, there exists an object $z\in\R$ such that $e<\sup(A\cap\underline{ab})<z<f<b$ (note that $f<b$ for the same reason that $d<b$). Consequently, $z\in\underline{ef}$, implying that $z\in A$, and $z\in\underline{ab}$. Thus, we have found an element of $A\cap\underline{ab}$ that is greater than $\sup(A\cap\underline{ab})$, contradicting Definitions \ref{dfn:5.7} and \ref{dfn:5.6}. The proof is symmetric in the other case.
     \end{proof}
 \end{exercise}
 
-\begin{definition}\label{dfn:6.8}
+\begin{definition}\label{dfn:6.8}\marginnote{1/14:}
     Let $C$ be a continuum satisfying Axioms 1-4. Consider a subset $X\subset C$. We say that $X$ is \textbf{dense} in $C$ if every $p\in C$ is a limit point of $X$.
 \end{definition}
 
@@ -119,6 +121,36 @@ For example, $\bm{0}=i(0)$. It can be verified that this gives a well-defined in
         To show that $i(p)\subsetneq B$, we must verify symmetric arguments to before. For the former statement, let $r$ be an arbitrary element of $i(p)$. Then by the definition of $i(p)$, $r<p$. Since $p\in B$ and $r\in\Q$ satisfy $r<p$, we have by Definition \ref{dfn:6.1} that $r\in B$, as desired. As to the latter statement, $p$ is clearly an element of $B$ that is not an element of $i(p)$, as desired.
     \end{proof}
 \end{lemma}
+
+\begin{theorem}\label{trm:6.11}\marginnote{\emph{1/19:}}
+    $i(\Q)$ is dense in $\R$.
+    \begin{proof}
+        To prove that $i(\Q)$ is dense in $\R$, Definition \ref{dfn:6.8} tells us that it will suffice to show the every point $X\in\R$ is a limit point of $i(\Q)$. Let $X$ be an arbitrary element of $\R$. To show that $X\in LP(i(\Q))$, Definition \ref{dfn:3.13} tells us that it will suffice to verify that for every region $\underline{AB}$ with $X\in\underline{AB}$, we have $\underline{AB}\cap(i(\Q)\setminus\{X\})\neq\emptyset$. Let $\underline{AB}$ be an arbitrary region with $X\in\underline{AB}$. It follows by Definitions \ref{dfn:3.10} and \ref{dfn:3.6} that $A<X<B$. Thus, by Lemma \ref{lem:6.10}, there exists $p\in\Q$ such that $A<i(p)<X<B$. By Definitions \ref{dfn:3.6} and \ref{dfn:3.10}, $i(p)\in\underline{AB}$. By Definition \ref{dfn:1.18}, $i(p)\in i(\Q)$. By Exercise \ref{exr:6.5}, $i(p)<X$ implies that $i(p)\neq X$. Combining the last three results with Definitions \ref{dfn:1.11} and \ref{dfn:1.6}, we have that $i(p)\in\underline{AB}\cap(i(\Q)\setminus\{X\})$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}[The Archimedean Property]\label{cly:6.12}
+    Let $A\in\R$ be a positive real number. Then there exist nonzero natural numbers $n,m\in\N$ such that $i(\frac{1}{n})<A<i(m)$.
+    \begin{proof}
+        We will first prove that there exists a nonzero natural number $n$ such that $i(\frac{1}{n})<A$. We will then prove that there exists a nonzero natural number $m$ such that $A<i(m)$. Let's begin.\par
+        Since $A\in\R$ is positive, we know that $0<A$. Thus, by Lemma \ref{lem:6.10}, there exists $\frac{p}{n}\in\Q$ such that $0<i(\frac{p}{n})<A$. As permitted by Exercise \ref{exr:3.9b}, we choose $\frac{p}{n}\in\eqclass{p}{n}$ to be an object such that $0<n$ (this means that $n\in\N$). Consequently, by Scripts \ref{sct:2} and \ref{sct:3}, we know that $0<\frac{1}{n}\leq\frac{p}{n}$. It follows that $i(\frac{1}{n})\leq i(\frac{p}{n})$ since $x\in i(\frac{1}{n})$ implies $x<\frac{1}{n}\leq\frac{p}{n}$ implies $x\in i(\frac{p}{n})$, implies $i(\frac{1}{n})\subset i(\frac{p}{n})$. Therefore, $i(\frac{1}{n})\leq i(\frac{p}{n})<A$, as desired.\par
+        Suppose for the sake of contradiction that no natural number $m$ exists such that $A<i(m)$. Then $A\geq i(m)$ for all $m\in\N$. Thus, by Definition \ref{dfn:6.4}, $i(m)\subset A$ for all $m\in\N$. Now let $\frac{p}{q}$ be an arbitrary element of $\Q$, again with a positive denominator. It follows by Scripts \ref{sct:2} and \ref{sct:3} that $\frac{p}{q}<1$ if $p\leq 0$ and $\frac{p}{q}<p$ if $p>0$. Either way, $\frac{p}{q}<m$ for some nonzero natural number $m\in\N$, meaning that $\frac{p}{q}\in i(m)$ for some $m\in\N$. This implies that $\frac{p}{q}\in A$. But by Definition \ref{dfn:1.3}, this means that $\Q\subset A$, implying that $A=\Q$ by Theorem \ref{trm:1.7a}. This contradicts Definition \ref{dfn:6.1}.
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:6.13}
+    $i(\N)$ is an unbounded subset of $\R$.
+    \begin{proof}
+        Suppose for the sake of contradiction that $i(\N)$ is bounded above. Then by Definition \ref{dfn:5.6}, there exists a point $A\in\R$ such that $i(n)\leq A$ for all $n\in\N$. Note that $A$ is a positive real number since $0=i(0)\leq A$. But by Corollary \ref{cly:6.12}, $A<i(n)$ for some $n\in\N$, a contradiction.
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:6.14}
+    If $A\in\R$ is a real number, then there is an integer $n$ such that $i(n-1)\leq A<i(n)$.
+    \begin{proof}
+        Suppose for the sake of contradiction that there exists a real number $A$ for which there does not exist an integer $n$ such that $i(n-1)\leq A$ and $A<i(n)$. In other words, for all integers $n$, $i(n-1)>A$ or $A\geq i(n)$. We now divide into two cases. Suppose first that $i(n-1)>A$ for all $n\in\Z$, and suppose for the sake of contradiction that $p\in A$. Then by Scripts \ref{sct:2} and \ref{sct:3}, there exists a natural number $m<p$. Thus, $i(m)<A$, a contradiction. The proof is symmetric in the other case.
+    \end{proof}
+\end{corollary}
 
 
 
