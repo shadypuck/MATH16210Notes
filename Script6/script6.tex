@@ -134,7 +134,7 @@ For example, $\bm{0}=i(0)$. It can be verified that this gives a well-defined in
     \begin{proof}
         We will first prove that there exists a nonzero natural number $n$ such that $i(\frac{1}{n})<A$. We will then prove that there exists a nonzero natural number $m$ such that $A<i(m)$. Let's begin.\par
         Since $A\in\R$ is positive, we know that $0<A$. Thus, by Lemma \ref{lem:6.10}, there exists $\frac{p}{n}\in\Q$ such that $0<i(\frac{p}{n})<A$. As permitted by Exercise \ref{exr:3.9b}, we choose $\frac{p}{n}\in\eqclass{p}{n}$ to be an object such that $0<n$ (this means that $n\in\N$). Consequently, by Scripts \ref{sct:2} and \ref{sct:3}, we know that $0<\frac{1}{n}\leq\frac{p}{n}$. It follows that $i(\frac{1}{n})\leq i(\frac{p}{n})$ since $x\in i(\frac{1}{n})$ implies $x<\frac{1}{n}\leq\frac{p}{n}$ implies $x\in i(\frac{p}{n})$, implies $i(\frac{1}{n})\subset i(\frac{p}{n})$. Therefore, $i(\frac{1}{n})\leq i(\frac{p}{n})<A$, as desired.\par
-        Suppose for the sake of contradiction that no natural number $m$ exists such that $A<i(m)$. Then $A\geq i(m)$ for all $m\in\N$. Thus, by Definition \ref{dfn:6.4}, $i(m)\subset A$ for all $m\in\N$. Now let $\frac{p}{q}$ be an arbitrary element of $\Q$, again with a positive denominator. It follows by Scripts \ref{sct:2} and \ref{sct:3} that $\frac{p}{q}<1$ if $p\leq 0$ and $\frac{p}{q}<p$ if $p>0$. Either way, $\frac{p}{q}<m$ for some nonzero natural number $m\in\N$, meaning that $\frac{p}{q}\in i(m)$ for some $m\in\N$. This implies that $\frac{p}{q}\in A$. But by Definition \ref{dfn:1.3}, this means that $\Q\subset A$, implying that $A=\Q$ by Theorem \ref{trm:1.7a}. This contradicts Definition \ref{dfn:6.1}.
+        By Exercise \ref{exr:6.5}, Axiom \ref{axm:3.3}, and Definition \ref{dfn:3.3}, there exists a point $B\in\R$ such that $A<B$. It follows by Lemma \ref{lem:6.10} that there exists $\frac{m}{q}\in\Q$ such that $A<i(\frac{m}{q})<B$. As before, let $\frac{m}{q}$ be an object such that $0<q$. Consequently, by Scripts \ref{sct:2} and \ref{sct:3}, we know that $0<\frac{m}{q}\leq m$. Once again, for the same reasons as before, $i(\frac{m}{q})\leq i(m)$. Therefore, $A<i(\frac{m}{q})\leq i(m)$, as desired.
     \end{proof}
 \end{corollary}
 
@@ -148,7 +148,8 @@ For example, $\bm{0}=i(0)$. It can be verified that this gives a well-defined in
 \begin{corollary}\label{cly:6.14}
     If $A\in\R$ is a real number, then there is an integer $n$ such that $i(n-1)\leq A<i(n)$.
     \begin{proof}
-        Suppose for the sake of contradiction that there exists a real number $A$ for which there does not exist an integer $n$ such that $i(n-1)\leq A$ and $A<i(n)$. In other words, for all integers $n$, $i(n-1)>A$ or $A\geq i(n)$. We now divide into two cases. Suppose first that $i(n-1)>A$ for all $n\in\Z$, and suppose for the sake of contradiction that $p\in A$. Then by Scripts \ref{sct:2} and \ref{sct:3}, there exists a natural number $m<p$. Thus, $i(m)<A$, a contradiction. The proof is symmetric in the other case.
+        Suppose for the sake of contradiction that there exists a real number $A$ for which there does not exist an integer $n$ such that $i(n-1)\leq A$ and $A<i(n)$. In other words, for all integers $n$, $i(n-1)>A$ or $A\geq i(n)$. We now divide into two cases. Suppose first that $i(n-1)>A$ for all $n\in\Z$, and suppose for the sake of contradiction that $p\in A$. Then by Scripts \ref{sct:2} and \ref{sct:3}, there exists a natural number $m<p$. Thus, $i(m)<A$, a contradiction. Therefore, there exists no $p\in A$, i.e., $A=\emptyset$. But this contradicts the fact that $A$ is a Dedekind cut.\par
+        The proof is symmetric in the other case.
     \end{proof}
 \end{corollary}
 
