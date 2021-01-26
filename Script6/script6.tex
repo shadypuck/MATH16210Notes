@@ -145,11 +145,20 @@ For example, $\bm{0}=i(0)$. It can be verified that this gives a well-defined in
     \end{proof}
 \end{corollary}
 
-\begin{corollary}\label{cly:6.14}
+\begin{corollary}\label{cly:6.14}\marginnote{\emph{1/21:}}
     If $A\in\R$ is a real number, then there is an integer $n$ such that $i(n-1)\leq A<i(n)$.
     \begin{proof}
-        Suppose for the sake of contradiction that there exists a real number $A$ for which there does not exist an integer $n$ such that $i(n-1)\leq A$ and $A<i(n)$. In other words, for all integers $n$, $i(n-1)>A$ or $A\geq i(n)$. We now divide into two cases. Suppose first that $i(n-1)>A$ for all $n\in\Z$, and suppose for the sake of contradiction that $p\in A$. Then by Scripts \ref{sct:2} and \ref{sct:3}, there exists a natural number $m<p$. Thus, $i(m)<A$, a contradiction. Therefore, there exists no $p\in A$, i.e., $A=\emptyset$. But this contradicts the fact that $A$ is a Dedekind cut.\par
-        The proof is symmetric in the other case.
+        Let $X$ be be the set of all integers $z$ such that $i(z)\leq A$. Symbolically,
+        \begin{equation*}
+            X = \{z\mid z\in\Z\text{ and }i(z)\leq A\}
+        \end{equation*}
+        Since $A\neq\emptyset$ by Definition \ref{dfn:6.1}, there exists a point $\frac{p}{q}\in\Q$ such that $\frac{p}{q}\in A$. As in Corollary \ref{cly:6.12}, we let $q>0$. It follows by Scripts \ref{sct:2} and \ref{sct:3} that if $p\geq 0$, then $0\leq\frac{p}{q}$, i.e.\footnote{For the same reasons as in Corollary \ref{cly:6.12}.}, $i(0)\leq A$ and if $p<0$, then $p\leq\frac{p}{q}$, i.e., $i(p)\leq A$. Thus, in either case, $X$ is nonempty.\par
+        Now by Corollary \ref{cly:6.12}, there exists a nonzero natural number $m$ such that $A<i(m)$. Let $f:X\to\N$ be defined by the rule
+        \begin{equation*}
+            f(x) = m-x
+        \end{equation*}
+        By Script \ref{sct:1}, $f$ is an injective function, $f(X)\subset\N$, and $f(X)$ is nonempty (since $X$ is nonempty). Thus, by Additional Exercise \ref{axr:0.1}, there is a least element, which we shall call $y$, in $f(X)$. Since $f$ is injective, there exists exactly one object $n-1\in X$ such that $f(n-1)=y$.\par
+        By the definition of $X$, $i(n-1)\leq A$. To prove that $A<i(n)$, suppose for the sake of contradiction that $i(n)\leq A$. This coupled with the fact that $n\in\Z$ implies that $n\in X$. Thus, $f(n)\in f(X)$. But $f(n)=m-n<m-n+1=m-(n-1)=f(n-1)$, contradicting the fact that $f(n-1)$ is the least element of $f(X)$.
     \end{proof}
 \end{corollary}
 
