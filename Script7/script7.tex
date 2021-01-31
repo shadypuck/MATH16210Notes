@@ -1,0 +1,252 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{6}
+
+\begin{document}
+
+
+
+
+\chapter{The Field Axioms}\label{sct:7}
+\section{Journal}
+\begin{definition}\label{dfn:7.1}\marginnote{1/28:}
+    A \textbf{binary operation} on a set $X$ is a function
+    \begin{equation*}
+        f:X\times X\to X
+    \end{equation*}
+    We say that $f$ is \textbf{associative} if
+    \begin{center}
+        $f(f(x,y),z)=f(x,f(y,z))$\quad for all $x,y,z\in X$
+    \end{center}
+    We say that $f$ is \textbf{commutative} if
+    \begin{center}
+        $f(x,y)=f(y,x)$\quad for all $x,y\in X$
+    \end{center}
+    An \textbf{identity element} of a binary operation $f$ is an element $e\in X$ such that
+    \begin{center}
+        $f(x,e)=f(e,x)=x$\quad for all $x\in X$
+    \end{center}
+\end{definition}
+
+\begin{remark}\label{rmk:7.2}
+    Frequently, we denote a binary operation differently. If $*:X\times X\to X$ is the binary operation, we often write $a*b$ in place of $*(a,b)$. We sometimes indicate this same operation by writing $(a,b)\mapsto a*b$.
+\end{remark}
+
+\begin{exercise}\label{exr:7.3}
+    Rewrite Definition \ref{dfn:7.1} using the notation of Remark \ref{rmk:7.2}.
+    \begin{proof}[Answer]
+        A \textbf{binary operation} on a set $X$ is a function
+        \begin{equation*}
+            *:X\times X\to X
+        \end{equation*}
+        We say that $*$ is \textbf{associative} if
+        \begin{center}
+            $(x*y)*z=x*(y*z)$\quad for all $x,y,z\in X$
+        \end{center}
+        We say that $*$ is \textbf{commutative} if
+        \begin{center}
+            $x*y=y*x$\quad for all $x,y\in X$
+        \end{center}
+        An \textbf{identity element} of a binary operation $*$ is an element $e\in X$ such that
+        \begin{center}
+            $x*e=e*x=x$\quad for all $x\in X$
+        \end{center}
+    \end{proof}
+\end{exercise}
+
+\begin{examples}\label{xml:7.4}\leavevmode
+    \begin{enumerate}
+        \item The function $+:\Z\times\Z\to\Z$ which sends a pair of integers $(m,n)$ to $+(m,n)=m+n$ is a binary operation on the integers, called addition. Addition is associative, commutative, and has identity element 0.
+        \item The maximum of $m$ and $n$, denoted $\max(m,n)$, is an associative and commutative binary operation on $\Z$. Is there an identity element for $\max$?
+        \begin{proof}
+            Suppose for the sake of contradiction that there exists an identity element $e$ for $\max$. But $\max(e-1,e)=e\neq e-1$, a contradiction. Therefore, no identity element exists for $\max$.
+        \end{proof}
+        \item Let $\wp(Y)$ be the power set of a set $Y$. Recall that the power set consists of all subsets of $Y$. Then the intersection of sets, $(A,B)\mapsto A\cap B$, defines an associative and commutative binary operation on $\wp(Y)$. Is there an identity element for $\cap$?
+        \begin{proof}
+            Clearly, $Y\in\wp(Y)$. By Script \ref{sct:1}, $Y\cap A=A\cap Y=A$ where $A\subset Y$. Therefore, $Y$ is an identity element for $\cap$.
+        \end{proof}
+    \end{enumerate}
+\end{examples}
+
+\begin{exercise}\label{exr:7.5}
+    Find a binary operation on a set that is not commutative. Find a binary operation on a set that is not associative.
+    \begin{proof}
+        We will prove that the subtraction operation on the integers ($-:\Z\times\Z\to\Z$) is not commutative or associative. To prove that it's not commutative, Definition \ref{dfn:7.1} tells us that it will suffice to show that $x-y\neq y-x$ for some $x,y\in\Z$. Since $2-1=1$ but $1-2=-1$, we can see that $1,2\in\Z$ clearly meet this requirement. To prove that it's not associative, Definition \ref{dfn:7.1} tells us that it will suffice to show that $(x-y)-z\neq x-(y-z)$ for some $x,y,z\in\Z$. Since $(3-2)-1=0$ but $3-(2-1)=2$, we can see that $1,2,3\in\Z$ clearly meet this requirement.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:7.6}
+    Let $X$ be a finite set, and let $Y=\{f:X\to X\mid f\text{ is bijective}\}$. Consider the binary operation of composition of functions, denoted $\circ:Y\times Y\to Y$ and defined by $(f\circ g)(x)=f(g(x))$ as seen in Definition \ref{dfn:1.25}. Decide whether or not composition is commutative and/or associative and whether or not it has an identity.
+    \begin{proof}
+        To prove that composition is not commutative, Definition \ref{dfn:7.1} tells us that it will suffice to find a finite set $X$ paired with two bijections in $Y$ that do not commute. Let $X=\{1,2,3\}$ and consider the bijections $f:X\to X$ (defined by $f(1)=2$, $f(2)=3$, $f(3)=1$) and $g:X\to X$ (defined by $g(1)=1$, $g(2)=3$, $g(3)=2$). In this case, $f\circ g$ would be defined by $f(g(1))=2$, $f(g(2))=1$, and $f(g(3))=3$, but $g\circ f$ would be defined by $g(f(1))=3$, $g(f(2))=2$, and $g(f(3))=1$.\par
+        To prove that composition is associative, Definition \ref{dfn:7.1} tells us that it will suffice to show that $((f\circ g)\circ h)(x)=(f\circ(g\circ h))(x)$. We may do this with the following algebra.
+        \begin{align*}
+            ((f\circ g)\circ h)(x) &= (f\circ g)(h(x))\\
+            &= f(g(h(x)))\\
+            &= f((g\circ h)(x))\\
+            &= (f\circ(g\circ h))(x)
+        \end{align*}
+        With respect to any finite set $X$, there will always be a bijection $i:X\to X$ defined by $i(x)=x$. To prove that $i$ is an identity element, Definition \ref{dfn:7.1} tells us that it will suffice to show that for all $f\in Y$, $f\circ i=i\circ f=f$. We may do this with the following algebra.
+        \begin{align*}
+            (f\circ i)(x) &= f(i(x))\\
+            &= f(x)\\
+            &= i(f(x))\\
+            &= (i\circ f)(x)
+        \end{align*}
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:7.7}
+    Identity elements are unique. That is, suppose that $f$ is a binary operation on a set $X$ that has two identity elements $e$ and $e'$. Then $e=e'$.
+    \begin{proof}
+        Let $f:X\times X\to X$ be a binary operation on a set $X$ with two identity elements $e,e'$. By Definition \ref{dfn:7.1}, we know that $f(e,e')=e$ and $f(e,e')=e'$. Since $f$ is a well-defined function by definition, it must be that $e=f(e,e')=e'$.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}\label{dfn:7.8}
+    A \textbf{field} is a set $F$ with two binary operations on $F$ called addition, denoted $+$, and multiplication, denoted $\cdot$, satisfying the following \textbf{field axioms}:
+    \begin{enumerate}[label={FA\arabic*}]
+        \item (Commutativity of Addition) For all $x,y\in F$, $x+y=y+x$.
+        \item (Associativity of Addition) For all $x,y,z\in F$, $(x+y)+z=x+(y+z)$.
+        \item (Additive Identity) There exists an element $0\in F$ such that $x+0=0+x=x$ for all $x\in F$.
+        \item (Additive Inverses) For any $x\in F$, there exists $y\in F$ such that $x+y=y+x=0$, called an additive inverse of $x$.
+        \item (Commutativity of Multiplication) For all $x,y\in F$, $x\cdot y=y\cdot x$.
+        \item (Associativity of Multiplication) For all $x,y,z\in F$, $(x\cdot y)\cdot z=x\cdot(y\cdot z)$.
+        \item (Multiplicative Identity) There exists an element $1\in F$ such that $x\cdot 1=1\cdot x=x$ for all $x\in F$.
+        \item (Multiplicative Inverses) For any $x\in F$ such that $x\neq 0$, there exists $y\in F$ such that $x\cdot y=y\cdot x=1$, called a multiplicative inverse of $x$.
+        \item (Distributivity of Multiplication over Addition) For all $x,y,z\in F$, $x\cdot(y+z)=x\cdot y+x\cdot z$.
+        \item (Distinct Additive and Multiplicative Identities) $1\neq 0$.
+    \end{enumerate}
+\end{definition}
+
+\begin{exercise}\label{exr:7.9}
+    Consider the set $\F_2=\{0,1\}$, and define binary operations $+$ and $\cdot$ on $\F_2$ by
+    \begin{align*}
+        \begin{split}
+            0+0 = 0\\
+            0\cdot 0 = 0
+        \end{split}&&
+        \begin{split}
+            0+1 = 1\\
+            0\cdot 1 = 0
+        \end{split}&&
+        \begin{split}
+            1+0 = 1\\
+            1\cdot 0 = 0
+        \end{split}&&
+        \begin{split}
+            1+1 = 0\\
+            1\cdot 1 = 1
+        \end{split}
+    \end{align*}
+    Show that $\F_2$ is a field.
+    \begin{proof}
+        To prove that $\F_2$ obeys FA1 from Definition \ref{dfn:7.8}, it will suffice to show that $0+0=0+0$, $0+1=1+0$, and $1+1=1+1$. The first and third of these are evidently true. For the second, we have $0+1=1=1+0$, so it is good, too.\par
+        To prove that $\F_2$ obeys FA2 from Definition \ref{dfn:7.8}, the following casework will suffice.
+        \begin{align*}
+            (0+0)+0 &= 0 = 0+(0+0)&
+            (0+0)+1 &= 1 = 0+(0+1)\\
+            (0+1)+0 &= 1 = 0+(1+0)&
+            (1+0)+0 &= 1 = 1+(0+0)\\
+            (0+1)+1 &= 0 = 0+(1+1)&
+            (1+1)+0 &= 0 = 1+(1+0)\\
+            (1+0)+1 &= 0 = 1+(0+1)&
+            (1+1)+1 &= 1 = 1+(1+1)
+        \end{align*}
+        To prove that $\F_2$ obeys FA3 from Definition \ref{dfn:7.8}, it will suffice to find an element $0\in\F_2$ such that $x+0=0+x=x$. Since $0+0=0$, $1+0=0$, and with commutativity, it is clear that 0 is an additive identity in $\F_2$.\par
+        To prove that $\F_2$ obeys FA4 from Definition \ref{dfn:7.8}, it will suffice to show that for all $x\in\F_2$, there exists a $y\in\F_2$ such that $x+y=y+x=0$. For 0, this object is 0 (since $0+0=0+0=0$), and for 1, this object is 1 (since $1+1=1+1=0$).\par
+        To prove that $\F_2$ obeys FA5 from Definition \ref{dfn:7.8}, it will suffice to show that $0\cdot 0=0\cdot 0$, $0\cdot 1=1\cdot 0$, and $1\cdot 1=1\cdot 1$. The first and third of these are evidently true. For the second, we have $0\cdot 1=0=1\cdot 0$, so it is good, too.\par
+        To prove that $\F_2$ obeys FA6 from Definition \ref{dfn:7.8}, the following casework will suffice.
+        \begin{align*}
+            (0\cdot 0)\cdot 0 &= 0 = 0\cdot (0\cdot 0)&
+            (0\cdot 0)\cdot 1 &= 0 = 0\cdot (0\cdot 1)\\
+            (0\cdot 1)\cdot 0 &= 0 = 0\cdot (1\cdot 0)&
+            (1\cdot 0)\cdot 0 &= 0 = 1\cdot (0\cdot 0)\\
+            (0\cdot 1)\cdot 1 &= 0 = 0\cdot (1\cdot 1)&
+            (1\cdot 1)\cdot 0 &= 0 = 1\cdot (1\cdot 0)\\
+            (1\cdot 0)\cdot 1 &= 0 = 1\cdot (0\cdot 1)&
+            (1\cdot 1)\cdot 1 &= 1 = 1\cdot (1\cdot 1)
+        \end{align*}
+        To prove that $\F_2$ obeys FA7 from Definition \ref{dfn:7.8}, it will suffice to find an element $1\in\F_2$ such that $x\cdot 1=1\cdot x=x$. Since $0\cdot 1=0$, $1\cdot 1=1$, and with commutativity, it is clear that 1 is a multiplicative identity in $\F_2$.\par
+        To prove that $\F_2$ obeys FA8 from Definition \ref{dfn:7.8}, it will suffice to show that for all $x\in\F_2$ such that $x\neq 0$, there exists a $y\in\F_2$ such that $x\cdot y=y\cdot x=1$. For 1, this object is 1 (since $1\cdot 1=1\cdot 1=1$).\par
+        To prove that $\F_2$ obeys FA9 from Definition \ref{dfn:7.8}, the following casework will suffice.
+        \begin{align*}
+            0\cdot(0+0) &= 0 = 0\cdot 0+0\cdot 0&
+            0\cdot(0+1) &= 0 = 0\cdot 0+0\cdot 1\\
+            0\cdot(1+0) &= 0 = 0\cdot 1+0\cdot 0&
+            1\cdot(0+0) &= 0 = 1\cdot 0+1\cdot 0\\
+            0\cdot(1+1) &= 0 = 0\cdot 1+0\cdot 1&
+            1\cdot(1+0) &= 1 = 1\cdot 1+1\cdot 0\\
+            1\cdot(0+1) &= 1 = 1\cdot 0+1\cdot 1&
+            1\cdot(1+1) &= 0 = 1\cdot 1+1\cdot 1
+        \end{align*}
+        To prove that $\F_2$ obeys FA10 from Definition \ref{dfn:7.8}, it will suffice to show that $0\neq 1$. Clearly this is true.
+
+        % We can address each axiom by casework (3 cases).
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:7.10}
+    Suppose that $F$ is a field. Then additive inverses are unique. This means: Let $x\in F$. If $y,y'\in F$ satisfy $x+y=0$ and $x+y'=0$, then $y=y'$.
+    \begin{proof}
+        Let $x,y,y'\in F$ be such that $x+y=0$ and $x+y'=0$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            y'+(x+y) &= (y'+x)+y\tag*{FA2}\\
+            y'+0 &= 0+y\tag*{FA4}\\
+            y' &= y\tag*{FA3}
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+We usually write $-x$ for the additive inverse of $x$
+
+\begin{corollary}\label{cly:7.11}
+    If $x\in F$, then $-(-x)=x$.
+    \begin{proof}
+        Let $x\in F$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            (x+(-x))+(-(-x)) &= x+((-x)+(-(-x)))\tag*{FA2}\\
+            0+(-(-x)) &= x+0\tag*{FA4}\\
+            -(-x) &= x\tag*{FA3}
+        \end{align*}
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:7.12}
+    Let $F$ be a field, and let $a,b,c\in F$. If $a+b=a+c$, then $b=c$.
+    \begin{proof}
+        Let $a,b,c\in F$ be such that $a+b=a+c$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            b &= b+0\tag*{FA3}\\
+            &= b+(a+(-a))\tag*{FA4}\\
+            &= (b+a)+(-a)\tag*{FA2}\\
+            &= (a+b)+(-a)\tag*{FA1}\\
+            &= (a+c)+(-a)\tag*{Substitute}\\
+            &= (c+a)+(-a)\tag*{FA1}\\
+            &= c+(a+(-a))\tag*{FA2}\\
+            &= c+0\tag*{FA4}\\
+            &= c\tag*{FA3}
+        \end{align*}
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}\label{cly:7.13}
+    Let $F$ be a field. If $a\in F$, then $a\cdot 0=0$.
+    \begin{proof}
+        Let $a\in F$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            a &= a\cdot 1\tag*{FA7}\\
+            &= a\cdot(1+0)\tag*{FA3}\\
+            &= a\cdot 1+a\cdot 0\tag*{FA9}\\
+            &= a+a\cdot 0\tag*{FA7}\\
+            0 &= a\cdot 0\tag*{Corollary \ref{cly:7.12}}
+        \end{align*}
+    \end{proof}
+\end{corollary}
+
+
+
+
+\end{document}
