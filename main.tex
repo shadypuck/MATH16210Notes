@@ -78,6 +78,39 @@
     \begin{itemize}
         \item Instead, use Seb's approach.
     \end{itemize}
+    \item \marginnote{1/26:}Stray thoughts on Exercise \ref{exr:6.16}:
+    \begin{itemize}
+        \item Any property we can prove for $\Q$ (e.g., betweenness, Axioms 1-3, etc.) we should be able to prove for $K$.
+        \begin{itemize}
+            \item Many of these follow from $\Q$'s density! This is how we can make use of this condition.
+        \end{itemize}
+        \item We think of 0 as being somehow the "midpoint" of $\Q$. But since $\Q$ diverges in both directions, it doesn't really have a midpoint; we just assert this rather arbitrary structure on a more foundational algebraic construct.
+        \begin{itemize}
+            \item The same would hold for $K$. Thus, we can choose an arbitrary point $x\in K$ and let it be the "midpoint," i.e., let $f(0)=x$.
+        \end{itemize}
+        \item Can we induct on the elements of $\Q$? Since there exists a bijection $\Q\to\N$.
+        \item We can construct an order preserving bijection between any finite subsets of $\Q$ and $K$ with equal cardinality.
+        \item $f:\Q\to K$, $g:\N\to\Q$, $h:\N\to K$. If $g(n)<g(n')$, then $h(n)<h(n')$.
+        \item Let $h(n)<h(n')$. WLOG let $n<n'$, too. Now consider $N=\{n\in\N\mid n\leq n'\}$. This is a finite set. Now create a new set $g(N)$. There will be an order-preserving bijection $\tilde{f}:h(N)\to g(N)$.
+        \item Let $g:\N\to\Q$ be a bijection (we know one exists by countability). We presently seek to define $h:\N\to K$ recursively. Let $x_1$ be an arbitrary element of $K$ (Axiom 1). We define $h(1)=x_1$. Now suppose inductively that we have defined $h(n)$. We now seek to define $h(n+1)$. Consider the set $A=\{g(m)\mid m\leq n+1\}$. By Theorem \ref{trm:3.5}, we can assign the symbols $a_1,\dots,a_{n+1}$ to each point of $A$ so that $a_1<a_2<\cdots<a_{n+1}$. We know that $g(n+1)=a_i$ for some $i\in[n+1]$. We divide into three cases ($g(n+1)=b_1$, $g(n+1)=b_{n+1}$, and $g(n+1)=b_i$ where $1<i<n+1$). First, suppose that $g(n+1)=b_1$. By the inductive hypothesis, $h(g^{-1}(b_2))\in K$. By Axiom 3, $h(g^{-1}(b_2))$ is not the first point of $K$. Thus, there exists an $x\in K$ such that $x<h(g^{-1}(b_2))$. Consequently, let $h(n+1)=x$. The proof of the second case is symmetric to that of the first. Third, suppose that $g(n+1)=b_i$ where $1<i<n+1$. By the inductive hypothesis, $h(g^{-1}(b_{i-1})),h(g^{-1}(b_{i+1}))\in K$. Thus, there exists an $x\in K$ such that $h(b_{i-1})<x<h(b_{i+1})$. Consequently, let $h(n+1)=x$.
+        \item We define $f:\Q\to K$ by $f(p)=h(g^{-1}(p))$.
+        \item Function diagram: The characteristic of an order preserving bijection is no intersections between lines connecting elements of different sets.
+    \end{itemize}
+    \item Do we need to have subscripts on our orderings? Yes.
+    \item The canonical way of doing Exercise \ref{exr:6.16} is with the \textbf{back and forth method}.
+    \begin{itemize}
+        \item Because both are countable, $\Q=\{q_1,q_2,\dots\}$. Likewise, $K=\{k_1,k_2,\dots\}$.
+        \item To create the bijection, we have two repeating steps.
+        \begin{enumerate}
+            \item Let $i$ be the smallest index such that $q_i$ has not been paired.
+            Let $j$ be an index such that $k_j$ hasn't been paired, and assigning $f(q_i)=k_j$ preserves ordering (we have to prove that such a $j$ exists). To prove this, we know that we can order the elements of $\Q$ that have already been paired. We can also order the elements of $K$ that have already been paired. Case 1: $q_i$ is between some preexisting $q$'s. Then there exists some $k_j$ between. Case 2: $q_i<\dots<q_n$ implies there exists some $k_j$ less than all other $k$ so far. Case 3: $q_i$ is a last element; symmetric to Case 2.
+            \item Smallest $j$, smallest $i$ such that order is preserved. Then we let $f(q_i)=k_j$.
+            \item Repeat.
+        \end{enumerate}
+        \item Injectivity: Suppose $f(q_i)=f(q_j)$. Each $q_k$ is assigned to a unique $k_k$, so if they're equal, they must have been assigned at the same time. Therefore, $q_i=q_j$.
+        \item Surjectivity: Let $k_j\in K$. By $j$th step at most, $k_j$ will be paired.
+    \end{itemize}
+    \item Do summer research things every happen with graduate students, or is it just with professors? It pretty much only happens with professors, but DRP could be a good way to get your foot in the door.
 \end{itemize}
 
 
