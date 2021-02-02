@@ -183,8 +183,6 @@
             1\cdot(1+1) &= 0 = 1\cdot 1+1\cdot 1
         \end{align*}
         To prove that $\F_2$ obeys FA10 from Definition \ref{dfn:7.8}, it will suffice to show that $0\neq 1$. Clearly this is true.
-
-        % We can address each axiom by casework (3 cases).
     \end{proof}
 \end{exercise}
 
@@ -200,7 +198,7 @@
     \end{proof}
 \end{theorem}
 
-We usually write $-x$ for the additive inverse of $x$
+We usually write $-x$ for the additive inverse of $x$.
 
 \begin{corollary}\label{cly:7.11}
     If $x\in F$, then $-(-x)=x$.
@@ -214,25 +212,20 @@ We usually write $-x$ for the additive inverse of $x$
     \end{proof}
 \end{corollary}
 
-\begin{corollary}\label{cly:7.12}
+\begin{theorem}\label{trm:7.12}
     Let $F$ be a field, and let $a,b,c\in F$. If $a+b=a+c$, then $b=c$.
     \begin{proof}
-        Let $a,b,c\in F$ be such that $a+b=a+c$. From Definition \ref{dfn:7.8}, we have
+        Let $a,b,c\in F$ be such that $a+b=a+c$. By FA4 from Definition \ref{dfn:7.8}, there exists $-a\in F$ such that $-a+a=a+(-a)=0$. Having established that $-a$ exists, we can prove from Definition \ref{dfn:7.8} that
         \begin{align*}
-            b &= b+0\tag*{FA3}\\
-            &= b+(a+(-a))\tag*{FA4}\\
-            &= (b+a)+(-a)\tag*{FA2}\\
-            &= (a+b)+(-a)\tag*{FA1}\\
-            &= (a+c)+(-a)\tag*{Substitute}\\
-            &= (c+a)+(-a)\tag*{FA1}\\
-            &= c+(a+(-a))\tag*{FA2}\\
-            &= c+0\tag*{FA4}\\
-            &= c\tag*{FA3}
+            -a+(a+b) &= -a+(a+c)\\
+            (-a+a)+b &= (-a+a)+c\tag*{FA2}\\
+            0+b &= 0+c\tag*{FA4}\\
+            b &= c\tag*{FA3}
         \end{align*}
     \end{proof}
-\end{corollary}
+\end{theorem}
 
-\begin{corollary}\label{cly:7.13}
+\begin{theorem}\label{trm:7.13}
     Let $F$ be a field. If $a\in F$, then $a\cdot 0=0$.
     \begin{proof}
         Let $a\in F$. From Definition \ref{dfn:7.8}, we have
@@ -241,10 +234,206 @@ We usually write $-x$ for the additive inverse of $x$
             &= a\cdot(1+0)\tag*{FA3}\\
             &= a\cdot 1+a\cdot 0\tag*{FA9}\\
             &= a+a\cdot 0\tag*{FA7}\\
-            0 &= a\cdot 0\tag*{Corollary \ref{cly:7.12}}
+            0 &= a\cdot 0\tag*{Theorem \ref{trm:7.12}}
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:7.14}\marginnote{\emph{2/2:}}
+    Suppose that $F$ is a field. Then multiplicative inverses are unique. This means: Let $x\in F$. If $y,y'\in F$ satisfy $x\cdot y=1$ and $x\cdot y'=1$, then $y=y'$.
+    \begin{proof}
+        Let $x,y,y'\in F$ be such that $x\cdot y=1$ and $x\cdot y'=1$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            (y\cdot x)\cdot y' &= y\cdot (x\cdot y')\tag*{FA6}\\
+            1 \cdot y' &= y\cdot 1\tag*{FA8}\\
+            y' &= y\tag*{FA7}
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$.
+
+\begin{corollary}\label{cly:7.15}
+    If $x\in F$ and $x\neq 0$, then $(x^{-1})^{-1}=x$.
+    \begin{proof}
+        Let $x\in F\setminus\{0\}$. Then by FA8 from Definition \ref{dfn:7.8}, there exists $x^{-1}\in F$ such that $x\cdot x^{-1}=x^{-1}\cdot x=1$. It follows from Theorem \ref{trm:7.13} that $x^{-1}\neq 0$ (if $x^{-1}=0$, then Theorem \ref{trm:7.13} would imply that $x\cdot x^{-1}=0$, a contradiction). Thus, by FA8 from Definition \ref{dfn:7.8} again, there exists $(x^{-1})^{-1}\in F$ such that $x^{-1}\cdot(x^{-1})^{-1}=(x^{-1})^{-1}\cdot x^{-1}=1$. Having established that $(x^{-1})^{-1}$ exists, we can prove from Definition \ref{dfn:7.8} that
+        \begin{align*}
+            (x\cdot x^{-1})\cdot(x^{-1})^{-1} &= x\cdot(x^{-1}\cdot(x^{-1})^{-1})\tag*{FA6}\\
+            1\cdot(x^{-1})^{-1} &= x\cdot 1\tag*{FA8}\\
+            (x^{-1})^{-1} &= x\tag*{FA7}
         \end{align*}
     \end{proof}
 \end{corollary}
+
+\begin{theorem}\label{trm:7.16}
+    Let $F$ be a field, and let $a,b,c\in F$. If $a\cdot b=a\cdot c$ and $a\neq 0$, then $b=c$.
+    \begin{proof}
+        Let $a,b,c\in F$ be such that $a\cdot b=a\cdot c$ and $a\neq 0$. By FA8 from Definition \ref{dfn:7.8}, there exists $a^{-1}\in F$ such that $a\cdot a^{-1}=a^{-1}\cdot a=1$. Having established that $a^{-1}$ exists, we can prove from Definition \ref{dfn:7.8} that
+        \begin{align*}
+            a^{-1}\cdot(a\cdot b) &= a^{-1}\cdot(a\cdot c)\\
+            (a^{-1}\cdot a)\cdot b &= (a^{-1}\cdot a)\cdot c\tag*{FA6}\\
+            1\cdot b &= 1\cdot c\tag*{FA8}\\
+            b &= c\tag*{FA7}
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}\label{trm:7.17}
+    Let $F$ be a field, and let $a,b\in F$. If $a\cdot b=0$, then $a=0$ or $b=0$.
+    \begin{proof}
+        Let $a,b\in F$ be such that $a\cdot b=0$, and suppose for the sake of contradiction that $a\neq 0$ and $b\neq 0$. It follows from the supposition by consecutive applications of FA8 from Definition \ref{dfn:7.8} that $a^{-1}$ and $b^{-1}$ exist. Thus, from Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            b^{-1}\cdot(a\cdot b) &= 0 = a^{-1}\cdot(a\cdot b)\tag*{Theorem \ref{trm:7.13}}\\
+            b^{-1}\cdot(b\cdot a) &= 0 = a^{-1}\cdot(a\cdot b)\tag*{FA5}\\
+            (b^{-1}\cdot b)\cdot a &= 0 = (a^{-1}\cdot a)\cdot b\tag*{FA6}\\
+            1\cdot a &= 0 = 1\cdot b\tag*{FA8}\\
+            a &= 0 = b\tag*{FA7}
+        \end{align*}
+        But this contradicts the supposition that $a\neq 0$ and $b\neq 0$.
+    \end{proof}
+\end{theorem}
+\pagebreak
+
+\begin{lemma}\label{lem:7.18}
+    Let $F$ be a field. If $a\in F$, then $-a=(-1)a$.
+    \begin{proof}
+        Let $a\in F$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            0 &= 0\cdot a\tag*{Theorem \ref{trm:7.13}}\\
+            a+(-a) &= (1+(-1))\cdot a\tag*{FA4}\\
+            a+(-a) &= 1\cdot a+(-1)\cdot a\tag*{FA9}\\
+            a+(-a) &= a+(-1)a\tag*{FA7}\\
+            -a &= (-1)a\tag*{Theorem \ref{trm:7.12}}
+        \end{align*}
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}\label{lem:7.19}
+    Let $F$ be a field. If $a,b\in F$, then $a\cdot(-b)=-(a\cdot b)=(-a)\cdot b$.
+    \begin{proof}
+        Let $a,b\in F$. From Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            a\cdot(-b) &= a\cdot((-1)\cdot b)\tag*{Lemma \ref{lem:7.18}}\\
+            &= a\cdot(b\cdot(-1))\tag*{FA5}\\
+            &= (a\cdot b)\cdot(-1)\tag*{FA6}\\
+            &= (-1)\cdot(a\cdot b)\tag*{FA5}\\
+            \Aboxed{&= -(a\cdot b)}\tag*{Lemma \ref{lem:7.18}}\\
+            &= (-1)\cdot(a\cdot b)\tag*{Lemma \ref{lem:7.18}}\\
+            &= ((-1)\cdot a)\cdot b\tag*{FA6}\\
+            \Aboxed{&= (-a)\cdot b}\tag*{Lemma \ref{lem:7.18}}
+        \end{align*}
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}\label{lem:7.20}
+    Let $F$ be a field. If $a,b\in F$, then $a\cdot b=(-a)\cdot(-b)$.
+    \begin{proof}
+        Let $a,b\in F$. Thus, we have
+        \begin{align*}
+            (-a)\cdot(-b) &= -(-a)\cdot b\tag*{Lemma \ref{lem:7.19}}\\
+            &= a\cdot b\tag*{Corollary \ref{cly:7.11}}
+        \end{align*}
+    \end{proof}
+\end{lemma}
+
+\begin{definition}\label{dfn:7.21}
+    An \textbf{ordered field} is a field $F$ equipped with an ordering $<$ (satisfying Definition \ref{dfn:3.1}) such that also:
+    \begin{enumerate}[label={(\alph*)},ref={\thedefinition\alph*}]
+        \item \label{dfn:7.21a}Addition respects the ordering: if $x<y$, then $x+z<y+z$ for all $z\in F$.
+        \item \label{dfn:7.21b}Multiplication respects the ordering: if $0<x$ and $0<y$, then $0<x\cdot y$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}\label{dfn:7.22}
+    Suppose $F$ is an ordered field and $x\in F$. If $0<x$, we say that $x$ is \textbf{positive}. If $x<0$, we say that $x$ is \textbf{negative}.
+\end{definition}
+
+\begin{lemma}\label{lem:7.23}
+    Let $F$ be an ordered field, and let $x\in F$. If $0<x$, then $-x<0$. Similarly, if $x<0$, then $0<-x$.
+    \begin{proof}
+        Let $x\in F$ be such that $0<x$. Then by Definition \ref{dfn:7.21a}, $0+(-x)<x+(-x)$. Consequently, from Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            -x &< x+(-x)\tag*{FA3}\\
+            -x &< 0\tag*{FA4}
+        \end{align*}
+        The proof is symmetric if $x<0$.
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}\label{lem:7.24}
+    Let $F$ be an ordered field, and let $x,y,z\in F$.
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}},ref={\thelemma\alph*}]
+        \item \label{lem:7.24a}If $x>0$ and $y<z$, then $x\cdot y<x\cdot z$.
+        \item \label{lem:7.24b}If $x<0$ and $y<z$, then $x\cdot z<x\cdot y$.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        Let $x,y,z\in F$ be such that $x>0$ and $y<z$. It follows from the latter condition by Definition \ref{dfn:7.21a} that $y+(-y)<z+(-y)$. Thus, by FA4 from Definition \ref{dfn:7.8}, we have $0<z+(-y)$. This combined with the fact that $0<x$ implies by Definition \ref{dfn:7.21b} that $0<x\cdot(z+(-y))$. Consequently, from Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            0 &< x\cdot z+x\cdot(-y)\tag*{FA9}\\
+            0 &< x\cdot z+(-(x\cdot y))\tag*{Lemma \ref{lem:7.19}}\\
+            0+x\cdot y &< (x\cdot z+(-(x\cdot y)))+x\cdot y\tag*{Definition \ref{dfn:7.21a}}\\
+            0+x\cdot y &< x\cdot z+(-(x\cdot y)+x\cdot y)\tag*{FA2}\\
+            0+x\cdot y &< x\cdot z+0\tag*{FA4}\\
+            x\cdot y &< x\cdot z\tag*{FA3}
+        \end{align*}
+    \end{proof}
+    \begin{proof}[Proof of b]
+        Let $x,y,z\in F$ be such that $x<0$ and $y<z$. It follows from the former condition by Lemma \ref{lem:7.23} that $0<-x$. Thus, by Lemma \ref{lem:7.24a}, $(-x)\cdot y<(-x)\cdot z$. Consequently, from Definition \ref{dfn:7.8}, we have
+        \begin{align*}
+            -(x\cdot y) &< -(x\cdot z)\tag*{Lemma \ref{lem:7.19}}\\
+            -(x\cdot y)+(x\cdot y+x\cdot z) &< -(x\cdot z)+(x\cdot y+x\cdot z)\tag*{Definition \ref{dfn:7.21a}}\\
+            -(x\cdot y)+(x\cdot y+x\cdot z) &< -(x\cdot z)+(x\cdot z+x\cdot y)\tag*{FA1}\\
+            (-(x\cdot y)+x\cdot y)+x\cdot z &< (-(x\cdot z)+x\cdot z)+x\cdot y\tag*{FA2}\\
+            0+x\cdot z &< 0+x\cdot y\tag*{FA4}\\
+            x\cdot z &< x\cdot y\tag*{FA3}
+        \end{align*}
+    \end{proof}
+\end{lemma}
+
+\begin{remark}\label{rmk:7.25}
+    An immediate consequence of this lemma is the fact that if $x$ and $y$ are both positive or both negative, their product is positive.
+\end{remark}
+
+\begin{lemma}\label{lem:7.26}
+    Let $F$ be an ordered field, and let $x\in F$. Then $0\leq x^2$. Moreover, if $x\neq 0$, then $0<x^2$.
+    \begin{proof}
+        We divide into two cases ($x=0$ and $x\neq 0$). Suppose first that $x=0$. Then by Theorem \ref{trm:7.13}, $0=0\cdot 0=0^2=x^2$, as desired. Now suppose that $x\neq 0$. We divide into two cases again ($x>0$ and $x<0$). If $x>0$, then by Lemma \ref{lem:7.24a}, $x>0$ and $0<x$ imply that $x\cdot 0<x\cdot x$, from which it follows by Theorem \ref{trm:7.13} that $0<x^2$, as desired. On the other hand, if $x<0$, then by Lemma \ref{lem:7.24b}, $x<0$ and $x<0$ imply that $x\cdot 0<x\cdot x$, from which it follows for the same reason as before that $0<x^2$, as desired. Both cases together prove the first statement, while the second case alone proves the second statement.
+    \end{proof}
+\end{lemma}
+
+\begin{corollary}\label{cly:7.27}
+    Let $F$ be an ordered field. Then $0<1$.
+    \begin{proof}
+        By FA10 from Definition \ref{dfn:7.8}, $1\neq 0$. Thus, by Lemma \ref{lem:7.26}, $0<1^2=1$, as desired.
+    \end{proof}
+\end{corollary}
+
+\begin{theorem}\label{trm:7.28}
+    If $F$ is an ordered field, then $F$ has no first or last point.
+    \begin{proof}
+        Suppose for the sake of contradiction that $F$ has a first point $a$. By Corollary \ref{cly:7.27}, we have that $0<1$, which implies by Lemma \ref{lem:7.23} that $-1<0$. It follows by Definition \ref{dfn:7.21a} that $-1+a<0+a$. Thus, by FA3 from Definition \ref{dfn:7.8}, $-1+a<a$. Since there exists an object in $F$ (namely $-1+a$) that is less than $a$, Definition \ref{dfn:3.3} tells us that $a$ is not the first point of $F$, a contradiction.
+    \end{proof}
+\end{theorem}
+\pagebreak
+
+\begin{theorem}\label{trm:7.29}
+    The rational numbers $\Q$ form an ordered field.
+    \begin{proof}
+        To prove that $\Q$ forms an ordered field, Definition \ref{dfn:7.21} tells us that it will suffice to show that $\Q$ forms a field; has an ordering $<$; satisfies $x+z<y+z$ if $x<y$ for all $z\in\Q$; and satisfies $0<x\cdot y$ if $0<x$ and $0<y$. We will take this one constraint at a time.\par\smallskip
+        To show that $\Q$ forms a field, Definition \ref{dfn:7.8} tells us that it will suffice to verify that $\Q$ has two binary operations ($+$ and $\cdot$), and satisfies field axioms 1-10. Define $+$ and $\cdot$ as in Definition \ref{dfn:2.7}. Under these definitions, parts a-i of Theorem \ref{trm:2.10} guarantee that $\Q$ satisfies FA1-FA9, respectively. As to FA10, to verify that $\eqclass{1}{1}\neq\eqclass{0}{1}$, Exercise \ref{exr:2.6} tells us that it will suffice to confirm that $(1,1)\nsim(1,0)$. But since $1\cdot 0=0\neq 1=1\cdot 1$, Exercise \ref{exr:2.2e} confirms that $(1,1)\nsim(1,0)$, as desired.\par
+        $\Q$ has an ordering by Exercise \ref{exr:3.9d}, as desired.\par
+        To show that $x+z<y+z$ if $x<y$ for all $z\in\Q$, let $\eqclass{a}{b},\eqclass{c}{d},\eqclass{x}{z}$ be arbitrary elements of $\Q$ with positive denominators (we can choose these WLOG by Exercise \ref{exr:3.9b}) and the first two satisfying $\eqclass{a}{b}<\eqclass{c}{d}$; we seek to verify that $\eqclass{a}{b}+\eqclass{x}{z}<\eqclass{c}{d}+\eqclass{x}{z}$. Since $\eqclass{a}{b}<\eqclass{c}{d}$, we have by Exercise \ref{exr:3.9c} that $ad<bc$. It follows by Script \ref{sct:0} that
+        \begin{align*}
+            ad &< bc\\
+            adzz &< bczz\\
+            adzz+bdxz &< bczz+bdxz\\
+            azdz+bxdz &< bzcz+bzdx\\
+            (az+bx)(dz) &< (bz)(cz+dx)
+        \end{align*}
+        Thus, by Exercise \ref{exr:3.9c}, $\eqclass{az+bx}{bz}<\eqclass{cz+dx}{dz}$. Therefore, by Definition \ref{dfn:2.7}, $\eqclass{a}{b}+\eqclass{x}{z}<\eqclass{c}{d}+\eqclass{x}{z}$, as desired.\par
+        To show that $0<x\cdot y$ if $0<x$ and $0<y$, let $\eqclass{a}{b},\eqclass{c}{d}$ be arbitrary elements of $\Q$ with positive denominators (which we can choose for the same reason as before) such that $\eqclass{0}{1}<\eqclass{a}{b}$ and $\eqclass{0}{1}<\eqclass{c}{d}$; we seek to verify that $\eqclass{0}{1}<\eqclass{a}{b}\cdot\eqclass{c}{d}$. Since $\eqclass{0}{1}<\eqclass{a}{b}$ and $\eqclass{0}{1}<\eqclass{c}{d}$, we have by Exercise \ref{exr:3.9c} that $0\cdot b<1\cdot a$ and $0\cdot d<1\cdot c$. It follows by Script \ref{sct:0} that $0\cdot bd<1\cdot ac$. Thus, by Exercise \ref{exr:3.9c}, $\eqclass{0}{1}<\eqclass{ac}{bd}$. Therefore, by Definition \ref{dfn:2.7}, $\eqclass{0}{1}<\eqclass{a}{b}\cdot\eqclass{c}{d}$, as desired.
+    \end{proof}
+\end{theorem}
 
 
 
