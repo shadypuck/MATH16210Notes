@@ -203,12 +203,7 @@ We usually write $-x$ for the additive inverse of $x$.
 \begin{corollary}\label{cly:7.11}
     If $x\in F$, then $-(-x)=x$.
     \begin{proof}
-        Let $x\in F$. From Definition \ref{dfn:7.8}, we have
-        \begin{align*}
-            (x+(-x))+(-(-x)) &= x+((-x)+(-(-x)))\tag*{FA2}\\
-            0+(-(-x)) &= x+0\tag*{FA4}\\
-            -(-x) &= x\tag*{FA3}
-        \end{align*}
+        Let $x\in F$. Then by consecutive applications of FA4 from Definition \ref{dfn:7.8}, $-x+(-(-x))=0$ and $-x+x=0$. Therefore, by Theorem \ref{trm:7.10}, we have that $-(-x)=x$.
     \end{proof}
 \end{corollary}
 
@@ -256,12 +251,7 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
 \begin{corollary}\label{cly:7.15}
     If $x\in F$ and $x\neq 0$, then $(x^{-1})^{-1}=x$.
     \begin{proof}
-        Let $x\in F\setminus\{0\}$. Then by FA8 from Definition \ref{dfn:7.8}, there exists $x^{-1}\in F$ such that $x\cdot x^{-1}=x^{-1}\cdot x=1$. It follows from Theorem \ref{trm:7.13} that $x^{-1}\neq 0$ (if $x^{-1}=0$, then Theorem \ref{trm:7.13} would imply that $x\cdot x^{-1}=0$, a contradiction). Thus, by FA8 from Definition \ref{dfn:7.8} again, there exists $(x^{-1})^{-1}\in F$ such that $x^{-1}\cdot(x^{-1})^{-1}=(x^{-1})^{-1}\cdot x^{-1}=1$. Having established that $(x^{-1})^{-1}$ exists, we can prove from Definition \ref{dfn:7.8} that
-        \begin{align*}
-            (x\cdot x^{-1})\cdot(x^{-1})^{-1} &= x\cdot(x^{-1}\cdot(x^{-1})^{-1})\tag*{FA6}\\
-            1\cdot(x^{-1})^{-1} &= x\cdot 1\tag*{FA8}\\
-            (x^{-1})^{-1} &= x\tag*{FA7}
-        \end{align*}
+        Let $x\in F\setminus\{0\}$. Then by FA8 from Definition \ref{dfn:7.8}, there exists $x^{-1}\in F$ such that $x\cdot x^{-1}=x^{-1}\cdot x=1$. It follows from Theorem \ref{trm:7.13} that $x^{-1}\neq 0$ (if $x^{-1}=0$, then Theorem \ref{trm:7.13} would imply that $x\cdot x^{-1}=0$, a contradiction). Thus, by FA8 from Definition \ref{dfn:7.8} again, there exists $(x^{-1})^{-1}\in F$ such that $x^{-1}\cdot(x^{-1})^{-1}=(x^{-1})^{-1}\cdot x^{-1}=1$. Having established that $(x^{-1})^{-1}$ exists, $x^{-1}\cdot(x^{-1})^{-1}=1$, and $x^{-1}\cdot x=1$, we have by Theorem \ref{trm:7.14} that $(x^{-1})^{-1}=x$.
     \end{proof}
 \end{corollary}
 
@@ -283,16 +273,15 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
     \begin{proof}
         Let $a,b\in F$ be such that $a\cdot b=0$, and suppose for the sake of contradiction that $a\neq 0$ and $b\neq 0$. It follows from the supposition by consecutive applications of FA8 from Definition \ref{dfn:7.8} that $a^{-1}$ and $b^{-1}$ exist. Thus, from Definition \ref{dfn:7.8}, we have
         \begin{align*}
-            b^{-1}\cdot(a\cdot b) &= 0 = a^{-1}\cdot(a\cdot b)\tag*{Theorem \ref{trm:7.13}}\\
-            b^{-1}\cdot(b\cdot a) &= 0 = a^{-1}\cdot(a\cdot b)\tag*{FA5}\\
-            (b^{-1}\cdot b)\cdot a &= 0 = (a^{-1}\cdot a)\cdot b\tag*{FA6}\\
-            1\cdot a &= 0 = 1\cdot b\tag*{FA8}\\
-            a &= 0 = b\tag*{FA7}
+            1 &= 1\cdot 1\tag*{FA7}\\
+            &= (a\cdot a^{-1})\cdot(b\cdot b^{-1})\tag*{FA8}\\
+            &= (a\cdot b)\cdot(a^{-1}\cdot b^{-1})\tag*{FA6 and FA7}\\
+            &= 0\cdot(a^{-1}\cdot b^{-1})\tag*{Substitution}\\
+            &= 0\tag*{Theorem \ref{trm:7.13}}
         \end{align*}
-        But this contradicts the supposition that $a\neq 0$ and $b\neq 0$.
+        But this contradicts FA10 from Definition \ref{dfn:7.8}.
     \end{proof}
 \end{theorem}
-\pagebreak
 
 \begin{lemma}\label{lem:7.18}
     Let $F$ be a field. If $a\in F$, then $-a=(-1)a$.
@@ -397,7 +386,7 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
 \begin{lemma}\label{lem:7.26}
     Let $F$ be an ordered field, and let $x\in F$. Then $0\leq x^2$. Moreover, if $x\neq 0$, then $0<x^2$.
     \begin{proof}
-        We divide into two cases ($x=0$ and $x\neq 0$). Suppose first that $x=0$. Then by Theorem \ref{trm:7.13}, $0=0\cdot 0=0^2=x^2$, as desired. Now suppose that $x\neq 0$. We divide into two cases again ($x>0$ and $x<0$). If $x>0$, then by Lemma \ref{lem:7.24a}, $x>0$ and $0<x$ imply that $x\cdot 0<x\cdot x$, from which it follows by Theorem \ref{trm:7.13} that $0<x^2$, as desired. On the other hand, if $x<0$, then by Lemma \ref{lem:7.24b}, $x<0$ and $x<0$ imply that $x\cdot 0<x\cdot x$, from which it follows for the same reason as before that $0<x^2$, as desired. Both cases together prove the first statement, while the second case alone proves the second statement.
+        We divide into two cases ($x=0$ and $x\neq 0$). Suppose first that $x=0$. Then by Theorem \ref{trm:7.13}, $0\leq 0=0\cdot 0=0^2=x^2$, as desired. Now suppose that $x\neq 0$. We divide into two cases again ($x>0$ and $x<0$). If $x>0$, then by Lemma \ref{lem:7.24a}, $x>0$ and $0<x$ imply that $x\cdot 0<x\cdot x$, from which it follows by Theorem \ref{trm:7.13} that $0<x^2$, as desired. On the other hand, if $x<0$, then by Lemma \ref{lem:7.24b}, $x<0$ and $x<0$ imply that $x\cdot 0<x\cdot x$, from which it follows for the same reason as before that $0<x^2$, as desired. Both cases together prove the first statement, while the second case alone proves the second statement.
     \end{proof}
 \end{lemma}
 
@@ -411,7 +400,8 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
 \begin{theorem}\label{trm:7.28}
     If $F$ is an ordered field, then $F$ has no first or last point.
     \begin{proof}
-        Suppose for the sake of contradiction that $F$ has a first point $a$. By Corollary \ref{cly:7.27}, we have that $0<1$, which implies by Lemma \ref{lem:7.23} that $-1<0$. It follows by Definition \ref{dfn:7.21a} that $-1+a<0+a$. Thus, by FA3 from Definition \ref{dfn:7.8}, $-1+a<a$. Since there exists an object in $F$ (namely $-1+a$) that is less than $a$, Definition \ref{dfn:3.3} tells us that $a$ is not the first point of $F$, a contradiction.
+        Suppose for the sake of contradiction that $F$ has a first point $a$. By Corollary \ref{cly:7.27}, we have that $0<1$, which implies by Lemma \ref{lem:7.23} that $-1<0$. It follows by Definition \ref{dfn:7.21a} that $-1+a<0+a$. Thus, by FA3 from Definition \ref{dfn:7.8}, $-1+a<a$. Since there exists an object in $F$ (namely $-1+a$) that is less than $a$, Definition \ref{dfn:3.3} tells us that $a$ is not the first point of $F$, a contradiction.\par
+        The proof is symmetric in the other case.
     \end{proof}
 \end{theorem}
 \pagebreak
