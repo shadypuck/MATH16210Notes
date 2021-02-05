@@ -435,15 +435,15 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
 \end{definition}
 
 \begin{exercise}\label{exr:7.32}\leavevmode
-    \begin{enumerate}[label={(\alph*)}]
-        \item Prove that $A\oplus B$ is a Dedekind cut.
-        \item Prove that $\oplus$ is commutative and associative.
-        \item Prove that if $A\in\R$, then $A=\bm{0}\oplus A$.
+    \begin{enumerate}[label={(\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:7.32a}Prove that $A\oplus B$ is a Dedekind cut.
+        \item \label{exr:7.32b}Prove that $\oplus$ is commutative and associative.
+        \item \label{exr:7.32c}Prove that if $A\in\R$, then $A=\bm{0}\oplus A$.
     \end{enumerate}
     \begin{proof}[Proof of a]
         To prove that $A\oplus B$ is a Dedekind cut, Definition \ref{dfn:6.1} tells us that it will suffice to show that $A\oplus B\neq\emptyset$; $A\oplus B\neq\Q$; if $r\in A\oplus B$ and $s\in\Q$ satisfy $s<r$, then $s\in A\oplus B$; and if $r\in A\oplus B$, then there is some $s\in A\oplus B$ with $s>r$. We will take this one claim at a time.\par
         To show that $A\oplus B\neq\emptyset$, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of $A\oplus B$. Since $A,B$ are Dedekind cuts, Definition \ref{dfn:6.1} asserts that they are nonempty. Thus, there exist rational numbers $x\in A$ and $y\in B$. Therefore, by the definition of $A\oplus B$, the sum $x+y\in A\oplus B$, as desired.\par
-        To show that $A\oplus B\neq\Q$, Definition \ref{dfn:1.2} tells us that it will suffice to find an element of $\Q$ that is not an element of $A\oplus B$. For an analogous reason to before, we can choose $x,y\in\Q$ such that $x\notin A$ and $y\notin B$. It follows by Lemma \ref{lem:6.2} and Definition \ref{dfn:5.6} that $x\geq a$ for all $a\in A$ and $y\geq b$ for all $b\in B$. Thus, by Script \ref{sct:0}, $x+y\geq a+b$ for all $a+b\in A\oplus B$. Consequently, $x+y+1>x+y\geq a+b$ for all $a+b\in A\oplus B$, implying by Definition \ref{dfn:3.1} that $x+y+1\neq a+b$ for any $a+b\in A\oplus B$. Therefore, $x+y\notin A\oplus B$, as desired.\par
+        To show that $A\oplus B\neq\Q$, Definition \ref{dfn:1.2} tells us that it will suffice to find an element of $\Q$ that is not an element of $A\oplus B$. For an analogous reason to before, we can choose $x,y\in\Q$ such that $x\notin A$ and $y\notin B$. It follows by Lemma \ref{lem:6.2} and Definition \ref{dfn:5.6} that $x\geq a$ for all $a\in A$ and $y\geq b$ for all $b\in B$. Additionally, since $x\notin A$, we have that $x\neq a$ for any $a\in A$; thus, $x>a$ for all $a\in A$. Similarly, $y>b$ for all $b\in B$. Consequently, by Script \ref{sct:2}, $x+y>a+b$ for all $a+b\in A\oplus B$. Therefore, $x+y\notin A\oplus B$, as desired.\par
         To show that if $r\in A\oplus B$ and $s\in\Q$ satisfy $s<r$, then $s\in A\oplus B$, we let $r\in A\oplus B$ and $s\in\Q$ be arbitrary elements of their respective sets that satisfy $s<r$ and seek to verify that $s\in A\oplus B$. Since $r\in A\oplus B$, $r=x+y$ for some $x\in A$ and $y\in B$. Additionally, it follows from the fact that $s<r$ that $s=r-q=x+y-q$ for some $q\in\Q^+$. Since $y\in B$ and $y-q\in\Q$ satisfy $y-q<y$, we have by Definition \ref{dfn:6.1b} that $y-q\in B$. Therefore, $s=(x)+(y-q)$ is an element of $A\oplus B$, as desired.\par
         To show that if $r\in A\oplus B$, then there is some $s\in A\oplus B$ with $s>r$, we let $r\in A\oplus B$ and seek to find such an $s$. Since $r\in A\oplus B$, $r=x+y$ for some $x\in A$ and $y\in B$. It follows from the fact that $x\in A$ by Definition \ref{dfn:6.1c} that there exists a $z\in A$ with $z>x$. Consequently, by Script \ref{sct:0}, $z+y>x+y$ is the desired element of $A\oplus B$.
     \end{proof}
@@ -465,6 +465,7 @@ We usually write $x^{-1}$ or $\frac{1}{x}$ for the multiplicative inverse of $x$
             &= A\oplus\{b+c\mid b\in B\text{ and }c\in C\}\\
             &= A\oplus(B\oplus C)
         \end{align*}
+        Note that we also make use of Exercise \ref{exr:7.32a} to guarantee $A\oplus B\in\R$, so that we can apply $\oplus$ to $A\oplus B$ and $C$. We similarly invoke Exercise \ref{exr:7.32a} to take the sum of $A$ and $B\oplus C$.
     \end{proof}
     \begin{proof}[Proof of c]
         To prove that for all $A\in\R$, $A=\bm{0}\oplus A$, we will show for an arbitrary $A\in\R$ that every element of $A$ is an element of $\bm{0}\oplus A$ and vice versa. Let $A$ be an arbitrary element of $\R$. Suppose first that $x\in A$. Then by Definition \ref{dfn:6.1c}, there exists $y\in A$ such that $y>x$. Let $z=x-y$. Clearly, $z\in\Q$ and $z<0$, so we know that $z\in\bm{0}$. Additionally, since $x-z=y$, we know that $x-z\in A$. Therefore, since $x=(z)+(x-z)$, we have by Definition \ref{dfn:7.31} that $x\in\bm{0}\oplus A$. Now suppose that $z\in\bm{0}\oplus A$. Then by Definition \ref{dfn:7.31}, $z=x+y$ for some $x\in\bm{0}$ and $y\in A$. Since $x\in\bm{0}$, we know that $x<0$, which means that $y>z$. This combined with the fact that $y\in A$ and $z\in\Q$ implies by Definition \ref{dfn:6.1b} that $z\in A$.
