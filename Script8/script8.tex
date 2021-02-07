@@ -1,0 +1,134 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{7}
+
+\begin{document}
+
+
+
+
+\chapter{Intervals}\label{sct:8}
+\section{Journal}
+\marginnote{2/9:}Now that we have constructed $\R$ and proved the fundamental facts about it, we will work with the real numbers $\R$ instead of an arbitrary continuum $C$. We will leave behind Dedekind cuts and think of elements of $\R$ as numbers. Accordingly, from now on, we will use lower-case letters like $x$ for real numbers and will write $+$ and $\cdot$ for $\oplus$ and $\otimes$. We will also now use the standard notation $(a,b)$ for the region $\underline{ab}=\{x\in\R\mid a<x<b\}$. Even though the notation is the same, this is \emph{not} the same object as the ordered pair $(a,b)$.\par
+More generally, we adopt the following standard notation:
+\begin{align}
+    \begin{split}
+        (a,b) &= \{x\in\R\mid a<x<b\}\\
+        [a,b) &= \{x\in\R\mid a\leq x<b\}\\
+        (a,b] &= \{x\in\R\mid a<x\leq b\}\\
+        [a,b] &= \{x\in\R\mid a\leq x\leq b\}\\
+        (a,\infty) &= \{x\in\R\mid a<x\}\\
+        [a,\infty) &= \{x\in\R\mid a\leq x\}\\
+        (-\infty,b) &= \{x\in\R\mid x<b\}\\
+        (-\infty,b] &= \{x\in\R\mid x\leq b\}
+    \end{split}\label{eqn:8.1}
+\end{align}
+
+\begin{exercise}\label{exr:8.1}
+    Identify the sets in Equations \ref{eqn:8.1} that are open/closed/neither.
+    \begin{proof}
+        By Corollary \ref{cly:4.11}, $(a,b)$ is open.\par
+        By an adaptation of Corollary \ref{cly:5.14}, $b\in LP([a,b))$ but $b\notin[a,b)$. Since $[a,b)$ doesn't contain all of its limit points, Definition \ref{dfn:4.1} tells us that it is not closed. Additionally, since $a\in LP(C\setminus[a,b))$ but $a\notin C\setminus[a,b)$, Definition \ref{dfn:4.8} tells us that it is not open. Therefore, it is neither.\par
+        The proof that $(a,b]$ is neither is symmetric to the previous case.\par
+        By Corollaries \ref{cly:5.15} and \ref{cly:4.7}, $[a,b]$ is closed.\par
+        By Corollary \ref{cly:4.13}, $(a,\infty)$ is open.\par
+        By Corollary \ref{cly:4.13} and Definition \ref{dfn:4.8}, $[a,\infty)=C\setminus(-\infty,a)$ is closed.\par
+        The proofs that $(-\infty,b)$ and $(-\infty,b]$ are open and closed, respectively, are symmetric to the previous two cases, respectively.
+    \end{proof}
+\end{exercise}
+
+\begin{definition}\label{dfn:8.2}
+    A set $I\subset\R$ is an \textbf{interval} if for all $x,y\in I$ with $x<y$, $[x,y]\subset I$.
+\end{definition}
+
+\begin{lemma}\label{lem:8.3}
+    A proper subset $I\subsetneq\R$ is an interval if and only if it takes one of the eight forms in Equations \ref{eqn:8.1}.
+    \begin{proof}
+        % We will prove the claim by contrapositive in the forward direction, and directly in the reverse direction. Let's begin.\par\medskip
+        % Suppose first that $I\subsetneq\R$ does not take one of the eight forms in Equations \ref{eqn:8.1}. To prove that $I$ is not an interval, Definitions \ref{dfn:8.2} and \ref{dfn:1.3} tell us that it will suffice to show that for some $x,y\in I$ with $x<y$, there exists a point $z\in[x,y]$ such that $z\notin I$.
+
+        % Let $I\subsetneq\R$ be an interval. Since $I\subsetneq\R$, we have by Definition \ref{dfn:1.3} that there exists a point $p\in\R$ such that $p\notin I$.
+        
+        % Since it is a proper subset, it is either bounded below or above (if unbounded, then it is not a proper subset). We divide into three cases (only bounded below, only bounded above, and bounded below and above). Suppose it's only bounded below. Then it has a greatest lower bound. If the greatest lower bound is in the set, then it's $[a,\infty)$. If not, then it's $(a,\infty)$. Symmetric if only bounded above. If bounded above and below, divide into four cases (inf in, sup in; inf in, sup not; inf not, sup in; inf not, sup not).
+        % Suppose first that $I\subsetneq\R$ is an interval, and suppose for the sake of contradiction that $I$ does not take one of the eight forms in Equations \ref{eqn:8.1}.
+
+        
+
+        Suppose first that $I\subsetneq\R$ is an interval. If $I=\emptyset$, then $I=(a,a)$ for any $a\in\R$, and we are done. Thus, we will assume for the remainder of the proof of the forward direction that $I$ is nonempty. To address this case, we will prove that the facts that $I\subsetneq\R$, $I\neq\emptyset$, and $I$ is an interval imply that $I$ is bounded above, bounded below, or both. Then in each of these three cases, we will look at whether $\sup I$ and $\inf I$ (if they exist) are elements of the set or not to differentiate between the eight forms in Equations \ref{eqn:8.1}. Let's begin.\par\medskip
+        Suppose for the sake of contradiction that there exists a nonempty interval $I\subsetneq\R$ that is neither bounded above nor bounded below. Since $I\subsetneq\R$, we have by Definition \ref{dfn:1.3} that there exists a point $p\in\R$ such that $p\notin I$. Additionally, since $I$ is neither bounded above nor below, Definition \ref{dfn:5.6} implies that $p$ is neither an upper nor a lower bound on $I$. Thus, there exist $x,y\in I$ such that $x<p$ and $y>p$. Now by Definition \ref{dfn:8.2}, $[x,y]\subset I$. But it follows by Definition \ref{dfn:1.3} that every point in $[x,y]$, including $p$, is an element of $I$, a contradiction.\par\medskip
+        We now divide into three cases ($I$ is only bounded below, $I$ is only bounded above, and $I$ is bounded below and above).\par\smallskip
+        First, suppose that $I$ is only bounded below. Since $I$ is a nonempty subset of $\R$ that is bounded below, we have by Theorem \ref{trm:5.17} that $\inf I$ exists. We divide into two cases again ($\inf I\in I$ and $\inf I\notin I$).\par
+        If $\inf I\in I$, then we can demonstrate that $I=[\inf I,\infty)$. To do this, Definition \ref{dfn:1.2} tells us that it will suffice to verify that every $p\in I$ is an element of $[\inf I,\infty)$ and vice versa. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$. Therefore, $p\in[\inf I,\infty)$, as desired. Now let $p$ be an arbitrary element of $[\inf I,\infty)$. Then $\inf I\leq p$. Additionally, since $I$ is not bounded above, we have by Definition \ref{dfn:5.6} that there exists $y\in I$ such that $y>p$. Since $\inf I\in I$, $y\in I$, and $\inf I<y$ (by transitivity), $[\inf I,y]\subset I$ by Definition \ref{dfn:8.2}. This combined with the fact that $p\in[\inf I,y]$ (we know that $\inf I\leq p<y$, so $\inf I\leq p\leq y$) implies that $p\in I$, as desired.\par
+        If $\inf I\notin I$, then we can demonstrate that $I=(\inf I,\infty)$. As before, to do so, it will suffice to verify that every $p\in I$ is an element of $(\inf I,\infty)$ and vice versa. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$. The additional constraint that $\inf I\notin I$ implies that $\inf I<p$. Therefore, $p\in(\inf I,\infty)$, as desired. Now let $p$ be an arbitrary element of $(\inf I,\infty)$. Then $\inf I<p$. It follows by Lemma \ref{lem:5.11} that there exists a $z\in I$ such that $\inf I\leq z<p$. Additionally, since $I$ is not bounded above, we have by Definition \ref{dfn:5.6} that there exists $y\in I$ such that $y>p$. Since $z\in I$, $y\in I$, and $z<y$ (by transitivity), $[z,y]\subset I$ by Definition \ref{dfn:8.2}. This combined with the fact that $p\in[z,y]$ (we know that $z<p<y$, so $z\leq p\leq y$) implies that $p\in I$, as desired.\par\smallskip
+        Second, suppose that $I$ is only bounded above. The proof of this case is symmetric to that of the first.\par\smallskip
+        Third, suppose that $I$ is bounded below and above. Since $I$ is a nonempty subset of $\R$ that is bounded above and below, we have by consecutive applications of Theorem \ref{trm:5.17} that both $\sup I$ and $\inf I$ exist. We divide into four cases ($\inf I\in I$ and $\sup I\in I$, $\inf I\in I$ and $\sup I\notin I$, $\inf I\notin I$ and $\sup I\in I$, and $\inf I\notin I$ and $\sup I\notin I$).\par
+        If $\inf I\in I$ and $\sup I\in I$, then we can demonstrate that $I=[\inf I,\sup I]$. We now divide into two cases again ($\inf I=\sup I$ and $\inf I\neq\sup I$). If $\inf I=\sup I\in I$, then $I=\{\inf I\}=\{\sup I\}=[\inf I,\sup I]$, as desired. On the other hand, if $\inf I\neq\sup I$, we continue. To demonstrate that $I=[\inf I,\sup I]$, Theorem \ref{trm:1.7} tells us that it will suffice to verify that $I\subset[\inf I,\sup I]$ and $[\inf I,\sup I]\subset I$. To verify that the former claim, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $p\in I$ is an element of $[\inf I,\sup I]$. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by consecutive applications of Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$ and $p\leq\sup I$. Therefore, $p\in[\inf I,\sup I]$, as desired. On the other hand, since $\inf I\in I$, $\sup I\in I$, and $\inf I<\sup I$ (as follows from Definition \ref{dfn:5.7} and the fact that they are unequal), $[\inf I,\sup I]\subset I$ by Definition \ref{dfn:8.2}, as desired.\par
+        If $\inf I\in I$ and $\sup I\notin I$, then we can demonstrate that $I=[\inf I,\sup I)$. To do so, it will suffice to verify that every $p\in I$ is an element of $[\inf I,\sup I)$ and vice versa. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$ and $p\leq \sup I$. The additional constraint that $\sup I\notin I$ implies that $p<\sup I$. Therefore, $p\in[\inf I,\sup I)$, as desired. Now let $p$ be an arbitrary element of $[\inf I,\sup I)$. Then $\inf I\leq p<\sup I$. It follows by Lemma \ref{lem:5.11} that there exists a $y\in I$ such that $p<y\leq\sup I$. Since $\inf I\in I$, $y\in I$, and $\inf I<y$ (by transitivity), $[\inf I,y]\subset I$ by Definition \ref{dfn:8.2}. This combined with the fact that $p\in[\inf I,y]$ (we know that $\inf I\leq p<y$, so $\inf I\leq p\leq y$) implies that $p\in I$, as desired.\par
+        If $\inf I\notin I$ and $\sup I\in I$, the proof is symmetric to that of the previous case.\par
+        If $\inf I\notin I$ and $\sup I\notin I$, then we can demonstrate that $I=(\inf I,\sup I)$. To do so, it will suffice to verify that every $p\in I$ is an element of $(\inf I,\sup I)$ and vice versa. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$ and $p\leq \sup I$. The additional constraints that $\inf I\notin I$ and $\sup I\notin I$ imply that $\inf I<p$ and $p<\sup I$, respectively. Therefore, $p\in(\inf I,\sup I)$, as desired. Now let $p$ be an arbitrary element of $(\inf I,\sup I)$. Then $\inf I<p<\sup I$. It follows by consecutive applications of Lemma \ref{lem:5.11} that there exist $x,y\in I$ such that $\inf I\leq x<p$ and $p<y\leq\sup I$. Since $x\in I$, $y\in I$, and $x<y$ (by transitivity), $[x,y]\subset I$ by Definition \ref{dfn:8.2}. This combined with the fact that $p\in[x,y]$ (we know that $x<p<y$, so $x\leq p\leq y$) implies that $p\in I$, as desired.\par\bigskip
+        Now suppose that $I\subsetneq\R$ takes one of the eight forms in Equations \ref{eqn:8.1}. To prove that $I$ is an interval, Definition \ref{dfn:8.2} tells us that it will suffice to show that for all $x,y\in I$ with $x<y$, $[x,y]\subset I$. Let $x,y$ be arbitrary elements of $I$ with $x<y$. We divide into eight cases (one for each equation in Equations \ref{eqn:8.1}).\par\smallskip
+        First, suppose that $I=(a,b)$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a<x<y<b$ by Equations \ref{eqn:8.1}, the fact that $a<x\leq z\leq y<b$ implies by Equations \ref{eqn:8.1} that $z\in(a,b)$, as desired.\par
+        Second, suppose that $I=[a,b)$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a\leq x<y<b$ by Equations \ref{eqn:8.1}, the fact that $a\leq x\leq z\leq y<b$ implies by Equations \ref{eqn:8.1} that $z\in[a,b)$, as desired.\par
+        Third, suppose that $I=(a,b]$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a<x<y\leq b$ by Equations \ref{eqn:8.1}, the fact that $a<x\leq z\leq y\leq b$ implies by Equations \ref{eqn:8.1} that $z\in(a,b]$, as desired.\par
+        Fourth, suppose that $I=[a,b]$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a\leq x<y\leq b$ by Equations \ref{eqn:8.1}, the fact that $a\leq x\leq z\leq y\leq b$ implies by Equations \ref{eqn:8.1} that $z\in[a,b]$, as desired.\par
+        Fifth, suppose that $I=(a,\infty)$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a<x$ by Equations \ref{eqn:8.1}, the fact that $a<x\leq z$ implies by Equations \ref{eqn:8.1} that $z\in(a,\infty)$, as desired.\par
+        Sixth, suppose that $I=[a,\infty)$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $a\leq x$ by Equations \ref{eqn:8.1}, the fact that $a\leq x\leq z$ implies by Equations \ref{eqn:8.1} that $z\in[a,\infty)$, as desired.\par
+        Seventh, suppose that $I=(-\infty,b)$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $y<b$ by Equations \ref{eqn:8.1}, the fact that $z\leq y<b$ implies by Equations \ref{eqn:8.1} that $z\in(-\infty,b)$, as desired.\par
+        Eighth, suppose that $I=(-\infty,b]$. To demonstrate that $[x,y]\subset I$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[x,y]$ is an element of $I$. Let $z$ be an arbitrary element of $[x,y]$. Then by Corollary \ref{cly:5.15}, $x\leq z\leq y$. But since $y\leq b$ by Equations \ref{eqn:8.1}, the fact that $z\leq y\leq b$ implies by Equations \ref{eqn:8.1} that $z\in(-\infty,b]$, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{definition}\label{dfn:8.4}
+    The \textbf{absolute value} of a real number $x$ is the non-negative number $|x|$ defined by
+    \begin{equation*}
+        |x| =
+        \begin{cases}
+            x & x\geq 0\\
+            -x & x<0
+        \end{cases}
+    \end{equation*}
+\end{definition}
+
+\begin{exercise}\label{exr:8.5}
+    Show that $|x|=|-x|$ for all $x\in\R$. (Note that this also means that $|x-y|=|y-x|$ for any $x,y\in\R$.)
+    \begin{proof}
+        Let $x$ be an arbitrary element of $\R$. We divide into two cases ($x\geq 0$ and $x<0$). Suppose first that $x\geq 0$. Then by Lemma \ref{lem:7.23}\footnote{And, technically, Theorem 7.47.} $-x\leq 0$. Thus, by consecutive applications of Definition \ref{dfn:8.4}, $|x|=x$ and $|-x|=-(-x)$. Therefore, since $-(-x)=x$ by Corollary \ref{cly:7.11}, $|x|=x=|-x|$, as desired.
+    \end{proof}
+\end{exercise}
+
+\begin{definition}\label{dfn:8.6}
+    The \textbf{distance} between $x\in\R$ and $y\in\R$ is defined to be $|x-y|$.
+\end{definition}
+
+\begin{remark}\label{rmk:8.7}
+    It follows from Definition \ref{dfn:8.6} that $|x|$ is the distance between $x$ and $0$.
+\end{remark}
+
+\begin{lemma}\label{lem:8.8}
+    For any real numbers $x,y,z$, we have
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $|x+y|\leq|x|+|y|$.
+        \item $|x-z|\leq|x-y|+|y-z|$.
+        \item $||x|-|y||\leq|x-y|$.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        We divide into four cases ($x\geq 0$ and $y\geq 0$, $x\geq 0$ and $y<0$, $x<0$ and $y\geq 0$, and $x<0$ and $y<0$).\par
+        First, suppose that $x\geq 0$ and $y\geq 0$. Then by Definition \ref{dfn:7.21}, $x+y\geq 0$. Thus, by consecutive applications of Definition \ref{dfn:8.4}, $|x+y|=x+y$, $|x|=x$, and $|y|=y$. Therefore, $|x+y|=x+y\leq x+y=|x|+|y|$, as desired.\par
+        Second, suppose that $x\geq 0$ and $y<0$. By Definition \ref{dfn:8.4}, $|x|=x$ and $|y|=-y$. We now divide into two cases ($x+y\geq 0$ and $x+y<0$). If $x+y\geq 0$, then $|x+y|=x+y$. Additionally, since $y>0$, Lemma \ref{lem:7.23} implies that $0<-y$. Consequently, by transitivity, $y<-y=|y|$. It follows by Definition \ref{dfn:7.21} that $x+y<x+|y|$. Therefore, $|x+y|=x+y<x+|y|=|x|+|y|$, so $|x+y|\leq|x|+|y|$, as desired. On the other hand, if $x+y<0$, then $|x+y|=-(x+y)=-x+(-y)=-x+|y|$. Additionally, by Lemma \ref{lem:7.23}, $x\geq 0$ implies that $-x\leq 0$. It follows by Definition \ref{dfn:7.21} since $-x\leq x$ that $-x+|y|\leq x+|y|$. Therefore, $|x+y|=-x+|y|\leq x+|y|=|x|+|y|$, as desired.\par
+        The proof of the third case is symmetric to that of the second.\par
+        The proof of the fourth case is symmetric to that of the first.
+    \end{proof}
+    \begin{proof}[Proof of b]
+        By part (a), $|x-z|=|x-y+y-z|\leq |x-y|+|y-z|$, as desired.
+    \end{proof}
+    \begin{proof}[Proof of c]
+        To prove that $||x|-|y||\leq|x-y|$, Definition \ref{dfn:8.4} tells us that it will suffice to show that $|x|-|y|\leq|x-y|$ and $-(|x|-|y|)\leq|x-y$. By part (a), $|x|=|x-y+y|\leq|x-y|+|y|$, so $|x|-|y|\leq|x-y|$. Similarly, $|y|-|x|\leq|x-y|$, so $-(|x|-|y|)\leq|x-y|$, as desired.
+    \end{proof}
+\end{lemma}
+
+
+
+
+\end{document}
