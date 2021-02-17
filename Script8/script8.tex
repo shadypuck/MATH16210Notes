@@ -323,6 +323,23 @@ More generally, we adopt the following standard notation:
     \end{proof}
 \end{theorem}
 
+\begin{definition}\label{dfn:8.16}\marginnote{2/16:}
+    Let $I$ be an  interval and let $f:I\to\R$.
+    \begin{enumerate}[label={\alph*)}]
+        \item We say that $f$ is \textbf{increasing} on $I$ if, whenever $x,y\in I$ with $x<y$, $f(x)\leq f(y)$.
+        \item We say that $f$ is \textbf{decreasing} on $I$ if, whenever $x,y\in I$ with $x<y$, $f(x)\geq f(y)$.
+        \item We say that $f$ is \textbf{strictly increasing} on $I$ if, whenever $x,y\in I$ with $x<y$, $f(x)<f(y)$.
+        \item We say that $f$ is \textbf{strictly decreasing} on $I$ if, whenever $x,y\in I$ with $x<y$, $f(x)>f(y)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lem:8.17}
+    If $f$ is strictly increasing or strictly decreasing on an interval $I$ then $f$ is injective on $I$.
+    \begin{proof}
+        We divide into two cases ($f$ is strictly increasing, and $f$ is strictly decreasing). Suppose first that $f$ is strictly increasing. To prove that $f$ is injective on $I$, Definition \ref{dfn:1.20} tells us that it will suffice to show that for all $a,b\in I$, $a\neq b$ implies that $f(a)\neq f(b)$. Let $a,b$ be arbitrary elements of $I$ such that $a\neq b$. WLOG, let $a<b$. Then by Definition \ref{dfn:8.16}, $f(a)<f(b)$. Therefore, $f(a)\neq f(b)$, as desired. The proof is symmetric for the other case.
+    \end{proof}
+\end{lemma}
+
 
 
 

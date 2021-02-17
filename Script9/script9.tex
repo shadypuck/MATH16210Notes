@@ -1,0 +1,55 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{8}
+
+\begin{document}
+
+
+
+
+\chapter{Continuous Functions}\label{sct:9}
+\section{Journal}
+\begin{lemma}\label{lem:9.1}\marginnote{\emph{2/16:}}
+    Let $X\subset\R$ and $f:X\to\R$. If $A,B\subset\R$, then
+    \begin{gather*}
+        f^{-1}(A\cup B) = f^{-1}(A)\cup f^{-1}(B)\\
+        f^{-1}(A\cap B) = f^{-1}(A)\cap f^{-1}(B)\\
+        f^{-1}(A\setminus B) = f^{-1}(A)\setminus f^{-1}(B)\\
+        f^{-1}(\R) = X
+    \end{gather*}
+    \begin{proof}
+        To prove that $f^{-1}(A\cup B)=f^{-1}(A)\cup f^{-1}(B)$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $x\in f^{-1}(A\cup B)$ is an element of $f^{-1}(A)\cup f^{-1}(B)$ and vice versa. Suppose first that $x$ is an arbitrary element of $f^{-1}(A\cup B)$. Then by Definition \ref{dfn:1.18}, $f(x)\in A\cup B$. Thus, by Definition \ref{dfn:1.5}, $f(x)\in A$ or $f(x)\in B$. We now divide into two cases. If $f(x)\in A$, then by Definition \ref{dfn:1.18}, $x\in f^{-1}(A)$. It follows by Definition \ref{dfn:1.5} that $x\in f^{-1}(A)\cup f^{-1}(B)$, as desired. The argument is symmetric in the other case. Now suppose that $x\in f^{-1}(A)\cup f^{-1}(B)$. Then by Definition \ref{dfn:1.5}, $x\in f^{-1}(A)$ or $x\in f^{-1}(B)$. We now divide into two cases. If $x\in f^{-1}(A)$, then by Definition \ref{dfn:1.18}, $f(x)\in A$. It follows by Definition \ref{dfn:1.5} that $f(x)\in A\cup B$. Therefore, by Definition \ref{dfn:1.18}, $x\in f^{-1}(A\cup B)$. The argument is symmetric in the other case, as desired.\par
+        To prove that $f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $x\in f^{-1}(A\cap B)$ is an element of $f^{-1}(A)\cap f^{-1}(B)$ and vice versa. Suppose first that $x$ is an arbitrary element of $f^{-1}(A\cap B)$. Then by Definition \ref{dfn:1.18}, $f(x)\in A\cap B$. Thus, by Definition \ref{dfn:1.6}, $f(x)\in A$ and $f(x)\in B$. It follows by consecutive applications of Definition \ref{dfn:1.18} that $x\in f^{-1}(A)$ and $x\in f^{-1}(B)$. Therefore, by Definition \ref{dfn:1.6}, $x\in f^{-1}(A)\cap f^{-1}(B)$, as desired. Now suppose that $x\in f^{-1}(A)\cap f^{-1}(B)$. Then by Definition \ref{dfn:1.6}, $x\in f^{-1}(A)$ and $x\in f^{-1}(B)$. It follows by consecutive applications of Definition \ref{dfn:1.18} that $f(x)\in A$ and $f(x)\in B$. Thus, by Definition \ref{dfn:1.6}, $f(x)\in A\cap B$. Therefore, by Definition \ref{dfn:1.18}, $x\in f^{-1}(A\cap B)$, as desired.\par
+        To prove that $f^{-1}(A\setminus B)=f^{-1}(A)\setminus f^{-1}(B)$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $x\in f^{-1}(A\setminus B)$ is an element of $f^{-1}(A)\setminus f^{-1}(B)$ and vice versa. Suppose first that $x$ is an arbitrary element of $f^{-1}(A\setminus B)$. Then by Definition \ref{dfn:1.18}, $f(x)\in A\setminus B$. Thus, by Definition \ref{dfn:1.11}, $f(x)\in A$ and $f(x)\notin B$. It follows by consecutive applications of Definition \ref{dfn:1.18} that $x\in f^{-1}(A)$ and $x\notin f^{-1}(B)$. Therefore, by Definition \ref{dfn:1.11}, $x\in f^{-1}(A)\setminus f^{-1}(B)$, as desired. Now suppose that $x\in f^{-1}(A)\setminus f^{-1}(B)$. Then by Definition \ref{dfn:1.11}, $x\in f^{-1}(A)$ and $x\notin f^{-1}(B)$. It follows by consecutive applications of Definition \ref{dfn:1.18} that $f(x)\in A$ and $f(x)\notin B$. Thus, by Definition \ref{dfn:1.11}, $f(x)\in A\setminus B$. Therefore, by Definition \ref{dfn:1.18}, $x\in f^{-1}(A\setminus B)$, as desired.\par
+        To prove that $f^{-1}(\R)=X$, Definition \ref{dfn:1.2} tells us that it will suffice to show that every $x\in f^{-1}(\R)$ is an element of $X$ and vice versa. Suppose first that $x$ is an arbitrary element of $f^{-1}(\R)$. Then by Definition \ref{dfn:1.18}, $x\in X$, as desired. Now suppose that $x\in X$. Then by Definition \ref{dfn:1.16}, $f(x)\in\R$. It follows by Definition \ref{dfn:1.18} that $x\in f^{-1}(\R)$, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{exercise}\label{exr:9.2}
+    Let $f:X\to\R$. Let $A\subset X$ and $B\subset\R$. Show that
+    \begin{gather*}
+        f(f^{-1}(B)) \subset B\\
+        A\subset f^{-1}(f(A))
+    \end{gather*}
+    Give examples to show that the inclusions can be proper.
+    \begin{proof}
+        To prove that $f(f^{-1}(B))\subset B$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $y\in f(f^{-1}(B))$ is an element of $B$. Let $y$ be an arbitrary element of $f(f^{-1}(B))$. Then by Definition \ref{dfn:1.18}, $y=f(x)$ for some $x\in f^{-1}(B)$. By Definition \ref{dfn:1.18} again, $f(x)\in B$. Therefore, since $y=f(x)$, it follows that $y\in B$, as desired.\par
+        To prove that $A\subset f^{-1}(f(A))$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $x\in A$ is an element of $f^{-1}(f(A))$. Let $x$ be an arbitrary element of $A$. Then by Definition \ref{dfn:1.18}, $f(x)\in f(A)$. Therefore, by Definition \ref{dfn:1.18}, we have $x\in f^{-1}(f(A))$, as desired.\par
+        Let $X=\{1,2\}$ and let $f:X\to\R$ be defined by $f(1)=3$ and $f(2)=3$. If we let $B=\{3,4\}$, then $f(f^{-1}(B))=\{3\}\subsetneq\{3,4\}$. Additionally, if we let $A=\{1\}$, then $A\subsetneq f^{-1}(f(A))=\{1,2\}$.
+    \end{proof}
+\end{exercise}
+
+\begin{exercise}\label{exr:9.3}
+    Let $f:X\to\R$. Let $A\subset X$ and $B\subset\R$. Then $f(A)\subset B\Longleftrightarrow A\subset f^{-1}(B)$.
+    \begin{proof}
+        Suppose first that $f(A)\subset B$. To prove that $A\subset f^{-1}(B)$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $x\in A$ is an element of $f^{-1}(B)$. Let $x$ be an arbitrary element of $A$. Then by Definition \ref{dfn:1.18}, $f(x)\in f(A)$. It follows by the hypothesis and Definition \ref{dfn:1.3} that $f(x)\in B$. Therefore, by Definition \ref{dfn:1.18} again, $x\in f^{-1}(B)$.\par
+        Now suppose that $A\subset f^{-1}(B)$. To prove that $f(A)\subset B$, Definition \ref{dfn:1.3} tells us that it will suffice to show that every $y\in f(A)$ is an element of $B$. Let $y$ be an arbitrary element of $f(A)$. Then by Definition \ref{dfn:1.18}, $y=f(x)$ for some $x\in A$. It follows by the hypothesis and Definition \ref{dfn:1.3} that $x\in f^{-1}(B)$. Therefore, by Definition \ref{dfn:1.18} again, $y=f(x)\in B$.
+    \end{proof}
+\end{exercise}
+
+
+
+
+\end{document}
