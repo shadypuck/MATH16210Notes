@@ -49,7 +49,7 @@ More generally, we adopt the following standard notation:
     A proper subset $I\subsetneq\R$ is an interval if and only if it takes one of the eight forms in Equations \ref{eqn:8.1}.
     \begin{proof}
         Suppose first that $I\subsetneq\R$ is an interval. If $I=\emptyset$, then $I=(a,a)$ for any $a\in\R$, and we are done. Thus, we will assume for the remainder of the proof of the forward direction that $I$ is nonempty. To address this case, we will first prove that the facts that $I\subsetneq\R$, $I\neq\emptyset$, and $I$ is an interval imply that $I$ is bounded above, bounded below, or both. Then in each of these three cases, we will look at whether $\sup I$ and $\inf I$ (if they exist) are elements of the set or not to differentiate between the eight forms in Equations \ref{eqn:8.1}. Let's begin.\par\medskip
-        Suppose for the sake of contradiction that there exists a nonempty interval $I\subsetneq\R$ that is neither bounded above nor bounded below. Since $I\subsetneq\R$, we have by Definition \ref{dfn:1.3} that there exists a point $p\in\R$ such that $p\notin I$. Additionally, since $I$ is neither bounded above nor below, Definition \ref{dfn:5.6} implies that $p$ is neither an upper nor a lower bound on $I$. Thus, there exist $x,y\in I$ such that $x<p$ and $y>p$. Now by Definition \ref{dfn:8.2}, $[x,y]\subset I$. But it follows by Definition \ref{dfn:1.3} that every point in $[x,y]$, including $p$, is an element of $I$, a contradiction.\par\medskip
+        Suppose for the sake of contradiction that there exists a nonempty interval $I\subsetneq\R$ that is neither bounded above nor bounded below. Since $I\subsetneq\R$, we have by Definition \ref{dfn:1.3} that there exists a point $p\in\R$ such that $p\notin I$. Additionally, since $I$ is neither bounded above nor below, Definition \ref{dfn:5.6} implies that $p$ is neither an upper nor a lower bound of $I$. Thus, there exist $x,y\in I$ such that $x<p$ and $y>p$. Now by Definition \ref{dfn:8.2}, $[x,y]\subset I$. But it follows by Definition \ref{dfn:1.3} that every point in $[x,y]$, including $p$, is an element of $I$, a contradiction.\par\medskip
         We now divide into three cases ($I$ is exclusively bounded below, $I$ is exclusively bounded above, and $I$ is bounded both below and above).\par\smallskip
         First, suppose that $I$ is only bounded below. Since $I$ is a nonempty subset of $\R$ that is bounded below, we have by Theorem \ref{trm:5.17} that $\inf I$ exists. We divide into two cases again ($\inf I\in I$ and $\inf I\notin I$).\par
         If $\inf I\in I$, then we can demonstrate that $I=[\inf I,\infty)$. To do this, Definition \ref{dfn:1.2} tells us that it will suffice to verify that every $p\in I$ is an element of $[\inf I,\infty)$ and vice versa. Let $p$ be an arbitrary element of $I$. Then $p\in\R$ and by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $\inf I\leq p$. Therefore, $p\in[\inf I,\infty)$, as desired. Now let $p$ be an arbitrary element of $[\inf I,\infty)$. Then $\inf I\leq p$. Additionally, since $I$ is not bounded above, we have by Definition \ref{dfn:5.6} that there exists $y\in I$ such that $y>p$. Since $\inf I\in I$, $y\in I$, and $\inf I<y$ (by transitivity), $[\inf I,y]\subset I$ by Definition \ref{dfn:8.2}. This combined with the fact that $p\in[\inf I,y]$ (we know that $\inf I\leq p<y$, so $\inf I\leq p\leq y$) implies that $p\in I$, as desired.\par
@@ -160,6 +160,7 @@ More generally, we adopt the following standard notation:
 \begin{exercise}\label{exr:8.13}
     Let $A\subset X\subset\R$. Show that $X\setminus A$ is closed in $X$ if and only if $A$ is open in $X$.
     \begin{proof}
+        % Suppose first that $X\setminus A$ is closed in $X$. Then by Definition \ref{dfn:8.11}, $X\setminus A=X\cap B$ where $B$ is a closed set. Since $\R\setminus B$ is open by Definition \ref{dfn:4.4}, to prove that $A$ is open in $X$, Definition \ref{dfn:8.11} tells us that it will suffice to show that $A=X\cap(\R\setminus B)$. To do this, Definition \ref{dfn:1.2} tells us that it will suffice to confirm that every $x\in A$ is an element of $X\cap(\R\setminus B)$ and vice versa. First, let $x$ be an arbitrary element of $A$. Then since $A\subset X$, Definition \ref{dfn:1.3} asserts that $x\in X$. Additionally, the fact that $x\in A$ implies by Definition \ref{dfn:1.11} that $x\notin X\setminus A$. Consequently, by Definition \ref{dfn:1.2}, $x\notin X\cap B$, which means that $x\notin B$. This combined with the fact that $x\in\R$ by definition implies by Definition \ref{dfn:1.11} that $x\in\R\setminus B$. Since $x\in X$ and $x\in\R\setminus B$, we have by Definition \ref{dfn:1.6} that $x\in X\cap(\R\setminus B)$, as desired. Now let $x$ be an arbitrary element of $X\cap(\R\setminus B)$. Then by Definitions \ref{dfn:1.6} and \ref{dfn:1.11}, $x\in X$ and $x\notin B$. It follows from the latter condition by Definition \ref{dfn:1.6} that $x\notin X\cap B$, i.e., $x\notin X\setminus A$. But since $x\in X$, if $x\notin X\setminus A$, then we must have $x\in A$, as desired.\par
         Suppose first that $X\setminus A$ is closed in $X$. Then by Definition \ref{dfn:8.11}, $X\setminus A=X\cap B$ where $B$ is a closed set. It follows by Script \ref{sct:1} that
         \begin{align*}
             X\setminus A &= X\cap B\\
@@ -183,6 +184,144 @@ More generally, we adopt the following standard notation:
         Since $\R\setminus B$ is closed by Definition \ref{dfn:4.4}, we have by Definition \ref{dfn:8.11} that $X\setminus A$ is closed in $X$.
     \end{proof}
 \end{exercise}
+
+\begin{exercise}\label{exr:8.14}\leavevmode
+    \begin{enumerate}[label={\alph*)},ref={\theexercise\alph*}]
+        \item \label{exr:8.14a}Let $[a,b]\subset\R$. Give an example of a set $A\subset[a,b]$ such that $A$ is open in $[a,b]$ but not in $\R$.
+        \item \label{exr:8.14b}Give an example of sets $A\subset X\subset\R$ such that $A$ is closed in $X$ but not in $\R$.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        We first briefly consider the case where $a=b$. In this case, let $c<a<d$; then $\{a\}=[a,a]\cap(c,d)$ is a subset of $[a,b]$ that is open in $[a,b]$ (by Definition \ref{dfn:8.11}; $(c,d)$ is open by Exercise \ref{exr:8.1}) but closed in $\R$ (by Corollary \ref{cly:3.23}, Definition \ref{dfn:4.1}, and Theorem \ref{trm:5.1}).\par
+        We now direct our attention to the case where $a\neq b$. Let $c\in[a,b]$ be a point such that $a<c<b$ (we know at least one such point exists by Theorem \ref{trm:5.2}). If we define the set $(c,b]=[a,b]\cap(c,\infty)$, we have by Definition \ref{dfn:8.11} that $(c,b]$ is open in $[a,b]$ (since $(c,\infty)$ is open as per Exercise \ref{exr:8.1}). However, we know that $(c,b]$ is not open in $\R$ by Theorem \ref{trm:4.10} ($b$ is an element of $(c,b]$ such that any region containing $b$ necessarily contains an element that is not in $(c,b]$; this element will be greater than $b$ but less than the right bound of the region, and its existence is guaranteed by Theorem \ref{trm:5.2}).
+    \end{proof}
+    \begin{proof}[Proof of b]
+        Let $X=(a,b)\subset\R$. Then $(a,b)=X\cap[a,b]$, so $(a,b)=X\cap[a,b]$ is closed in $(a,b)$ by Definition \ref{dfn:8.11}. However, by Corollary \ref{cly:5.14}, $a,b$ are limit points of $(a,b)$ that are not contained within $(a,b)$. It follows by Definition \ref{dfn:4.1} that $(a,b)$ is not closed in $\R$.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:8.15}
+    Let $X\subset\R$. Then $X$ is connected if and only if $X$ is an interval.
+    \begin{proof}
+        Suppose first that $X$ is connected. To prove that $X$ is an interval, Definition \ref{dfn:8.2} tells us that it will suffice to show that for all $x,y\in X$ with $x<y$, $[x,y]\subset X$. Let $x,y$ be arbitrary elements of $X$ satisfying $x<y$, and suppose for the sake of contradiction that $[x,y]\not\subset X$. Then there exists $z\in[x,y]$ such that $z\notin X$. Let $A=\{a\in X\mid a<z\}$ and $B=\{b\in X\mid z<b\}$. It follows from Script \ref{sct:1} that $X=A\cup B$ and $A\cap B=\emptyset$. To verify that $A$ is nonempty, Definition \ref{dfn:1.8} tells us that it will suffice to find an element in it. Since $z\notin X$ but $x\in X$, we know that $z\neq x$. This combined with the fact that $x\leq z$ by Equations \ref{eqn:8.1} implies that $x<z$. Thus, since $x\in X$ and $x<z$, $x\in A$. Similarly, $y\in B$. To verify that $A$ is open in $X$, Definition \ref{dfn:8.11} tells us that it will suffice to demonstrate that $A$ is the intersection of $X$ with an open set. Since we clearly have $A=X\cap(-\infty,z)$ where $(-\infty,z)$ is open by Exercise \ref{exr:8.1}, we are done. We can do something similar for $B$. But the existence of two disjoint, nonempty, open (in $X$) sets $A,B$ whose union equals $X$ demonstrates by Definition \ref{dfn:4.22} that $X$ is disconnected, a contradiction.\par\medskip
+        % \begin{itemize}
+        %     \item Setup:
+        %     \begin{itemize}
+        %         \item Suppose $X$ is an interval.
+        %         \item Suppose (contradiction): $X$ is disconnected.
+        %         \item Definition \ref{dfn:4.22}: $X=A\cup B$ where $A,B$ are disjoint, nonempty, and open in $X$.
+        %         \item $A,B$ nonempty, disjoint: $a\in A$ and $b\in B$ such that $a\neq b$.
+        %         \item WLOG, let $a<b$.
+        %     \end{itemize}
+        %     \item Prove $\sup(A\cap[a,b])$ exists (Theorem \ref{trm:5.17}: Show $A\cap[a,b]$ is nonempty and bounded above).
+        %     \begin{itemize}
+        %         \item Show nonempty (Definition \ref{dfn:1.8}: Find an element of $A\cap[a,b]$).
+        %         \begin{itemize}
+        %             \item Equations \ref{eqn:8.1}: $a\in[a,b]$.
+        %             \item By definition: $a\in A$.
+        %             \item Definition \ref{dfn:1.6}: $a\in A\cap[a,b]$, as desired.
+        %         \end{itemize}
+        %         \item Show bounded above (consecutive Definition \ref{dfn:5.6}: Verify that $x\leq b$ for all $x\in A\cap[a,b]$).
+        %         \begin{itemize}
+        %             \item Let $x\in A\cap[a,b]$.
+        %             \item Definition \ref{dfn:1.6}: $x\in[a,b]$.
+        %             \item Equations \ref{eqn:8.1}: $x\leq b$, as desired.
+        %         \end{itemize}
+        %     \end{itemize}
+        %     \item Let $s=\sup(A\cap[a,b])$.
+        %     \begin{itemize}
+        %         \item Prove $\inf(B\cap[s,b])$ exists (a symmetric argument to the previous).
+        %     \end{itemize}
+        %     \item Let $i=\inf(B\cap[s,b])$.
+        %     \begin{itemize}
+        %         \item We divide into three cases ($s>i$, $s=i$, and $s<i$).
+        %     \end{itemize}
+        %     \item First, suppose: $s>i$.
+        %     \begin{itemize}
+        %         \item Show $s$ is a lower bound of $B\cap[s,b]$ (Definition \ref{dfn:5.6}: Verify that $s\leq x$ for all $x\in B\cap[s,b]$).
+        %         \begin{itemize}
+        %             \item Let $x\in B\cap[s,b]$.
+        %             \item Definition \ref{dfn:1.6}: $x\in [s,b]$.
+        %             \item Equations \ref{eqn:8.1}: $s\leq x$, as desired.
+        %         \end{itemize}
+        %         \item Definition \ref{dfn:5.7}: $i\geq l$ for all lower bounds $l$, including $s$.
+        %         \item Therefore: $i\geq s$, contradicting the hypothesis that $s>i$.
+        %     \end{itemize}
+        %     \item Second, suppose: $s=i$.
+        %     \begin{itemize}
+        %         \item We divide into three cases ($s\in A$, $s\in B$, and $s\notin A$ and $s\notin B$).
+        %         \item If $s\in A$, then\dots
+        %         \begin{itemize}
+        %             \item Since $A$ open in $X$ (+ Definition \ref{dfn:8.11}): $A=X\cap G$ where $G$ is open.
+        %             \item $s\in A$ (+ Definitions \ref{dfn:1.2} and \ref{dfn:1.6}): $s\in G$.
+        %             \item Theorem \ref{trm:4.10}: There exists a region $(c,d)$ such that $s\in(c,d)$ and $(c,d)\subset G$.
+        %             \item Equations \ref{eqn:8.1}: $i=s<d$.
+        %             \item Lemma \ref{lem:5.11}: There exists a point $x\in B\cap[s,b]$ such that $i\leq x<d$.
+        %             \item $c<s\leq x<d$ (+ Equations \ref{eqn:8.1}): $x\in(c,d)$.
+        %             \item $(c,d)\subset G$ (+ Definition \ref{dfn:1.3}): $x\in G$.
+        %             \item $x\in B\cap[s,b]$ (+ Definition \ref{dfn:1.6}): $x\in B$.
+        %             \item $X=A\cup B$ (+ Definitions \ref{dfn:1.5} and \ref{dfn:1.2}): $x\in X$.
+        %             \item $x\in G$ and $x\in X$ (+ Definition \ref{dfn:1.6}): $x\in X\cap G$.
+        %             \item $A=X\cap G$ (+ Definition \ref{dfn:1.2}): $x\in A$.
+        %             \item $x\in A$, $x\in B$ (+ Definition \ref{dfn:1.6}) $x\in A\cap B$, contradicting the supposition that $A,B$ are disjoint.
+        %         \end{itemize}
+        %         \item If $s\in B$, then the proof is symmetric to the previous case.
+        %         \item If $s\notin A$ and $s\notin B$, then\dots
+        %         \begin{itemize}
+        %             \item Definition \ref{dfn:1.5}: $s\notin A\cup B$.
+        %             \item Definition \ref{dfn:1.2}: $s\notin X$.
+        %             \item $a\in A$, $b\in B$, $X=A\cup B$: $a,b\in X$.
+        %             \item $a,b\in X$, $a<b$ (+ Definition \ref{dfn:8.2}): $[a,b]\subset X$.
+        %             \item Show $s\in[a,b]$ (Equations \ref{eqn:8.1}: Verify that $a\leq s\leq b$).
+        %             \begin{itemize}
+        %                 \item As previously shown: $b$ is an upper bound of $A\cap[a,b]$.
+        %                 \item Definition \ref{dfn:5.7}: $s\leq b$.
+        %                 \item As previously shown: $a\in A\cap[a,b]$.
+        %                 \item Definitions \ref{dfn:5.7} and \ref{dfn:5.6}: $s\geq x$ for all $x\in A\cap[a,b]$, including $a$.
+        %                 \item Thus, $s\geq a$.
+        %             \end{itemize}
+        %             \item Definition \ref{dfn:1.3}: $s\in X$, a contradiction.
+        %         \end{itemize}
+        %     \end{itemize}
+        %     \item Third, suppose: $s<i$.
+        %     \begin{itemize}
+        %         \item Theorem \ref{trm:5.2}: There exists $z\in\R$ such that $s<z<i$.
+        %         \item Show $i\in[a,b]$ (Equations \ref{eqn:8.1}: Verify that $a\leq i\leq b$).
+        %         \begin{itemize}
+        %             \item As previously shown: $s$ is a lower bound of $B\cap[s,b]$.
+        %             \item Definition \ref{dfn:5.7}: $i\geq s$.
+        %             \item $s\geq a$ (as previously shown + transitivity): $i\geq a$.
+        %             \item Confirm $b\in B\cap[s,b]$.
+        %             \begin{itemize}
+        %                 \item Equations \ref{eqn:8.1}: $b\in[s,b]$.
+        %                 \item By definition: $b\in B$.
+        %                 \item Definition \ref{dfn:1.6}: $b\in B\cap[s,b]$.
+        %             \end{itemize}
+        %             \item Definitions \ref{dfn:5.7} and \ref{dfn:5.6}: $i\leq x$ for all $x\in B\cap[s,b]$, including $b$.
+        %             \item Thus, $i\leq b$.
+        %         \end{itemize}
+        %         \item $s<z$ (+ Definition \ref{dfn:5.6}): $z\notin A\cap[a,b]$.
+        %         \item $a\leq s<z<i\leq b$: $z\in[a,b]$.
+        %         \item $z\in[a,b]$ (+ Definition \ref{dfn:1.6}): $z\notin A$.
+        %         \item $z<i$ (+ Definition \ref{dfn:5.6}): $z\notin B\cap[s,b]$.
+        %         \item $s<z<i\leq b$: $z\in[s,b]$.
+        %         \item $z\in[s,b]$ (+ Definition \ref{dfn:1.6}): $z\notin B$.
+        %         \item $z\notin A$, $z\notin B$ (+ Definition \ref{dfn:1.5}): $z\notin A\cup B=X$.
+        %         \item As before: $[a,b]\subset X$.
+        %         \item Definition \ref{dfn:1.3}: $z\in X$, a contradiction.
+        %     \end{itemize}
+        % \end{itemize}
+        Now suppose that $X$ is an interval, and suppose for the sake of contradiction that $X$ is disconnected. Then by Definition \ref{dfn:4.22}, $X=A\cup B$ where $A,B$ are disjoint, nonempty sets that are open in $X$. Since $A,B$ are disjoint and nonempty, we know that there exist distinct objects $a\in A$ and $b\in B$. WLOG, let $a<b$.\par\smallskip
+        To prove that $\sup(A\cap[a,b])$ exists, Theorem \ref{trm:5.17} tells us that it will suffice to show that $A\cap[a,b]$ is nonempty and bounded above. To show that $A\cap[a,b]$ is nonempty, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of $A\cap[a,b]$. By Equations \ref{eqn:8.1}, $a\in[a,b]$. By Definition, $a\in A$. Thus, by Definition \ref{dfn:1.6}, $a\in A\cap[a,b]$, as desired. To show that $A\cap[a,b]$ is bounded above, consecutive applications of Definition \ref{dfn:5.6} tell us that it will suffice to verify that $x\leq b$ for all $x\in A\cap[a,b]$. Let $x$ be an arbitrary element of $A\cap[a,b]$. It follows by Definition \ref{dfn:1.6} that $x\in[a,b]$. Thus, by Equations \ref{eqn:8.1}, $x\leq b$, as desired.\par\smallskip
+        Let $s=\sup(A\cap[a,b])$. To prove that $\inf(B\cap[s,b])$ exists, it will suffice to utilize a symmetric argument to the above.\par\smallskip
+        Let $i=\inf(B\cap[s,b])$. We divide into three cases ($s>i$, $s=i$, and $s<i$).\par\smallskip
+        First, suppose that $s>i$. To show that $s$ is a lower bound of $B\cap[s,b]$, Definition \ref{dfn:5.6} tells us that it will suffice to verify that $s\leq x$ for all $x\in B\cap[s,b]$. Let $x$ be an arbitrary element of $B\cap[s,b]$. By Definition \ref{dfn:1.6}, $x\in[s,b]$. Thus, by Equations \ref{eqn:8.1}, $s\leq x$, as desired. Since $s$ is a lower bound of $B\cap[s,b]$, Definition \ref{dfn:5.7} asserts that $i\geq s$, contradicting the hypothesis that $s>i$.\par\smallskip
+        Second, suppose that $s=i$. We divide into three cases ($s\in A$, $s\in B$, and $s\notin A$ and $s\notin B$).\par
+        If $s\in A$, then since $A$ is open in $X$, Definition \ref{dfn:8.11} implies that $A=X\cap G$ where $G$ is open. It follows by the hypothesis that $s\in A$ along with Definitions \ref{dfn:1.2} and \ref{dfn:1.6} that $s\in G$. Consequently, by Theorem \ref{trm:4.10}, there exists a region $(c,d)$ such that $s\in(c,d)$ and $(c,d)\subset G$. From the former condition, we have by Equations \ref{eqn:8.1} that $c<s<d$. Thus, by Lemma \ref{lem:5.11}, there exists a point $x\in B\cap[s,b]$ such that $s=i\leq x<d$. Since $c<s\leq x<d$, Equations \ref{eqn:8.1} imply that $x\in(c,d)$. This combined with the fact that $(c,d)\subset G$ implies by Definition \ref{dfn:1.3} that $x\in G$. Additionally, we know that $x\in B$ (since $x\in B\cap[s,b]$ by Definition \ref{dfn:1.6}). It follows from this and the fact that $X=A\cup B$ by Definitions \ref{dfn:1.5} and \ref{dfn:1.2} that $x\in X$. Thus, since $x\in X$ and $x\in G$, Definition \ref{dfn:1.6} asserts that $x\in X\cap G$, meaning that $x\in A$. But if $x\in A$ and $x\in B$, then Definition \ref{dfn:1.6} implies that $x\in A\cap B$, contradicting the supposition that $A$ and $B$ are disjoint.\par
+        If $s\in B$, then the proof is symmetric to the previous case.\par
+        If $s\notin A$ and $s\notin B$, then by Definition \ref{dfn:1.5}, $s\notin A\cup B$, implying that $s\notin X$. Additionally, the facts that $a\in A$, $b\in B$, and $X=A\cup B$ imply that $a,b\in X$. It follows since $a<b$ by Definition \ref{dfn:8.2} that $[a,b]\subset X$. We now show that $s\in[a,b]$ via Equations \ref{eqn:8.1}, which tell us that it will suffice to verify that $a\leq s\leq b$. As previously shown, $b$ is an upper bound of $A\cap[a,b]$. Thus, by Definition \ref{dfn:5.7}, we have that $s\leq b$, and we are half done. As to the other half, we have also previously shown that $a\in A\cap[a,b]$. Additionally, by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $s\geq x$ for all $x\in A\cap[a,b]$, including $a$. Thus, $s\geq a$. Having shown that $s\in[a,b]$ and $[a,b]\subset X$, we may invoke Definition \ref{dfn:1.3} to learn that $s\in X$, contradicting the previously proven statement that $s\notin X$.\par\smallskip
+        Third, suppose that $s<i$. Then by Theorem \ref{trm:5.2} and Definition \ref{dfn:3.6}, there exists a $z\in\R$ such that $s<z<i$. We now show that $i\in[a,b]$ via Equations \ref{eqn:8.1}, which tell us that it wil suffice to verify that $a\leq i\leq b$. As previously shown, $s$ is a lower bound of $B\cap[s,b]$. Thus, by Definition \ref{dfn:5.7}, we have that $i\geq s$. We have also previously shown that $s\geq a$, so by transitivity, $i\geq a$, and we are half done. As to the other half, we now confirm that $b\in B\cap[s,b]$. By Equations \ref{eqn:8.1}, $b\in[s,b]$. By definition, $b\in B$. Thus, by Definition \ref{dfn:1.6}, $b\in B\cap[s,b]$, as desired. Additionally, by Definitions \ref{dfn:5.7} and \ref{dfn:5.6}, $i\leq x$ for all $x\in B\cap[s,b]$, including $b$. Thus, $i\leq b$, concluding our argument that $i\in[a,b]$. Moving on, the fact that $s<z$ implies by Definition \ref{dfn:5.6} that $z\notin A\cap[a,b]$. Additionally, we know from the facts that $s,i\in[a,b]$ that $a\leq s<z<i\leq b$, meaning that $z\in[a,b]$. Combining the previous two results with Definition \ref{dfn:1.6}, we have that $z\notin A$. By a symmetric argument, we can show that $z\notin B$. Since $z\notin A$ and $z\notin B$, Definition \ref{dfn:1.5} asserts that $z\notin A\cup B$, i.e., $z\notin X$. But as before, $[a,b]\subset X$, so the fact that $z\in[a,b]$ combined with Definition \ref{dfn:1.3} implies that $z\in X$, a contradiction.
+    \end{proof}
+\end{theorem}
 
 
 
