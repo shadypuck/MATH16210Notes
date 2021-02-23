@@ -49,6 +49,64 @@
     \end{proof}
 \end{exercise}
 
+\begin{definition}\label{dfn:9.4}
+    Let $X\subset\R$. A function $f:X\to\R$ is \textbf{continuous} if for every open set $U\subset\R$, the preimage $f^{-1}(U)$ is open in $X$.
+\end{definition}
+
+\begin{proposition}\label{prp:9.5}
+    Let $X\subset\R$. A function $f:X\to\R$ is continuous if and only if for every closed set $F\subset\R$, the preimage $f^{-1}(F)$ is closed in $X$.
+    \begin{proof}
+        Suppose first that $f$ is continuous. We seek to prove that for every closed set $F\subset\R$, the preimage $f^{-1}(F)$ is closed in $X$. Let $F$ be an arbitrary closed subset of $\R$. Then by Definition \ref{dfn:4.8}, $F=\R\setminus U$ for some open set $U\subset\R$. It follows by Definition \ref{dfn:9.4} since $f$ is continuous that $f^{-1}(U)$ is open in $X$. Additionally, by consecutive applications of Lemma \ref{lem:9.1}, $f^{-1}(F)=f^{-1}(\R\setminus U)=f^{-1}(\R)\setminus f^{-1}(U)=X\setminus f^{-1}(U)$. Therefore, since $f^{-1}(U)$ is open in $X$, Exercise \ref{exr:8.13} implies that $X\setminus f^{-1}(U)=f^{-1}(F)$ is closed in $X$.\par
+        The proof is symmetric in the other direction.
+    \end{proof}
+\end{proposition}
+
+\begin{definition}\label{dfn:9.6}
+    Let $X\subset Y\subset\R$ and let $f:Y\to\R$. Then the \textbf{restriction} (of $f$ to $X$), written $f|_X$ is the function $f|_X:X\to\R$ defined by
+    \begin{equation*}
+        f|_X(x) = f(x)
+    \end{equation*}
+    for all $x\in X$.
+\end{definition}
+
+\begin{proposition}\label{prp:9.7}
+    Let $X\subset Y\subset\R$. If $f:Y\to\R$ is continuous, then the restriction of $f$ to $X$ is continuous.
+    \begin{proof}
+        To prove that $f|_X$ is continuous, Definition \ref{dfn:9.4} tells us that it will suffice to show that for every open set $U\subset\R$, the preimage $f|_X^{-1}(U)$ is open in $X$. Let $U$ be an open subset of $\R$. Then
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            f|_X^{-1}(U) &= \{x\in X\mid f|_X(x)\in U\}\tag*{Definition \ref{dfn:1.18}}\\
+            &= \{x\in X\mid f(x)\in U\}\tag*{Definition \ref{dfn:9.6}}\\
+            &= \{x\in Y\mid f(x)\in U\}\cap X\tag*{Script \ref{sct:1}}\\
+            &= f^{-1}(U)\cap X\tag*{Definition \ref{dfn:1.18}}\\
+            &= (Y\cap G)\cap X\tag*{Definitions \ref{dfn:9.4} and \ref{dfn:8.11}}\\
+            &= X\cap G\tag*{Script \ref{sct:1}}
+        \end{align*}
+        \endgroup
+        Since $f|_X^{-1}(U)=X\cap G$ where $G$ is an open set, Definition \ref{dfn:8.11} asserts that $f|_X^{-1}(U)$ is open in $X$.
+    \end{proof}
+\end{proposition}
+
+\begin{exercise}\label{exr:9.8}
+    Show that for any $X\subsetneq\R$ that is not open and any continuous function $f:X\to\R$, there is an open set $U$ for which $f^{-1}(U)$ is open in $X$ but is not open in $\R$.
+    \begin{proof}
+        We will prove that $\R$ is an open set for which $f^{-1}(\R)$ is open in $X$ but not in $\R$. First, by Theorem \ref{trm:5.1}, $\R$ is open. Next, by Lemma \ref{lem:9.1}, $f^{-1}(\R)=X$. It follows since $f^{-1}(\R)=X=X\cap\R$ (where $\R$ is an open set) by Definition \ref{dfn:8.11} that $f^{-1}(\R)$ is open in $X$. Last, since $X$ is not open (in $\R$) by definition, $f^{-1}(\R)=X$ is not open in $\R$.
+    \end{proof}
+\end{exercise}
+
+\begin{definition}\label{dfn:9.9}
+    The function $f:X\to\R$ is \textbf{continuous} (at $x\in X$) if for every region $R$ containing $f(x)$, there exists an open set $S$ containing $x$ such that $S\cap X\subset f^{-1}(R)$.
+\end{definition}
+
+\begin{theorem}\label{trm:9.10}
+    The function $f:X\to\R$ is continuous if and only if it is continuous at every $x\in X$.
+    \begin{proof}
+        Suppose first that $f$ is continuous, and suppose for the sake of contradiction that $f$ is not continuous at every $x\in X$. Then by Definition \ref{dfn:9.9}, there exists some $x\in X$ such that $f$ is not continuous at $x$. Thus, there exists a region $R$ with $f(x)\in R$ such that for all open sets $S$ containing $x$, $S\cap X\not\subset f^{-1}(R)$. Since $f$ is continuous by hypothesis and $R$ is open by Corollary \ref{cly:4.11}, $f^{-1}(R)$ is open in $X$. It follows by Definition \ref{dfn:8.11} that $f^{-1}(R)=X\cap S$ for some open set $S$. But this implies that $f^{-1}(R)\not\subset f^{-1}(R)$, a contradiction.\par
+        Now suppose that $f$ is continuous at every $x\in X$. To prove that $f$ is continuous, Definition \ref{dfn:9.4} tells us that it will suffice to show that for every open set $U\subset\R$, the preimage $f^{-1}(U)$ is open in $X$. We divide into two cases ($f^{-1}(U)=\emptyset$ and $f^{-1}(U)\neq\emptyset$). If $f^{-1}(U)=\emptyset$, then since $\emptyset\cap X=\emptyset$ by Script \ref{sct:1} where $\emptyset$ is open by Theorem \ref{trm:5.1}, Definition \ref{dfn:8.11} tells us that $\emptyset=f^{-1}(U)$ is open in $X$, as desired. On the other hand, if $f^{-1}(U)\neq\emptyset$, Definition \ref{dfn:8.11} tells us that it will suffice to show that $f^{-1}(U)=S\cap X$ where $S$ is an open set. We first seek to show that for every $x\in f^{-1}(U)$, there exists an open set $S_x$ containing $x$ such that $S_x\cap X\subset f^{-1}(U)$. Let $x$ be an arbitrary element of $f^{-1}(U)$. It follows by Definition \ref{dfn:1.18} that $f(x)\in U$. Thus, since $U$ is open, we have by Theorem \ref{trm:4.10} that there exists a region $R$ such that $f(x)\in R$ and $R\subset U$. Consequently, since $R$ is open by Corollary \ref{cly:4.11}, we have by Definition \ref{dfn:9.9} that there exists an open set $S_x$ containing $x$ such that $S_x\cap X\subset f^{-1}(R)$. Additionally, Script \ref{sct:1} tells us based off of the fact that $R\subset U$ that $f^{-1}(R)\subset f^{-1}(U)$. Thus, by subset transitivity, $S_x\cap X\subset f^{-1}(U)$. At this point, let $S=\bigcup_{x\in f^{-1}(U)}S_x$. It follows immediately from Corollary \ref{cly:4.18} that $S$ is open. Additionally, since the intersection of each set in the union with $X$ is a subset of $f^{-1}(U)$, it follows by Script \ref{sct:1} that $S\cap X\subset f^{-1}(U)$. Furthermore, for all $x\in f^{-1}(U)$, Definition \ref{dfn:1.18} asserts that $x\in X$. In addition, we have defined an $S_x$ such that $x\in S_x$. These last two results combined demonstrate by Definition \ref{dfn:1.6} that $x\in S\cap X$. Thus, by Definition \ref{dfn:1.3}, $f^{-1}(U)\subset S\cap X$. Consequently, by Theorem \ref{trm:1.7}, $f^{-1}(U)=S\cap X$. Since $f^{-1}(U)$ is the intersection of $X$ with an open set, Definition \ref{dfn:8.11} asserts that it is open in $X$, as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 
