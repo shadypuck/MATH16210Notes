@@ -107,6 +107,41 @@
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:9.11}\marginnote{\emph{2/18:}}
+    Suppose that $f:X\to\R$ is continuous. If $X$ is connected, then $f(X)$ is connected.
+    \begin{proof}
+        This will be a proof by contrapositive; as such, suppose that $f(X)$ is disconnected. Then by Definition \ref{dfn:4.22}, $f(X)=A\cup B$ where $A,B$ are nonempty, disjoint sets that are open in $f(X)$. It follows from the last condition by Definition \ref{dfn:8.11} that $A=G\cap f(X)$ and $B=H\cap f(X)$, where $G,H$ are open sets. Since for all $x\in X$, $f(x)\in A$ or $f(x)\in B$, Definitions \ref{dfn:1.2} and \ref{dfn:1.6} imply that for all $x\in X$, $f(x)\in G$ and $f(x)\in H$. Thus, by Script \ref{sct:1}, $X\subset f^{-1}(G)\cup f^{-1}(H)$. Additionally, we know by Definition \ref{dfn:1.18} that for all $x\in f^{-1}(G)\cup f^{-1}(H)$, $x\in X$. Thus, by Definition \ref{dfn:1.3}, $f^{-1}(G)\cup f^{-1}(H)\subset X$. Consequently, by Theorem \ref{trm:1.7}, we have that $X=f^{-1}(G)\cup f^{-1}(H)$.\par\smallskip
+        To show that $f^{-1}(G),f^{-1}(H)$ are disjoint, Definition \ref{dfn:1.9} tells us that it will suffice to verify that $f^{-1}(G)\cap f^{-1}(H)=\emptyset$. As such, suppose for the sake of contradiction that $x\in f^{-1}(G)\cap f^{-1}(H)$. Then by consecutive applications of Definition \ref{dfn:1.6}, $x\in f^{-1}(G)$ and $x\in f^{-1}(H)$. Thus, by multiple applications of Definition \ref{dfn:1.18}, $x\in X$, $f(x)\in G$, and $f(x)\in H$. It follows from the first condition by Definition \ref{dfn:1.18} that $f(x)\in f(X)$. The facts that $f(x)\in f(X)$ and $f(x)\in G$ imply by Definitions \ref{dfn:1.6} and \ref{dfn:1.2} that $f(x)\in A$. Similarly, $f(x)\in B$. But these last two statements imply by Definition \ref{dfn:1.6} that $f(x)\in A\cap B$, a contradiction.\par
+        To show that $f^{-1}(G),f^{-1}(H)$ are nonempty, Definition \ref{dfn:1.8} tells us that it will suffice to find an element of each set. As previously mentioned, $A,B$ are nonempty. Thus, by consecutive applications of Definition \ref{dfn:1.8}, there exist $f(x)\in A$ and $f(y)\in B$. Consequently, by Definitions \ref{dfn:1.2} and \ref{dfn:1.6}, $f(x)\in G$ and $f(y)\in H$. Therefore, by consecutive applications of Definition \ref{dfn:1.18}, $x\in f^{-1}(G)$ and $y\in f^{-1}(H)$, as desired.\par
+        To show that $f^{-1}(G)$ and $f^{-1}(H)$ are open, Definition \ref{dfn:9.4} tells us that it will suffice to verify (since $f$ is continuous by hypothesis) that $G,H$ are open subsets of $\R$. But by definition, they are exactly that.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:9.12}
+    Use Theorem \ref{trm:9.11} to prove that if $f:[a,b]\to\R$ is continuous, then for every point $p$ between $f(a)$ and $f(b)$, there exists $c$ such that $a<c<b$ and $f(c)=p$.
+    \begin{proof}
+        Suppose that $a<b$. Then by Lemma \ref{lem:8.3}, $[a,b]$ is an interval. Thus, by Theorem \ref{trm:8.15}, $[a,b]$ is connected. It follows by Theorem \ref{trm:9.11} that $f([a,b])$ is connected. Consequently, by Theorem \ref{trm:8.15}, $f([a,b])$ is an interval. We divide into three cases ($f(a)<f(b)$, $f(a)>f(b)$, and $f(a)=f(b)$).\par
+        First, suppose that $f(a)<f(b)$, and let $p$ be an arbitrary point between $f(a)$ and $f(b)$ (we know that at least one such point exists by Theorem \ref{trm:5.2}). Then by Definition \ref{dfn:3.6}, $f(a)<p<f(b)$. Now $a,b\in[a,b]$ by Equations \ref{eqn:8.1}, so by Definition \ref{dfn:1.18}, $f(a),f(b)\in f([a,b])$. It follows by Definition \ref{dfn:8.2} since $f([a,b])$ is an interval that $[f(a),f(b)]\subset f([a,b])$. Thus, since $f(a)<p<f(b)$ implies $p\in[f(a),f(b)]$ by Equations \ref{eqn:8.1}, Definition \ref{dfn:1.3} asserts that $p\in f([a,b])$. Consequently, by Definition \ref{dfn:1.18}, $p=f(c)$ for some $c\in[a,b]$. Additionally, since $f(a)<p<f(b)$, we know that $p\neq f(a)$ and $p\neq f(b)$. It follows that $p=f(c)$ for some $c\in(a,b)$, as desired.\par
+        The proof of the second case is symmetric to that of the first.\par
+        Third, suppose that $f(a)=f(b)$. This implies that there are no points $p$ between $f(a)$ and $f(b)$ by Definition \ref{dfn:3.6}, so the statement is vacuously true in this case.
+    \end{proof}
+\end{exercise}
+
+\begin{lemma}\label{lem:9.13}
+    If $f:(a,b)\to\R$ is continuous and injective, then $f$ is either strictly increasing or strictly decreasing on $(a,b)$.
+    \begin{proof}
+        % \ref{lem:8.3}: $(a,b)$ is an interval. Suppose $x\neq y$, and WLOG $x<y$. Then $f(x)\neq f(y)$. Thus, $f(x)<f(y)$ or $f(x)>f(y)$. We now divide into two cases. If $f(x)<f(y)$, let $x,y,z\in(a,b)$ be such that $x<y<z$. Suppose (contradiction): $f(z)<f(y)$. If $f(x)=f(z)$, we've violated injectivity. If $f(x)\neq f(z)$. Then suppose first $f(z)<f(x)<f(y)$. \ref{exr:9.12}: $y<w<z$ such that $f(w)=f(x)$; violates injectivity.
+
+        Suppose that $a<b$. Then by Corollary \ref{cly:5.3}, we can pick two distinct points $c,d\in(a,b)$. Since $f$ is injective, we have from the fact that $x\neq y$ by Definition \ref{dfn:1.20} that $f(c)\neq f(d)$. We divide into two cases ($f(c)<f(d)$ and $f(c)>f(d)$).\par\smallskip
+        Suppose first that $f(c)<f(d)$. To prove that $f$ is strictly increasing, Definition \ref{dfn:8.16} tells us that it will suffice to show that for all $x,y\in(a,b)$ with $x<y$, $f(x)<f(y)$. Let $x,y$ be arbitrary elements of $(a,b)$ that satisfy $x<y$, and suppose for the sake of contradiction that $f(x)\geq f(y)$. If $f(x)=f(y)$, then by Definition \ref{dfn:1.20}, $x=y$, a contradiction. If $f(x)>f(y)$, then we divide into five cases ($x<y<c<d$, $x<c<y<d$, $x<c<d<y$, $c<x<d<y$, and $c<d<x<y$).\par
+        Let $x<y<c<d$. If $f(x)>f(c)$, let $p_1$ be a point between $f(x)$ and $f(c)$ and let $p_2$ be a point between $f(d)$ and $f(c)$. Let $p=\min(p_1,p_2)$. Since $f(c)<p<f(x)$, Exercise \ref{exr:9.12} implies that there exists $e\in(x,c)$ such that $f(e)=p$. Similarly, there exists $e'\in(c,d)$ such that $f(e')=p$. Since $(x,c)$ and $(c,d)$ are clearly disjoint, $e\neq e'$. But by Definition \ref{dfn:1.20}, $f(e)=p=f(e')$ implies that $e=e'$, a contradiction. If $f(x)<f(c)$, then we can arrive at a similar contradiction by considering values in the regions $(x,y)$ and $(y,c)$.\par
+        The proof is symmetric in the second case if we consider values in the regions $(c,y)$ and $(y,d)$ when $f(y)$ is not between $f(c)$ and $f(d)$, and values in the regions $(x,c)$ and $(c,y)$ when $f(y)$ is.\par
+        The proof is symmetric in the third case if we consider values in the regions $(x,c)$ and $(c,d)$ when $f(x)>f(c)$, and values in the regions $(x,d)$ and $(d,y)$ when $f(x)<f(c)$.\par
+        The proof is symmetric in the fourth case if we consider values in the regions $(c,x)$ and $(x,d)$ when $f(x)>f(d)$, and values in the regions $(x,d)$ and $(d,y)$ when $f(x)<f(d)$.\par
+        The proof is symmetric in the fifth case if we consider values in the regions $(c,d)$ and $(d,x)$ when $f(d)>f(x)$, and values in the regions $(d,x)$ and $(x,y)$ when $f(d)<f(x)$.
+    \end{proof}
+\end{lemma}
+
 
 
 
