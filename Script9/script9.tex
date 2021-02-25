@@ -142,6 +142,66 @@
     \end{proof}
 \end{lemma}
 
+\begin{theorem}\label{trm:9.14}\marginnote{\emph{2/23:}}
+    If $f:(a,b)\to\R$ is continuous and injective, then the inverse function $g:f((a,b))\to(a,b)$ is continuous.
+    \begin{lemma*}
+        Let $f:(a,b)\to\R$ be continuous and injective, and let $(x,y)\subset(a,b)$ be a region. Then $f((x,y))$ is also a region.
+        \begin{proof}
+            Since $f:(a,b)\to\R$ is continuous and injective, Lemma \ref{lem:9.13} implies that $f$ is either strictly increasing or strictly decreasing on $(a,b)$. We now divide into two cases.\par
+            Suppose first that $f$ is strictly increasing. To prove that $f((x,y))$ is a region, Definition \ref{dfn:3.10} tells us that it will suffice to show that $f((x,y))=(f(x),f(y))$. To show this, Definition \ref{dfn:1.2} tells us that it will suffice to verify that every $p\in f((x,y))$ is an element of $(f(x),f(y))$ and vice versa. Let $p$ be an arbitrary element of $f((x,y))$. Then by Definition \ref{dfn:1.18}, $p=f(z)$ for some $z\in(x,y)$. Since $z\in(x,y)$, we have by Equations \ref{eqn:8.1} that $x<z<y$. Since $f$ is strictly increasing on $(a,b)$, by Definition \ref{dfn:8.16}, $x<z<y$ implies that $f(x)<f(z)<f(y)$. But this implies by Equations \ref{eqn:8.1} that $f(z)=p$ is an element of $(f(x),f(y))$, as desired. Now let $p$ be an arbitrary element of $(f(x),f(y))$. Then by Equations \ref{eqn:8.1}, $f(x)<p<f(y)$. We seek to prove that $[x,y]\subset(a,b)$. Let $q$ be an arbitrary element of $[x,y]$. Then by Equations \ref{eqn:8.1}, $x\leq q\leq y$. Additionally, since $x,y\in(a,b)$, Equations \ref{eqn:8.1} imply that $a<x<b$ and $a<y<b$. Thus, $a<x\leq q\leq y<b$, meaning by Equations \ref{eqn:8.1} that $q\in(a,b)$. Consequently, by Definition \ref{dfn:1.3}, $[x,y]\subset(a,b)$. If we now consider the restriction $f|_{[x,y]}$, we have by Proposition \ref{prp:9.7} that $f|_{[x,y]}$ is continuous. Thus, since $f|_{[x,y]}:[x,y]\to\R$ is continuous and $f|_{[x,y]}(x)=f(x)<p<f(y)=f|_{[x,y]}(y)$ (by Definition \ref{dfn:9.6}), Exercise \ref{exr:9.12} implies that there exists $c\in(x,y)$ such that $f|_{[x,y]}(c)=f(c)=p$. But by Definition \ref{dfn:1.18}, this implies that $p\in f((x,y))$.\par
+            The proof is symmetric in the other case.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Theorem \ref{trm:9.14}]
+        We first show that $g$ exists, and then show that it is continuous.\par
+        To prove that $g$ is a function, Definition \ref{dfn:1.16} tells us that it will suffice to show that for all $y\in f((a,b))$, there exists a unique $x\in (a,b)$ such that $g(y)=x$. We will first show that for each $y$, such an element exists, and then show that it is unique. Let $y$ be an arbitrary element of $f((a,b))$. Then by Definition \ref{dfn:1.18}, $y=f(x)$ for some $x\in(a,b)$. Thus, since we require that $g(f(x'))=x'$ and $f(g(y'))=y'$ for $g$ to be an inverse function, we assign $g(y)=x$. Now suppose that $g(y)=x_1$ and $g(y)=x_2$. Then by the definition of $g$, $f(x_1)=y$ and $f(x_2)=y$. It follows that $f(x_1)=f(x_2)$, implying since $f$ is injective by Definition \ref{dfn:1.20} that $x_1=x_2$, as desired.\par
+        To prove that $g$ is continuous, Definition \ref{dfn:9.15} tells us that it will suffice to show that for every $U\subset(a,b)$ that is open in $(a,b)$, the preimage $g^{-1}(U)$ is open in $f((a,b))$. Let $U$ be an arbitrary subset of $(a,b)$ that is open in $(a,b)$. To show that $g^{-1}(U)$ is open in $f((a,b))$, Definition \ref{dfn:8.11} tells us that it will suffice to confirm that $g^{-1}(U)=f((a,b))\cap G$, where $G$ is an open set.\par
+        To begin, we have
+        \begin{align*}
+            g^{-1}(U) &= \{y\in f((a,b))\mid g(y)\in U\}\tag*{Definition \ref{dfn:1.18}}\\
+            &= \{f(x)\in f((a,b))\mid g(f(x))\in U\}\tag*{Definition \ref{dfn:1.18}}
+            \intertext{By the definition of $g$, we have $g(f(x))=x$.}
+            &= \{f(x)\in f((a,b))\mid x\in U\}\\
+            &= \{f(x)\in\{f(x')\in\R\mid x'\in(a,b)\}\mid x\in U\}\tag*{Definition \ref{dfn:1.18}}
+            \intertext{This next transition is mostly notational in nature. $f(x)$ being an element of the set of all $f(x')\in\R$ that meet a certain condition means that $f(x)\in\R$. Additionally, since that condition is $x'\in(a,b)$, we know that $x\in(a,b)$. But if $x\in(a,b)$ and (from the condition in the original set) $x\in U$, we have by Definition \ref{dfn:1.6} that $x\in U\cap(a,b)$.}
+            &= \{f(x)\in\R\mid x\in U\cap(a,b)\}\\
+            &= f(U\cap(a,b))\tag*{Definition \ref{dfn:1.18}}
+            \intertext{By definition, $U$ is open in $(a,b)$. Consequently, by Definition \ref{dfn:8.11}, $U=(a,b)\cap V$ where $V$ is open.}
+            &= f(((a,b)\cap V)\cap(a,b))\\
+            &= f((a,b)\cap V)\tag*{Definition \ref{dfn:1.6}}\\
+            &= f((a,b))\cap f(V)\tag*{Additional Exercise \ref{axr:9.2b}}
+        \end{align*}\par
+        All that's left at this point is to prove that $f(V)$ is open. By Theorem \ref{trm:4.14}, $V=\bigcup_{\lambda\in I}\{R_\lambda\}$ is a collection of regions. It follows by an extension of Additional Exercise \ref{axr:9.2a} that $f(V)=\bigcup_{\lambda\in I}\{f(R_\lambda)\}$. Additionally, by the lemma, each $f(R_\lambda)$ is a region; hence, by Corollary \ref{cly:4.11}, each $f(R_\lambda)$ is open. Thus, $f(V)$ is the union of a collection of open subsets of $\R$, so by Corollary \ref{cly:4.18}, $f(V)$ is open.
+    \end{proof}
+\end{theorem}
+
+We denote the inverse function $g$ by $f^{-1}$.
+In this result, $g$ has codomain $(a,b)$ but our definition of continuity (Definition \ref{dfn:9.4}) only applies to functions with codomain $\R$. Our definitions/results are easily adapted. The definitions are as given below and we give a sample theorem. Other results can be adjusted in a similar fashion.
+
+\begin{definition}\label{dfn:9.15}
+    Let $X,Y\subset\R$. A function $f:X\to Y$ is \textbf{continuous} if for every $U$ that is open in $Y$, the preimage $f^{-1}(U)$ is open in $X$.
+\end{definition}
+
+\begin{definition}\label{dfn:9.16}
+    The function $f:X\to Y$ is \textbf{continuous} (at $x\in X$) if for every region $R$ containing $f(x)$, there exists an open set $S$ containing $x$ such that $S\cap X\subset f^{-1}(R\cap Y)$.
+\end{definition}
+
+\begin{theorem}\label{trm:9.17}
+    The function $f:X\to Y$ is continuous if and only if it is continuous at every $x\in X$.
+\end{theorem}
+
+
+\subsection*{Additional Exercises}
+\begin{enumerate}[ref={\thechapter.\arabic*}]
+    \stepcounter{enumi}
+    \item \label{axr:9.2}Let $X\subset\R$ and let $f:X\to\R$. Let $A,B\subset\R$. Either prove or give a counterexample to each of the following:
+    \begin{enumerate}[label={\alph*)},ref={\theenumi\alph*}]
+        \item \label{axr:9.2a}$f(A\cup B)=f(A)\cup f(B)$.
+        \item \label{axr:9.2b}$f(A\cap B)=f(A)\cap f(B)$.
+        \item \label{axr:9.2c}$f(A\setminus B)=f(A)\setminus f(B)$.
+    \end{enumerate}
+\end{enumerate}
+
 
 
 
