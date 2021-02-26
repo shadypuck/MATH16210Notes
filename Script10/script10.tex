@@ -100,6 +100,81 @@ A good summary of the definition of compactness is "every open cover contains a 
     \end{proof}
 \end{exercise}
 
+\begin{lemma}\label{lem:10.6}\marginnote{\emph{2/25:}}
+    No finite collection of regions covers $\R$.
+    \begin{lemma*}
+        If $X$ is nonempty, then $\emptyset$ does not cover $X$.
+        \begin{proof}
+            Suppose for the sake of contradiction that $\emptyset$ covers $X$. By Definition \ref{dfn:1.8}, there exists $x\in X$. It follows by Definition \ref{dfn:10.3} that $x\in\bigcup\emptyset$. But since $\bigcup\emptyset=\emptyset$, we have by Definition \ref{dfn:1.2} that $x\in\emptyset$, contradicting Definition \ref{dfn:1.8}.
+        \end{proof}
+    \end{lemma*}
+    \begin{proof}[Proof of Lemma \ref{lem:10.6}]
+        Suppose for the sake of contradiction that $\mathcal{G}$ is a finite collection of regions that covers $\R$. We divide into two cases ($\mathcal{G}=\emptyset$ and $\mathcal{G}\neq\emptyset$). If $\mathcal{G}=\emptyset$, then since $\R$ is nonempty (by Axiom \ref{axm:3.1}), the lemma asserts that $\mathcal{G}$ does not cover $\R$, a contradiction. If $\mathcal{G}\neq\emptyset$, then $\mathcal{G}=\{(a_1,b_1),(a_2,b_2),\dots,(a_n,b_n)\}$. Considering the set $\{a_1,\dots,a_n\}$ of lower bounds of all regions in $\mathcal{G}$, we can determine that it is nonempty and finite since $\mathcal{G}$ itself is nonempty and finite. Thus, by Lemma \ref{lem:3.4}, $\{a_1,\dots,a_n\}$ has a first point $a_i$. It follows by Axiom \ref{axm:3.3} and Definition \ref{dfn:3.3} that there exists a point $x\in\R$ such that $x<a_i$. Since $\mathcal{G}$ is an open cover of $\R$, we know by Definition \ref{dfn:10.3} that $x\in(a_j,b_j)$ for some $(a_j,b_j)\in\mathcal{G}$. But this implies by Equations \ref{eqn:8.1} that $a_j<x$ for some $a_j\in\{a_1,\dots,a_n\}$, contradicting the fact that $x<a_i\leq a_j$ for all $a_j\in\{a_1,\dots,a_n\}$ (the latter inequality being true by Definition \ref{dfn:3.3}).
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}\label{trm:10.7}
+    $\R$ is not compact.
+    \begin{proof}
+        To prove that $\R$ is not compact, Definition \ref{dfn:10.4} tells us that it will suffice to find an open cover $\mathcal{G}$ of $\R$ such that no finite subset $\mathcal{G}'\subset\mathcal{G}$ exists that is also an open cover. Let $\mathcal{G}$ be the collection of all regions in $\R$.\par
+        To confirm that $\mathcal{G}$ is an open cover, Definition \ref{dfn:10.3} tells us that it will suffice to demonstrate that every $x\in\R$ is an element of $R_\lambda$ for some region $R_\lambda\in\mathcal{G}$, and that every $R_\lambda$ is open. For the first condition, let $x$ be an arbitrary element of $\R$. Clearly, we have that $x\in(x-1,x+1)$ where $(x-1,x+1)$ is a region. Thus, $x$ is an element of a set in $\mathcal{G}$, as desired. As to the other condition, we have by Corollary \ref{cly:4.11} that every region (i.e., every set in $\mathcal{G}$) is open, as desired.\par
+        To confirm that no finite subset $\mathcal{G}'\subset\mathcal{G}$ exists that is also an open cover, we invoke Lemma \ref{lem:10.6}, which asserts as much. Technically, it forbids $\mathcal{G}'$ from being a cover, but a set that is not a cover cannot be an open cover by Definition \ref{dfn:10.3}.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:10.8}
+    Show that regions are not compact.
+    \begin{proof}
+        Let $(a,b)$ be an arbitrary region. To prove that $(a,b)$ is not compact, Definition \ref{dfn:10.4} tells us that it will suffice to find an open cover $\mathcal{G}$ of $\R$ such that no finite subset $\mathcal{G}'\subset\mathcal{G}$ exists that is also an open cover. Let $\mathcal{G}$ be the collection of all regions $(a,c)$ where $c\in(a,b)$.\par
+        To confirm that $\mathcal{G}$ is an open cover, Definition \ref{dfn:10.3} tells us that it will suffice to demonstrate that every $x\in(a,b)$ is an element of $(a,c)$ for some $(a,c)\in\mathcal{G}$, and that every $(a,c)$ is open. For the first condition, let $x$ be an arbitrary element of $(a,b)$. Then by Equations \ref{eqn:8.1}, $a<x<b$. It follows by Theorem \ref{trm:5.2} that there exists some $c$ such that $x<c<b$. Since $a<x<c<b$, we have by consecutive applications of Equations \ref{eqn:8.1} that $x\in(a,c)$ and $c\in(a,b)$. The latter result shows that $(a,c)\in\mathcal{G}$, as desired. As to the other condition, we have by Corollary \ref{cly:4.11} that every region (notably including all those in $\mathcal{G}$) is open, as desired.\par
+        To confirm that no finite subset $\mathcal{G}'\subset\mathcal{G}$ exists that is also an open cover, let $\mathcal{G}'$ be an arbitrary finite subset of $\mathcal{G}$. We divide into two cases ($\mathcal{G}'=\emptyset$ and $\mathcal{G}'\neq\emptyset$). If $\mathcal{G}'=\emptyset$, then since $(a,b)$ is nonempty, the lemma from Lemma \ref{lem:10.6} asserts that $\mathcal{G}'$ does not cover $(a,b)$, a contradiction. If $\mathcal{G}'\neq\emptyset$, then $\mathcal{G}'=\{(a,c_1),(a,c_2),\dots,(a,c_n)\}$. Considering the set $\{c_1,\dots,c_n\}$ of upper bounds of all regions in $\mathcal{G}'$, we can determine that it is nonempty and finite since $\mathcal{G}'$ itself is nonempty and finite. Thus, by Lemma \ref{lem:3.4}, $\{c_1,\dots,c_n\}$ has a last point $c_i$. Since $c_i\in(a,b)$, Equations \ref{eqn:8.1} assert that $a<c_i<b$. Consequently, by Theorem \ref{trm:5.2}, there exists a point $x\in\R$ such that $c_i<x<b$. Since $a<c_i<x<b$, we have by Equations \ref{eqn:8.1} that $x\in(a,b)$. Since $\mathcal{G}'$ is an open cover of $(a,b)$, we know by Definition \ref{dfn:10.3} that $x\in(a,c_j)$ for some $(a,c_j)\in\mathcal{G}'$. But this implies by Equations \ref{eqn:8.1} that $x<c_j$ for some $c_j\in\{c_1,\dots,c_n\}$, contradicting the fact that $c_j\leq c_i<x$ (the latter inequality being true by Definition \ref{dfn:3.3}).
+    \end{proof}
+\end{exercise}
+\pagebreak
+
+\begin{theorem}\label{trm:10.9}
+    If $X$ is compact, then $X$ is bounded.
+    \begin{proof}
+        % Let $\mathcal{G}=\{R\mid R\text{ is a region and there exists }x\in X:x\in R\}$. Let $x\in X$. Then $x\in(x-1,x+1)\in\mathcal{G}$. Thus, $\mathcal{G}$ is an open cover. Now because $X$ is compact, there exists a finite open cover $\mathcal{G}'\subset\mathcal{G}$. We know that $\mathcal{G}'=\{(a_1,b_1),(a_2,b_2),\dots,(a_n,b_n)\}$. We can now show that $a=\min(a_i)_{i\in[n]}$ and $b=\max(b_i)_{i\in[n]}$ are lower and upper bounds, respectively.
+
+        We divide into two cases ($X=\emptyset$ and $X\neq\emptyset$). Suppose first that $X=\emptyset$. Then if we let $a,b$ be arbitrary elements of $\R$, it is vacuously true that $a\leq x$ for all $x\in X$ and $x\leq b$ for all $x\in X$. Therefore, by consecutive applications of Definition \ref{dfn:5.6}, $a$ and $b$ are lower and upper bounds of $X$, respectively, and thus $X$ is bounded, as desired.\par
+        Now suppose that $X\neq\emptyset$. Let $\mathcal{G}=\{(x-1,x+1)\mid x\in X\}$. To confirm that $\mathcal{G}$ is an open cover of $X$, Definition \ref{dfn:10.3} tells us that it will suffice to demonstrate that every $x\in X$ is an element of some set in $\mathcal{G}$, and that every set in $\mathcal{G}$ is open. For the first condition, let $x$ be an arbitrary element of $X$. Clearly, we have that $x\in(x-1,x+1)$. Additionally, it follows from the fact that $x\in X$ that $(x-1,x+1)\in\mathcal{G}$. Thus, $x$ is an element of a set in $\mathcal{G}$, as desired. As to the other condition, we have by Corollary \ref{cly:4.11} that every region (notably including all those in $\mathcal{G}$) is open, as desired.\par
+        Since $\mathcal{G}$ is an open cover of $X$ and $X$ is compact, Definition \ref{dfn:10.4} asserts that there exists a finite subset $\mathcal{G}'$ of $\mathcal{G}$ that is also an open cover of $X$. Since $X$ is nonempty and $\mathcal{G}'$ is a cover of $X$, we have by the lemma from Lemma \ref{lem:10.6} that $\mathcal{G}'\neq\emptyset$. It follows since $\mathcal{G}$ is a collection of regions that $\mathcal{G}'=\{(a_1,b_1),(a_2,b_2),\dots,(a_n,b_n)\}$. Considering the sets $\{a_1,\dots,a_n\}$ of lower bounds of all regions in $\mathcal{G}'$ and $\{b_1,\dots,b_n\}$ of upper bounds of all regions in $\mathcal{G}'$, we can determine that both are nonempty and finite since $\mathcal{G}'$ itself is nonempty and finite. Thus, by consecutive applications of Lemma \ref{lem:3.4}, $\{a_1,\dots,a_n\}$ has a first point $a_i$ and $\{b_1,\dots,b_n\}$ has a last point $b_j$. To confirm that $a_i$ is a lower bound of $X$, Definition \ref{dfn:5.6} tells us that it will suffice to demonstrate that $a_i\leq x$ for all $x\in X$. Let $x$ be an arbitrary element of $X$. Then by Definition \ref{dfn:10.3}, $x\in(a_k,b_k)$ for some $(a_k,b_k)\in\mathcal{G}$. Thus, by Equations \ref{eqn:8.1}, $a_k<x<b_k$. Additionally, since $a_i$ is the first point of $\{a_1,\dots,a_n\}$, Definition \ref{dfn:3.3} asserts that $a_i\leq a_k$. Combining the last two results, we have by transitivity that $a_i<x$, which we may weaken to $a_i\leq x$, as desired. The proof that $b_j$ is an upper bound is symmetric. Therefore, since $X$ has a lower and an upper bound, Definition \ref{dfn:5.6} implies that $X$ is bounded.
+    \end{proof}
+\end{theorem}
+
+\begin{lemma}\label{lem:10.10}
+    Let $X\subset\R$ and $p\in\R\setminus X$. Then $\mathcal{G}=\{\ext(a,b)\mid p\in(a,b)\}$ is an open cover of $X$.
+    \begin{proof}
+        % Cly \ref{cly:4.21}: $\mathcal{G}$ is a collection of open sets.
+
+        % Let $x\in X$. Since $p\in\R\setminus X$, $x\neq p$. It follows that $x<p$ or $x>p$. If $x<p$, then we can choose $a,b\in\R$ such that $x<a<p<b$ (by Theorem \ref{trm:5.2} and Axiom \ref{axm:3.3}). $p\in(a,b)$, $x\notin(a,b)$, $x\neq a$, and $x\neq b$, imply that $x\in\ext(a,b)$. Thus, $x\in\bigcup\mathcal{G}$.
+
+        % Simplify $x<a<p<b$ with Theorem \ref{trm:3.22}.
+
+
+        To prove that $\mathcal{G}$ is an open cover of $X$, Definition \ref{dfn:10.3} tells us that it will suffice to show that every $x\in X$ is an element of some set in $\mathcal{G}$, and that every set in $\mathcal{G}$ is open. For the first condition, let $x,p$ be arbitrary elements of $X,\R\setminus X$, respectively. Since $x,p$ are elements of disjoint sets by Script \ref{sct:1}, we know that $x\neq p$. Thus, we can apply Theorem \ref{trm:3.22} to learn that there exist disjoint regions $(c,d)$ and $(a,b)$ containing $x$ and $p$, respectively. We now seek to verify that $x\in\ext(a,b)$. To do so, Definition \ref{dfn:3.15} tells that it will suffice to verify that $x\notin(a,b)$, $x\neq a$, and $x\neq b$. First, suppose for the sake of contradiction that $x\in(a,b)$. Then since $x\in(c,d)$, too, $x\in(a,b)\cap(c,d)$, contradicting Definition \ref{dfn:1.9} and the fact that $(a,b),(c,d)$ are disjoint. Second, suppose for the sake of contradiction that $x=a$. Since $x\in(c,d)$, we have by Equations \ref{eqn:8.1} that $c<x=a<d$. We divide into two cases ($d\leq b$ and $b<d$). If $d\leq b$, then by Theorem \ref{trm:5.2}, we can choose $z$ such that $c<x=a<z<d\leq b$. It follows by the same logic as in the first case that $z\in(a,b)\cap(c,d)$, and we arrive at the same contradiction. If $b<d$, then we similarly choose $c<x=a<z<b<d$, and arrive at the same contradiction again. The proof of the third claim is symmetric to that of the second. Therefore, $x\in\ext(a,b)$, so we have by the definition of $\mathcal{G}$ that $x$ is an element of a set in $\mathcal{G}$, as desired. As to the other condition, we have by Corollary \ref{cly:4.21} that every exterior of a region (notably including all those in $\mathcal{G}$) is open, as desired.
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}\label{trm:10.11}
+    If $X$ is compact, then $X$ is closed.
+    \begin{proof}
+        We divide into two cases ($X=\emptyset$ and $X\neq\emptyset$). Suppose first that $X=\emptyset$. Then by Theorem \ref{trm:4.2}, $X$ is closed, as desired.\par
+        Now suppose that $X\neq\emptyset$, and suppose for the sake of contradiction that $X$ is not closed. Then by Definition \ref{dfn:4.1}, there exists a limit point $p$ of $X$ such that $p\notin X$. Since $p\in\R$ and $p\notin X$, Definition \ref{dfn:1.11} implies that $p\in\R\setminus X$. Thus, by Lemma \ref{lem:10.10}, $\mathcal{G}=\{\ext(a,b)\mid p\in(a,b)\}$ is an open cover of $X$. Additionally, since $X$ is compact by hypothesis, we have by Definition \ref{dfn:10.4} that there exists a finite subset $\mathcal{G}'\subset\mathcal{G}$ that is also an open cover of $X$. Since $X$ is nonempty and $\mathcal{G}'$ is as cover of $X$, we have by the lemma from Lemma \ref{lem:10.6} that $\mathcal{G}'\neq\emptyset$. It follows since $\mathcal{G}$ is a collection of exteriors of regions that $\mathcal{G}'=\{\ext(a_1,b_1),\ext(a_2,b_2),\dots,\ext(a_n,b_n)\}$. Considering the sets $\{a_1,\dots,a_n\}$ and $\{b_1,\dots,b_n\}$, we can determine that both are nonempty and finite since $\mathcal{G}'$ itself is nonempty and finite. Thus, by consecutive applications of Lemma \ref{lem:3.4}, $\{a_1,\dots,a_n\}$ has a last point $a_i$ and $\{b_1,\dots,b_n\}$ has a first point $b_j$. We now seek to verify that $p\in(a_i,b_j)$. By consecutive applications of the definition of $\mathcal{G}$, $p\in(a_i,b_i)$ and $p\in(a_j,b_j)$. Consequently, by consecutive applications of Equations \ref{eqn:8.1}, $a_i<p<b_i$ and $a_j<p<b_j$. Since $a_i<p<b_j$, we have by Equations \ref{eqn:8.1} that $p\in(a_i,b_j)$, as desired. Thus, since $p\in(a_i,b_j)$ and $p\in LP(X)$, Definition \ref{dfn:3.13} asserts that $(a_i,b_j)\cap(X\setminus\{p\})\neq\emptyset$. Consequently, by Definition \ref{dfn:1.8}, there exists some $x\in(a_i,b_j)\cap(X\setminus\{p\})$. Thus, by Definitions \ref{dfn:1.6} and \ref{dfn:1.11}, $x\in(a_i,b_j)$ and $x\in X$. Since $\mathcal{G}'$ is an open cover of $X$, it follows from the latter condition by Definition \ref{dfn:10.3} that $x\in\ext(a_k,b_k)$ for some $\ext(a_k,b_k)\in\mathcal{G}'$. Consequently, by Lemma \ref{lem:3.16}, $x<a_k$ or $b_k<x$. We now divide into two cases. If $x<a_k$, this contradicts the fact that $a_k\leq a_i<x$ (the former inequality being true by Definition \ref{dfn:3.3} since $a_i$ is the last point of $\{a_1,\dots,a_n\}$). If $b_k<x$, we arrive at a symmetric contradiction.
+    \end{proof}
+\end{theorem}
+
+It will turn out that the two properties of compactness in Theorems \ref{trm:10.9} and \ref{trm:10.11} characterize compact sets completely, meaning that every bounded closed set is compact. We will see this in Theorem \ref{trm:10.16}. First, however, we need some preliminary results.\par
+For the next three statements, fix points $a,b\in\R$ and suppose $\mathcal{G}$ is an open cover of $[a,b]$.
+
+\begin{lemma}\label{lem:10.12}
+    For all $s\in[a,b]$, there exists $G\in\mathcal{G}$ and $p,q\in\R$ such that $p<s<q$ and $[p,q]\subset G$.
+    \begin{proof}
+        Let $s$ be an arbitrary element of $[a,b]$. Since $\mathcal{G}$ is an open cover of $[a,b]$, Definition \ref{dfn:10.3} implies that there exists a $G\in\mathcal{G}$ such that $s\in G$ and $G$ is open. It follows from the latter condition by Theorem \ref{trm:4.10} that there exists a region $(x,y)$ such that $s\in(x,y)$ and $(x,y)\subset G$. Since $s\in(x,y)$, we have by Equations \ref{eqn:8.1} that $x<s<y$. Thus, by consecutive applications of Theorem \ref{trm:5.2}, we can pick $p,q\in\R$ such that $x<p<s<q<y$. Clearly, $p<s<q$. To verify that $[p,q]\subset G$, Definition \ref{dfn:1.3} tells us that it will suffice to confirm that every $z\in[p,q]$ is an element of $G$. Let $z$ be an arbitrary element of $[p,q]$. Then by Equations \ref{eqn:8.1}, $p\leq z\leq q$. It follows since $x<p<q<y$ that $x<p\leq z\leq q<y$, meaning by Equations \ref{eqn:8.1} that $z\in(x,y)$. Since $(x,y)\subset G$ by definition, we have by Definition \ref{dfn:1.3} that $z\in G$, as desired.
+    \end{proof}
+\end{lemma}
+
 
 
 
