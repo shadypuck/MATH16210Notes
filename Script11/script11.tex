@@ -1,0 +1,112 @@
+\documentclass[../main.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter}{}}
+\setcounter{chapter}{10}
+
+\begin{document}
+
+
+
+
+\chapter{Limits and Continuity}\label{sct:11}
+\section{Journal}
+\marginnote{3/4:}Throughout this sheet, we let $f,g:A\to\R$ be real-valued functions with domain $A\subset\R$, unless otherwise specified.
+\begin{definition}\label{dfn:11.1}
+    Let $a\in LP(A)\subset\R$. A \textbf{limit} of $f$ at $a$ is a number $L\in\R$ satisfying the following condition: for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\epsilon$.
+\end{definition}
+
+\begin{lemma}\label{lem:11.2}
+    Limits are unique: if $L$ and $L'$ are both limits of $f$ at a point $a$, then $L=L'$.
+    \begin{proof}
+        Let the limit of $f$ at $a$ be $L$, and suppose for the sake of contradiction that the limit of $f$ at $a$ is also equal to $L'$ where $L\neq L'$. Then by consecutive applications of Definition \ref{dfn:11.1}, we have that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\epsilon$; and that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L'|<\epsilon$. If we let $\epsilon=\frac{|L-L'|}{2}$, then $\epsilon>0$ by Script \ref{sct:8}. Thus, choosing only $x$ in the range prescribed by the $\delta$ corresponding to this $\epsilon$, we have
+        \begin{align*}
+            |L-L'| &= |L-f(x)+f(x)-L'|\\
+            &\leq |L-f(x)|+|f(x)-L'|\tag*{Lemma \ref{lem:8.8}}\\
+            &= |f(x)-L|+|f(x)-L'|\tag*{Exercise \ref{exr:8.5}}\\
+            &< 2\epsilon\\
+            &= |L-L'|
+        \end{align*}
+        But $|L-L'|\not<|L-L'|$, so we have a contradiction.
+    \end{proof}
+\end{lemma}
+
+\begin{definition}\label{dfn:11.3}
+    If $L$ is the limit of $f$ at $a$, we write
+    \begin{equation*}
+        \lim_{x\to a}f(x) = L
+    \end{equation*}
+\end{definition}
+
+\begin{exercise}\label{exr:11.4}
+    Give an example of a set $A\subset\R$, a function $f:A\to\R$, and a point $a\in LP(A)$ such that $\lim_{x\to a}f(x)$ does not exist.
+    \begin{proof}
+        Let $A=\R$, let $f:A\to\R$ be defined by
+        \begin{equation*}
+            f(x) =
+            \begin{cases}
+                1 & x\geq 0\\
+                0 & x<0
+            \end{cases}
+        \end{equation*}
+        and consider $0\in LP(\R)$ (by Corollary \ref{cly:5.4}). Now suppose for the sake of contradiction that $\lim_{x\to a}f(x)=L$. Then by Definitions \ref{dfn:11.3}\footnote{I will not cite this definition again for the sake of concision.} and \ref{dfn:11.1}, for all $\epsilon>0$, there exists some $\delta>0$ such that if $x\in\R$ and $0<|x-0|=|x|<\delta$, then $|f(x)-L|<\epsilon$. If we let $\epsilon=0.5$, then $\epsilon>0$. Choosing a corresponding $\delta$, we have by an extension of Exercise \ref{exr:8.9} that all $x\in(-\delta,0)\cup(0,\delta)$ satisfy $|f(x)-L|<\epsilon$. This would include objects $y\in(0,\delta)$ and $z\in(-\delta,0)$. We have by the definition of $f$ that $f(y)=1$ and $f(z)=0$; thus, we have
+        \begin{align*}
+            1 &= |f(y)-f(z)|\\
+            &= |f(y)-L+L-f(z)|\\
+            &\leq |f(y)-L|+|f(z)-L|\\
+            &< 0.5+0.5\\
+            &= 1
+        \end{align*}
+        But $1\not<1$, so we have a contradiction.
+    \end{proof}
+\end{exercise}
+
+\begin{theorem}\label{trm:11.5}
+    Let $x\in A$. Then the following are equivalent:
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $f$ is continuous at $x$.
+        \item For every $\epsilon>0$, there exists $\delta>0$ such that if $y\in A$ and $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$.
+        \item Either $x\notin LP(A)$ or $\lim_{y\to x}f(y)=f(x)$.
+    \end{enumerate}
+    \begin{proof}
+        To illustrate that statements $a$-$c$ are equivalent, it will suffice to verify that $a\Rightarrow b$, $b\Rightarrow c$, and $c\Rightarrow a$. Note that this foregoes the need for explicit proofs of "backwards implications" such as $b\Rightarrow a$ since that implication, for example, follows from $b\Rightarrow c\Rightarrow a$. Let's begin.\par\smallskip
+        To prove that $a\Rightarrow b$, let $\epsilon>0$ be arbitrary and look to find a $\delta>0$ such that if $y\in A$ and $|y-x|<\delta$, then $|f(y)-f(x)|$.\par
+        We first locate $\delta$. To do so, begin by defining the region $R=(f(x)-\epsilon,f(x)+\epsilon)$ (clearly $R$ contains $f(x)$). Since $R$ is open by Corollary \ref{cly:4.11} and $f$ is continuous at $x$, we have by Definition \ref{dfn:9.9} that there exists an open set $S$ with $x\in S$ such that $S\cap A\subset f^{-1}(R)$. It follows by Theorem \ref{trm:4.10} that there exists a region $(a,b)$ such that $x\in(a,b)$ and $(a,b)\subset S$. Thus, since $(a,b)$ is an open interval by Corollary \ref{cly:4.11} and Lemma \ref{lem:8.3}, we have by Lemma \ref{lem:8.10} that there exists a number $\delta>0$ such that $(x-\delta,x+\delta)\subset(a,b)$.\par
+        As we will now show, this $\delta$ satisfies the desired property. Let $y$ be an arbitrary element of $A$ such that $|y-x|<\delta$. Then by Exercise \ref{exr:8.9}, $y\in(x-\delta,x+\delta)$. It follows by consecutive applications of Definition \ref{dfn:1.3} that $y\in (a,b)$, hence $y\in S$. This result combined with the fact that $y\in A$ by definition implies by Definition \ref{dfn:1.6} that $y\in S\cap A$. Thus, by Definition \ref{dfn:1.3} again, $y\in f^{-1}(R)$. Consequently, by Definition \ref{dfn:1.18}, $f(y)\in R$. Therefore, by Exercise \ref{exr:8.9} one more time, $|f(y)-f(x)|<\epsilon$.\par\smallskip
+        To prove that $b\Rightarrow c$, let $x$ be an arbitrary element of $\R$. We divide into two cases ($x\notin LP(A)$ and $x\in LP(A)$). If $x\notin LP(A)$, then we are done. If $x\in LP(A)$, then by the hypothesis, we know that for every $\epsilon>0$, there exists a $\delta>0$ such that if $y\in A$ and $0<|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. It follows by Definition \ref{dfn:11.1} that $f(x)$ is the limit of $f$ at $x$, meaning that $\lim_{y\to x}f(y)=f(x)$, and we are done.\par\smallskip
+        To prove that $c\Rightarrow a$, we divide into two cases ($x\notin LP(A)$ and $\lim_{y\to x}f(y)=f(x)$).\par
+        Suppose first that $x\notin LP(A)$. To demonstrate that $f$ is continuous at $x$, Definition \ref{dfn:9.9} tells us that it will suffice to confirm that for every region $R$ containing $f(x)$, there exists an open set $S$ containing $x$ such that $S\cap A\subset f^{-1}(R)$. Let $R$ be an arbitrary region with $f(x)\in R$. Since $x\notin LP(A)$, Definition \ref{dfn:3.13} asserts that there exists a region (hence an open set by Corollary \ref{cly:4.11}) $S$ such that $x\in S$ and $S\cap(A\setminus\{x\})=\emptyset$. It follows by Script \ref{sct:1} that $S\cap A=\{x\}$. But since $f(x)\in R$ implies by Definition \ref{dfn:1.18} that $x\in f^{-1}(R)$, we have by Definition \ref{dfn:1.3} that $S\cap A\subset f^{-1}(R)$. Therefore, $S$ is an open set containing $x$ such that $S\cap A\subset f^{-1}(R)$.\par
+        Now suppose that $\lim_{y\to x}f(y)=f(x)$. To demonstrate that $f$ is continuous at $x$, Definition \ref{dfn:9.9} tells us that it will suffice to confirm that for every region $(a,b)$ containing $f(x)$, there exists an open set $S$ containing $x$ such that $S\cap A\subset f^{-1}((a,b))$. Let $(a,b)$ be an arbitrary region with $f(x)\in(a,b)$. Then since $(a,b)$ is an open interval by Lemma \ref{lem:8.3}, Lemma \ref{lem:8.10} asserts that there exists $\epsilon>0$ such that $(f(x)-\epsilon,f(x)+\epsilon)\subset(a,b)$. With regard to this $\epsilon$, since $\lim_{y\to x}f(y)=f(x)$ by hypothesis, we have by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $y\in A$ and $0<|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $S=(x-\delta,x+\delta)$. Clearly, $S$ contains $x$. Additionally, we can confirm that $S\cap A\subset f^{-1}((a,b))$: if we let $y$ be an arbitrary element of $S\cap A$, then Definition \ref{dfn:1.6} asserts that $y\in S$ and $y\in A$. It follows from the former condition by Exercise \ref{exr:8.9} that $|y-x|<\delta$. This combined with the fact that $y\in A$ implies that $|f(y)-f(x)|<\epsilon$. Thus, by Exercise \ref{exr:8.9} again, $f(y)\in(f(x)-\epsilon,f(x)+\epsilon)$. Consequently, by Definition \ref{dfn:1.3}, $f(y)\in(a,b)$. As such, we have by Definition \ref{dfn:1.18} that $y\in f^{-1}((a,b))$, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{exercise}\label{exr:11.6}\leavevmode
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item Let $a,b\in\R$ and let $f:\R\to\R$ be given by $f(x)=ax+b$. Show that $f$ is continuous at every $x\in\R$.
+        \item Let $f:\R\to\R$ be given by $
+            f(x) =
+            \begin{cases}
+                1 & x\neq 0\\
+                0 & x=0
+            \end{cases}
+        $. Show that $f$ is not continuous at 0.
+    \end{enumerate}
+    \begin{proof}[Proof of a]
+        To prove that $f$ is continuous at every $x\in\R$, let $x$ be an arbitrary element of $\R$; then by Theorem \ref{trm:11.5}, it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $y\in A$ and $|y-x|<\delta$, then $|f(y)-f(x)|<\epsilon$. Let $\epsilon>0$ be arbitrary. We divide into two cases ($a=0$ and $a\neq 0$). If $a=0$, then choose $\delta=1$\footnote{This choice is arbitrary; it can be any nonzero value, as we will soon see.}. This makes it so that for any $y\in A$ such that $|y-x|<\delta=1$, we have $|f(y)-f(x)|=|b-b|=0<\epsilon$, as desired. If $a\neq 0$, then choose $\delta=\frac{\epsilon}{|a|}$. This makes it so that for any $y\in A$ such that $|y-x|<\delta=\frac{\epsilon}{|a|}$, we have
+        \begin{align*}
+            |a|\, |y-x| &< \epsilon\\
+            |ay-ax| &< \epsilon\\
+            |ay+b-(ax+b)| &< \epsilon\\
+            |f(y)-f(x)| &< \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+    \begin{proof}[Proof of b]
+        To prove that $f$ is not continuous at $0$, Theorem \ref{trm:11.5} tells us that it will suffice to show that for some $\epsilon>0$, no $\delta>0$ exists such that if $x\in\R$ and $|x-0|=|x|<\delta$, then $|f(x)-1|<\epsilon$. Let $\epsilon=1$, and suppose for the sake of contradiction that $\delta>0$ is a number such that if $x\in\R$ and $|x|<\delta$, then $|f(x)-1|<\epsilon$. Clearly, $0\in\R$ and by the definition of $\delta$ and Definition \ref{dfn:8.4}, $|0|<\delta$. However, $|f(x)-1|=|0-1|=1\not<1=\epsilon$, a contradiction.
+    \end{proof}
+\end{exercise}
+
+
+
+
+\end{document}

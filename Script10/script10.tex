@@ -222,6 +222,29 @@ For the next three statements, fix points $a,b\in\R$ and suppose $\mathcal{G}$ i
     \end{proof}
 \end{theorem}
 
+\begin{theorem}\label{trm:10.19}\marginnote{\emph{3/4:}}
+    Suppose that $f:X\to\R$ is continuous. If $X$ is compact, the $f(X)$ is compact.
+    \begin{proof}
+        To prove that $f(X)$ is compact, Definition \ref{dfn:10.4} tells us that it will suffice to show that for every open cover $\mathcal{G}$ of $f(X)$, there exists a finite subset $\mathcal{G}'\subset\mathcal{G}$ that is also an open cover. Let $\mathcal{G}$ be an arbitrary open cover of $f(X)$. Then Definition \ref{dfn:10.3} implies that for every point $f(x)\in f(X)$, we have that $f(x)\in G_{f(x)}$ where $G_{f(x)}$ is an element of $\mathcal{G}$. It follows since every $G_{f(x)}\in\mathcal{G}$ by Definition \ref{dfn:10.3} that every $G_{f(x)}$ is open. Thus, by Definition \ref{dfn:9.4}, every $f^{-1}(G_{f(x)})$ is open in $X$. Consequently, by Definition \ref{dfn:8.11}, every $f^{-1}(G_{f(x)})=X\cap A_x$ for some open set $A_x$.\par
+        We will now show that $\mathcal{H}=\{A_x\}_{x\in X}$ is an open cover of $X$. Since every $f(x)\in G_{f(x)}$, Definition \ref{dfn:1.18} implies that every $x\in f^{-1}(G_{f(x)})$. It follows by Definitions \ref{dfn:1.2} and \ref{dfn:1.6} that every $x\in A_x$. But since every $x\in X$ is an element of $A_x\in\mathcal{H}$ and each $A_x$ is open by definition, Definition \ref{dfn:10.3} implies that $\mathcal{H}$ is an open cover of $X$.\par
+        It follows since $X$ is compact by Definition \ref{dfn:10.4} that there exists a finite subset $\mathcal{H}'\subset\mathcal{H}$ that is also an open cover of $X$. Since $\mathcal{H}'$ is finite, we know that $\mathcal{H}'=\{A_{x_1},\dots,A_{x_n}\}$ where $x_1,\dots,x_n$ are elements of $X$. Let $\mathcal{G}'=\{G_{f(x_1)},\dots,G_{f(x_n)}\}$. By Script \ref{sct:1}, $\mathcal{G}'\subset\mathcal{G}$. Script \ref{sct:1} also implies that $\mathcal{G}'$ is finite. However, to demonstrate that $\mathcal{G}'$ is an open cover of $f(X)$, Definition \ref{dfn:10.3} tells us that we must confirm that every $f(x)\in f(X)$ is an element of $G$ for some $G\in\mathcal{G}'$, and that every $G$ is open. For the first condition, let $f(x)$ be an arbitrary element of $f(X)$. Then since $x\in X$, $x\in A_{x_i}$ for some $A_{x_i}\in\mathcal{H}'$. It follows by the definition of $A_{x_i}$ that $x\in f^{-1}(G_{f(x_i)})$. Thus, by Definition \ref{dfn:1.18}, $f(x)\in G_{f(x_i)}$. Therefore, $f(x)$ is an element of an element of $\mathcal{G}'$, as desired. As to the other condition, since every $G\in\mathcal{G}'$ is an element of $\mathcal{G}$ (i.e., open by Definition \ref{dfn:10.3}), every $G\in\mathcal{G}'$ is open, as desired.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:10.20}
+    If $X\subset\R$ is nonempty, closed, and bounded and $f:X\to\R$ is continuous, then $f(X)$ has a first and last point.
+    \begin{proof}
+        Since $X$ is closed and bounded, we have by Theorem \ref{trm:10.16} that $X$ is compact. This result combined with the fact that $f$ is continuous implies by Theorem \ref{trm:10.19} that $f(X)$ is compact. Thus, by Theorem \ref{trm:10.16} again, $f(X)$ is closed and bounded. Additionally, since $X$ is nonempty, there exists $x\in X$. Consequently, $f(x)\in f(X)$, so $f(X)$ is nonempty. Therefore, since $f(X)$ is nonempty, closed, and bounded, we have by Corollary \ref{cly:5.18} that $f(X)$ has a first and last point.
+    \end{proof}
+\end{corollary}
+
+\begin{exercise}\label{exr:10.21}
+    Use Corollary \ref{cly:10.20} to prove that if $f:[a,b]\to\R$ is continuous, then there exists a point $c\in[a,b]$ such that $f(c)\geq f(x)$ for all $x\in[a,b]$. Similarly, there exists a point $d\in[a,b]$ such that $f(d)\leq f(x)$ for all $x\in[a,b]$.
+    \begin{proof}
+        By Equations \ref{eqn:8.1}, $a\in[a,b]$, so $[a,b]$ is nonempty. By Corollaries \ref{cly:5.15} and \ref{cly:4.7}, $[a,b]$ is closed. Since $a,b$ are lower and upper bounds on $[a,b]$, respectively ($x\in[a,b]$ implies $a\leq x$ and $x\leq b$), Definition \ref{dfn:5.6} asserts that $[a,b]$ is bounded. These three results combined with the fact that $f$ is continuous imply by Corollary \ref{cly:10.20} that $f([a,b])$ has a first and last point. With respect to the first point, by Definition \ref{dfn:3.3}, there exists some $f(c)\in f([a,b])$ such that $f(c)\geq f(x)$ for all $f(x)\in f([a,b])$. By consecutive applications of Definition \ref{dfn:1.18}, $f(c)\in f([a,b])$ implies that $c\in[a,b]$, and $x\in[a,b]$ implies that $f(x)\in f([a,b])$, i.e., $f(c)\geq f(x)$. Therefore, there exists a point $c\in[a,b]$ such that $f(c)\geq f(x)$ for all $x\in[a,b]$. The argument is symmetric with respect to the last point.
+    \end{proof}
+\end{exercise}
+
 
 
 
