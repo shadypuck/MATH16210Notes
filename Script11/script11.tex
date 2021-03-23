@@ -106,6 +106,31 @@
     \end{proof}
 \end{exercise}
 
+\begin{exercise}\label{exr:11.7}\marginnote{3/9:}
+    Show that the absolute value function $f:\R\to\R$, $f(x)=|x|$ is continuous.
+    \begin{proof}
+        To prove that the absolute value function is continuous, Theorem \ref{trm:9.10} tells us that it will suffice to show that it is continuous at every $x\in\R$. To do this, let $x$ be an arbitrary element of $\R$; then by Theorem \ref{trm:11.5}, it will suffice to verify that for every $\epsilon>0$, there exists a $\delta>0$ such that if $y\in\R$ and $|y-x|<\delta$, then $||y|-|x||<\epsilon$. Let $\epsilon>0$ be arbitrary. Then choose $\delta=\epsilon$. This makes it so that for any $y\in A$ such that $|y-x|<\delta$, we have $||y|-|x||\leq|y-x|<\delta=\epsilon$ (with the first inequality coming from Lemma \ref{lem:8.8}), as desired.
+    \end{proof}
+\end{exercise}
+
+Given real-valued functions $f$ and $g$, we define new functions $f+g$, $fg$, and $\frac{1}{f}$ by
+\begin{align*}
+    (f+g)(x) &= f(x)+g(x)&
+    (fg)(x) &= f(x)\cdot g(x)&
+    \frac{1}{f}(x) &= \frac{1}{f(x)}
+\end{align*}
+where $f(x)\neq 0$ in the definition of $\frac{1}{f}$. We wish to understand the limits of $f+g$, $fg$, and $\frac{1}{f}$ in terms of the limits of $f$ and $g$.
+
+\begin{lemma}\label{lem:11.8}
+    If $\lim_{x\to a}f(x)=L>0$, then there exists a region $R$ with $a\in R$ such that $f(x)>0$ for all $x\in R\cap A$ such that $x\neq a$. Moreover, if $f$ is continuous at $a$, then $f(x)>0$ for all $x\in R\cap A$. The analogous statement is true if $\lim_{x\to a}f(x)=L<0$.
+    \begin{proof}
+        We divide into two cases ($\lim_{x\to a}f(x)=L>0$ and $\lim_{x\to a}f(x)=L<0$).\par\smallskip
+        Suppose first that $\lim_{x\to a}f(x)=L>0$. Choose $\epsilon=L$. Then we have by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<L$. Let $R=(a-\delta,a+\delta)$. Clearly, $a\in R$. Now let $x$ be an arbitrary element of $R\cap A$ such that $x\neq a$. It follows from the first condition by Definition \ref{dfn:1.6} that $x\in R$ and $x\in A$. Following from the former condition again, we have by Exercise \ref{exr:8.9} that $|x-a|<\delta$. Additionally, since $x\neq a$, Definition \ref{dfn:3.1} asserts that $x>a$ or $x<a$, i.e., $x-a>0$ or $x-a<0$; either way, Script \ref{sct:8} implies that $0<|x-a|$. To recap, we know that $x\in A$ and $0<|x-a|<\delta$, so we have by the initial implication that $|f(x)-L|<L=\epsilon$. Therefore, by the lemma from Exercise \ref{exr:8.9}, we have $-L<f(x)-L<L$, i.e., $0<f(x)$ (which we obtain by adding $L$ to both sides of the inequality as permitted by Definition \ref{dfn:7.21}).\par
+        Moreover, if $f$ is continuous at $a$, then by Theorem \ref{trm:11.5}, $a\notin LP(A)$ or $\lim_{x\to a}f(x)=f(a)$. But by Definition \ref{dfn:11.1}, $a\in LP(A)$, so we have $\lim_{x\to a}f(x)=f(a)$. The first part of this proof guarantees the existence of a region $R$ such that $f(x)>0$ for all $x\in R\cap A$ such that $x\neq a$. The fact that $f(a)=L>0$ takes care of the case where $x=a$.\par\smallskip
+        The proof is symmetric in the other case.
+    \end{proof}
+\end{lemma}
+
 
 
 
