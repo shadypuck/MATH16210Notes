@@ -131,6 +131,99 @@ where $f(x)\neq 0$ in the definition of $\frac{1}{f}$. We wish to understand the
     \end{proof}
 \end{lemma}
 
+\begin{theorem}\label{trm:11.9}\marginnote{\emph{3/11:}}
+    Suppose that $\lim_{x\to a}f(x)=L$ and $\lim_{x\to a}g(x)=M$. Then
+    \begin{enumerate}[label={\textup{(}\alph*\textup{)}}]
+        \item $\lim_{x\to a}(f+g)(x)=L+M$.
+        \item $\lim_{x\to a}(fg)(x)=L\cdot M$.
+        \item Suppose that $\lim_{x\to a}f(x)=L\neq 0$. Then $\lim_{x\to a}\frac{1}{f}(x)=\frac{1}{L}$.
+    \end{enumerate}
+    \begin{proof}[Proof of a]To prove that $\lim_{x\to a}(f+g)(x)=L+M$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|(f+g)(x)-(L+M)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Consider $\frac{\epsilon}{2}$. Since $\lim_{x\to a}f(x)=L$ and $\lim_{x\to a}g(x)=M$, we have by consecutive applications of Definition \ref{dfn:11.1} that there exists a $\delta_1>0$ such that if $x\in A$ and $0<|x-a|<\delta_1$, then $|f(x)-L|<\frac{\epsilon}{2}$; and there exists a $\delta_2>0$ such that if $x\in A$ and $0<|x-a|<\delta_2$, then $|g(x)-M|<\frac{\epsilon}{2}$. Now choose $\delta=\min(\delta_1,\delta_2)$. This makes it so that for any $x\in A$ such that $0<|x-a|<\delta$, we have $|f(x)-L|<\frac{\epsilon}{2}$ and $|g(x)-M|<\frac{\epsilon}{2}$, so
+        \begin{align*}
+            |(f+g)(x)-(L+M)| &= |f(x)-L+g(x)-M|\\
+            &\leq |f(x)-L|+|g(x)-M|\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+        as desired.
+    \end{proof}
+    \begin{proof}[Proof of b]
+        To prove that $\lim_{x\to a}(fg)(x)=LM$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|(fg)(x)-LM|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}f(x)=L$ and $\lim_{x\to a}g(x)=M$ (and $\min(\frac{\epsilon}{2(|L|+1)},1)$ and $\frac{\epsilon}{2(|M|+1)}$ are both greater than zero), we have by consecutive applications of Definition \ref{dfn:11.1} that there exists a $\delta_1>0$ such that if $x\in A$ and $0<|x-a|<\delta_1$, then $|f(x)-L|<\min(\frac{\epsilon}{2(|L|+1)},1)$\footnote{When we choose a compound $\epsilon$ (i.e., one that makes use of a min expression), it means that $|f(x)-L|<\frac{\epsilon}{2(|L|+1)}$ and $|f(x)-L|<1$. Basically, whichever quantity is smaller is what min evaluates to, and whichever is bigger is still greater than $|f(x)-L|$ by transitivity.}; and there exists a $\delta_2>0$ such that if $x\in A$ and $0<|x-a|<\delta_2$, then $|g(x)-M|<\frac{\epsilon}{2(|M|+1)}$. Now choose $\delta=\min(\delta_1,\delta_2)$. This makes it so that for any $x\in A$ such that $0<|x-a|<\delta$, we have $|f(x)-L|<\min(\frac{\epsilon}{2(|L|+1)},1)$ and $|g(x)-M|<\frac{\epsilon}{2(|M|+1)}$.\par
+        Before we get into the body of the proof, we need a couple of preliminary results. By Script \ref{sct:8}, we have $|a|=|a-b+b|\leq|a-b|+|b|$, so $|a|-|b|\leq|a-b|$. Thus, since $|f(x)-L|<1$, we have $|f(x)|-|L|\leq|f(x)-L|<1$, which means that $|f(x)|<1+|L|$. Additionally, we have
+        \begin{align*}
+            f(x)g(x)-LM &= f(x)g(x)-f(x)M+f(x)M-LM\\
+            &= f(x)(g(x)-M)+M(f(x)-L)
+        \end{align*}\par
+        With these results, we are ready to introduce the main inequality:
+        \begin{align*}
+            |(fg)(x)-LM| &= |f(x)(g(x)-M)+M(f(x)-L)\\
+            &\leq |f(x)|\cdot|g(x)-M|+|M|\cdot|f(x)-L|\\
+            &< (1+|L|)\cdot\frac{\epsilon}{2(|L|+1)}+|M|\cdot\frac{\epsilon}{2(|M|+1)}\\
+            &= \frac{\epsilon}{2}\cdot\frac{1+|L|}{1+|L|}+\frac{\epsilon}{2}\cdot\frac{|M|}{|M|+1}\\
+            &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+            &= \epsilon
+        \end{align*}
+    \end{proof}
+    \begin{proof}[Proof of c]
+        % Pull from Spivak
+        % Consider using Lemma 11.8 to prove that $\frac{1}{f}$ is well defined.
+
+        To prove that $\lim_{x\to a}\frac{1}{f}(x)=\frac{1}{L}$, Definition \ref{dfn:11.1} tells us that it will suffice  to show that for every $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|\frac{1}{f}(x)-\frac{1}{L}|<\epsilon$. Let $\epsilon>0$ be arbitrary. Since $\lim_{x\to a}f(x)=L$ and $\min(|L|,\epsilon|L|^2)>0$, we have by Definition \ref{dfn:11.1} that there exists a $\delta_1>0$ such that if $x\in A$ and $0<|x-a|<\delta_1$, then $|f(x)-L|<\min(|L|,\epsilon|L|^2)$. Additionally, since $L\neq 0$, Theorem \ref{lem:11.8} asserts that there exists a region $R$ containing $a$ such that for all $x\in(R\cap A)\setminus\{a\}$, $f(x)\neq 0$ (since $L\neq 0$ implies $L>0$ or $L<0$). It follows by Lemma \ref{lem:8.10} that there exists a $\delta_2$ such that $(a-\delta_2,a+\delta_2)\subset R$. Let $\delta=\min(\delta_1,\delta_2)$.\par
+        At this point, we know by this definition of $\delta$ that if $x\in A$ and $0<|x-a|<\delta$, then $|f(x)-L|<\min(|L|,\epsilon|L|^2)$ and $f(x)\neq 0$. Before we get into the body of the proof, we need one more preliminary result. It follows from the fact that $|f(x)-L|<|L|$ that
+        \begin{align*}
+            |f(x)| &= |f(x)|-|L|+|L|\\
+            &\leq |f(x)-L|+|L|\\
+            &< |L|+|L|\\
+            &= 2|L|
+        \end{align*}\par
+        With these results, we are ready to introduce the main inequality:
+        \begin{align*}
+            \left| \frac{1}{f}(x)-\frac{1}{L} \right| &= \left| \frac{1}{f(x)}-\frac{1}{L} \right|\\
+            &= \left| \frac{L-f(x)}{f(x)\cdot L} \right|\\
+            &= \frac{|f(x)-L|}{|f(x)|\cdot|L|}\\
+            &< \frac{\epsilon|L|^2}{|f(x)|\cdot|L|}\\
+            &= \frac{\epsilon|L|}{|f(x)|}\\
+            &< \frac{\epsilon|L|}{2|L|}\\
+            &= \frac{\epsilon}{2}\\
+            &< \epsilon
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}\label{cly:11.10}
+    If $f$ and $g$ are continuous at $a$, then $f+g$ and $fg$ are continuous at $a$. Also, $\frac{1}{f}$ and $\frac{g}{f}$ are continuous at $a$, provided that $f(a)\neq 0$.
+    \begin{proof}
+        Since $f$ is continuous at $a$, we have by Theorem \ref{trm:11.5} that either $a\notin LP(A)$ or $\lim_{x\to a}f(x)=f(a)$. Similarly, we have that either $a\notin LP(A)$ or $\lim_{x\to a}g(x)=g(a)$. We divide into four cases ($a\notin LP(A)$ and $a\notin LP(A)$, $a\notin LP(A)$ and $\lim_{x\to a}g(x)=g(a)$, $\lim_{x\to a}f(x)=f(a)$ and $a\notin LP(A)$, and $\lim_{x\to a}f(x)=f(a)$ and $\lim_{x\to a}g(x)=g(a)$). If $a\notin LP(A)$ (this takes care of the first three cases), then by Theorem \ref{trm:11.5}, $f+g$ is continuous at $a$. If $\lim_{x\to a}f(x)=f(a)$ and $\lim_{x\to a}g(x)=g(a)$, then by Theorem \ref{trm:11.9}, $\lim_{x\to a}(f+g)(x)=f(a)+g(a)=(f+g)(a)$. Therefore, by Theorem \ref{trm:11.5}, $f+g$ is continuous at $a$.\par
+        The proofs of the second and third cases are symmetric to that of the first. The fourth case can be handled by letting $\frac{g}{f}=g\cdot\frac{1}{f}$ and applying the third and second cases.
+    \end{proof}
+\end{corollary}
+
+\begin{definition}\label{dfn:11.11}
+    A \textbf{polynomial} (in one variable with real coefficients) is a function $f$ of the form
+    \begin{equation*}
+        f(x) = a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
+    \end{equation*}
+    for some $n\in\N\cup\{0\}$, where $a_i\in\R$ for $0\leq i\leq n$. A \textbf{rational function} (in one variable with real coefficients) is a function of the form $h(x)=\frac{f(x)}{g(x)}$ where $f$ and $g$ are polynomials in one variable with real coefficients.
+\end{definition}
+
+\begin{corollary}\label{cly:11.12}
+    Polynomials in one variable with real coefficients are continuous. A rational function in one variable with real coefficients $h(x)=\frac{f(x)}{g(x)}$ is continuous at all $a\in\R$ where $g(a)\neq 0$.
+    \begin{proof}
+        We induct on the degree $n$ of the polynomial. For the base case $n=0$, we have by Definition \ref{dfn:11.11} that $f$ is a function of the form $f(x)=a_0$ for some $a_0\in\R$. Thus, by Exercise \ref{exr:11.6}, $f$ is continuous at every $x\in\R$ (since $ax+b$ is continuous for $a=0$ and $b=a_0$). Therefore, by Theorem \ref{trm:9.10}, $f$ is continuous. Now suppose inductively that all functions of the form $f(x)=a_nx^n+\cdots+a_0$ are continuous; we seek to prove that all functions of the form $\tilde{f}(x)=a_{n+1}x^{n+1}+\cdots+a_0$ are continuous. By the inductive hypothesis, we know that $x^n$ is continuous. Thus, by Theorem \ref{trm:9.10}, $x^n$ is continuous at every $x\in\R$. Additionally, by Exercise \ref{exr:11.6}, $a_{n+1}x$ (where $a_{n+1}$ is an arbitrary element of $\R$) is continuous at every $x\in\R$. The last two results combined with Corollary \ref{cly:11.10} tell us that $a_{n+1}x^{n+1}$ is continuous at every $x\in\R$. In addition, since $f$ is continuous, Theorem \ref{trm:9.10} asserts tht $f$ is continuous at every $x\in\R$. Thus, by Corollary \ref{cly:11.10} again, $g(x)=a_{n+1}x^{n+1}+f(x)=a_{n+1}x^{n+1}+\cdots+a_0$ is continuous at every $x\in\R$. By one more application of Theorem \ref{trm:9.10}, $g(x)$ is continuous.\par
+        Now we move on to proving that $h(x)=\frac{f(x)}{g(x)}$ is continuous at all $a\in\R$ such that $g(a)\neq 0$. By the above, $f$ and $g$ (as polynomials) are continuous. Thus, by Theorem \ref{trm:9.10}, $f$ and $g$ are continuous at every $a\in\R$. Therefore, by Corollary \ref{cly:11.10}, $h=\frac{f}{g}$ is continuous at all $a\in\R$, provided that $g(a)\neq 0$, as desired.
+    \end{proof}
+\end{corollary}
+
+Now we want to look at limits of the composition of functions. We assume here (for \ref{trm:11.13}-\ref{cly:11.15}) that $a\in A$, $g:A\to\R$, and $f:I\to\R$, where $I$ is an open interval containing $\overline{g(A)}$. It is not quite true in general that if $\lim_{x\to a}g(x)=M$ and $\lim_{y\to M}f(y)=L$, then $\lim_{x\to a}f(g(x))=L$, but it is true in some cases.
+
+\begin{theorem}\label{trm:11.13}
+    If $\lim_{x\to a}g(x)=M$ and $f$ is continuous at $M$, then $\lim_{x\to a}f(g(x))=f(M)$.
+    \begin{proof}
+        To prove that $\lim_{x\to a}f(g(x))=f(M)$, Definition \ref{dfn:11.1} tells us that it will suffice to show that for all $\epsilon>0$, there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|f(g(x))-f(M)|<\epsilon$. Let $\epsilon>0$ be arbitrary. Then since $f$ is continuous at $M$, Theorem \ref{trm:11.5} implies that there exists a $\delta'>0$ such that if $y\in I$ and $|y-M|<\delta'$, then $|f(y)-f(M)|<\epsilon$. It follows by Definition \ref{dfn:11.1} that there exists a $\delta>0$ such that if $x\in A$ and $0<|x-a|<\delta$, then $|g(x)-M|<\delta'$.\par
+        We will now prove that this $\delta$ is the desired $\delta$. Let $x$ be an arbitrary element of $A$ that satisfies $0<|x-a|<\delta$. Then we know that $|g(x)-M|<\delta'$. Additionally, it follows from the fact that $x\in A$ by Definition \ref{dfn:1.18} that $g(x)\in g(A)$. Thus, by Definition \ref{dfn:4.4}, $g(x)\in\overline{g(A)}$. Consequently, by Definition \ref{dfn:1.3}, $g(x)\in I$. Indeed, we now know that $g(x)\in I$ and $|g(x)-M|<\delta'$, so we can determine that $|f(g(x))-f(M)|<\epsilon$, as desired.
+    \end{proof}
+\end{theorem}
+
 
 
 
