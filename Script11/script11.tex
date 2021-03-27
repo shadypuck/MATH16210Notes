@@ -224,6 +224,21 @@ Now we want to look at limits of the composition of functions. We assume here (f
     \end{proof}
 \end{theorem}
 
+\begin{remark}\label{rmk:11.14}\marginnote{3/17:}
+    This theorem can also be rewritten as
+    \begin{equation*}
+        \lim_{x\to a}f(g(x)) = f\left( \lim_{x\to a}g(x) \right)
+    \end{equation*}
+    which can be remembered as "limits pass through continuous functions."
+\end{remark}
+
+\begin{corollary}\label{cly:11.15}
+    If $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, then $f\circ g$ is continuous at $a$.
+    \begin{proof}
+        Since $g$ is continuous at $a$, we have by Theorem \ref{trm:11.5} that either $a\notin LP(A)$ or $\lim_{x\to a}g(x)=g(a)$. We now divide into two cases. If $a\notin LP(A)$, then by Theorem \ref{trm:11.5}, $f\circ g$ is continuous at $a$. If $\lim_{x\to a}g(x)=g(a)$, then this combined with the fact that $f$ is continuous at $g(a)$ implies by Theorem \ref{trm:11.13} that $\lim_{x\to a}f(g(x))=f(g(a))$. It follows by Definition \ref{dfn:1.25} that $\lim_{x\to a}(f\circ g)(x)=(f\circ g)(a)$. Therefore, by Theorem \ref{trm:11.5}, $f\circ g$ is continuous at $a$.
+    \end{proof}
+\end{corollary}
+
 
 
 
