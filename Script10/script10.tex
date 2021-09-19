@@ -200,7 +200,7 @@ For the next three statements, fix points $a,b\in\R$ and suppose $\mathcal{G}$ i
     \end{proof}
 \end{theorem}
 
-\begin{theorem}\label{trm:10.16}
+\begin{theorem}[Heine-Borel Theorem]\label{trm:10.16}
     Let $X\subset\R$. $X$ is compact if and only if $X$ is closed and bounded.
     \begin{proof}
         Suppose first that $X$ is compact. Then by Theorems \ref{trm:10.11} and \ref{trm:10.9}, respectively, $X$ is closed and bounded.\par
@@ -248,7 +248,7 @@ For the next three statements, fix points $a,b\in\R$ and suppose $\mathcal{G}$ i
     \end{proof}
 \end{corollary}
 
-\begin{exercise}\label{exr:10.21}
+\begin{exercise}[Extreme Value Theorem]\label{exr:10.21}
     Use Corollary \ref{cly:10.20} to prove that if $f:[a,b]\to\R$ is continuous, then there exists a point $c\in[a,b]$ such that $f(c)\geq f(x)$ for all $x\in[a,b]$. Similarly, there exists a point $d\in[a,b]$ such that $f(d)\leq f(x)$ for all $x\in[a,b]$.
     \begin{proof}
         By Equations \ref{eqn:8.1}, $a\in[a,b]$, so $[a,b]$ is nonempty. By Corollaries \ref{cly:5.15} and \ref{cly:4.7}, $[a,b]$ is closed. Since $a,b$ are lower and upper bounds on $[a,b]$, respectively ($x\in[a,b]$ implies $a\leq x$ and $x\leq b$), Definition \ref{dfn:5.6} asserts that $[a,b]$ is bounded. These three results combined with the fact that $f$ is continuous imply by Corollary \ref{cly:10.20} that $f([a,b])$ has a first and last point. With respect to the first point, by Definition \ref{dfn:3.3}, there exists some $f(c)\in f([a,b])$ such that $f(c)\geq f(x)$ for all $f(x)\in f([a,b])$. By consecutive applications of Definition \ref{dfn:1.18}, $f(c)\in f([a,b])$ implies that $c\in[a,b]$, and $x\in[a,b]$ implies that $f(x)\in f([a,b])$, i.e., $f(c)\geq f(x)$. Therefore, there exists a point $c\in[a,b]$ such that $f(c)\geq f(x)$ for all $x\in[a,b]$. The argument is symmetric with respect to the last point.
